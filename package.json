@@ -1,0 +1,26 @@
+{
+  "name": "shakti-cms",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "annotate": "node scripts/annotate.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Shakti Engineering Works website + admin CMS with AI chatbot/blog writer (Gemini).",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cheerio": "^1.1.0",
+    "cookie-parser": "^1.4.7",
+    "express": "^5.2.1",
+    "multer": "^2.4.0",
+    "nodemailer": "^10.0.10",
+    "sanitize-html": "^2.17.5",
+    "sharp": "^0.35.4"
+  }
+}

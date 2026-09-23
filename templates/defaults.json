@@ -1,0 +1,2544 @@
+{
+ "globals": [
+  {
+   "k": "g.h.1",
+   "t": "link",
+   "v": "index.html",
+   "secLabel": "Header",
+   "sec": "g.h"
+  },
+  {
+   "k": "g.h.2",
+   "t": "img",
+   "v": "images/logo-shakti.png",
+   "secLabel": "Header",
+   "sec": "g.h"
+  },
+  {
+   "k": "g.h.2a",
+   "t": "alt",
+   "v": "Shakti Engineering Works logo",
+   "secLabel": "Header",
+   "sec": "g.h"
+  },
+  {
+   "k": "g.h.3",
+   "t": "img",
+   "v": "images/logo-millgrow.jpg",
+   "secLabel": "Header",
+   "sec": "g.h"
+  },
+  {
+   "k": "g.h.3a",
+   "t": "alt",
+   "v": "MillGrow logo",
+   "secLabel": "Header",
+   "sec": "g.h"
+  },
+  {
+   "k": "g.h.4",
+   "t": "link",
+   "v": "contact.html",
+   "secLabel": "Header",
+   "sec": "g.h"
+  },
+  {
+   "k": "g.h.5",
+   "t": "text",
+   "v": "Get a Quote",
+   "secLabel": "Header",
+   "sec": "g.h"
+  },
+  {
+   "k": "g.f.1",
+   "t": "img",
+   "v": "images/logo-shakti.png",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.1a",
+   "t": "alt",
+   "v": "Shakti Engineering Works logo",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.2",
+   "t": "text",
+   "v": "SHAKTI ENGINEERING WORKS",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.3",
+   "t": "text",
+   "v": "Designing and manufacturing the pre-milling section of your rice mill for over 20 years — engineered for a tension-free, complete solution.",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.4",
+   "t": "link",
+   "v": "#",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.5",
+   "t": "link",
+   "v": "#",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.6",
+   "t": "text",
+   "v": "Company",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.7",
+   "t": "link",
+   "v": "about.html",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.8",
+   "t": "text",
+   "v": "About Us",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.9",
+   "t": "link",
+   "v": "process.html",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.10",
+   "t": "text",
+   "v": "Our Process",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.11",
+   "t": "link",
+   "v": "about.html#why",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.12",
+   "t": "text",
+   "v": "Why Shakti",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.13",
+   "t": "link",
+   "v": "contact.html",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.14",
+   "t": "text",
+   "v": "Careers",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.15",
+   "t": "link",
+   "v": "blog.html",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.16",
+   "t": "text",
+   "v": "Blog",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.17",
+   "t": "text",
+   "v": "Products",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.18",
+   "t": "link",
+   "v": "products.html",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.19",
+   "t": "text",
+   "v": "Elevators",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.20",
+   "t": "link",
+   "v": "products.html",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.21",
+   "t": "text",
+   "v": "Vertical Dryers",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.22",
+   "t": "link",
+   "v": "products.html",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.23",
+   "t": "text",
+   "v": "Parboiling Plants",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.24",
+   "t": "link",
+   "v": "products.html",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.25",
+   "t": "text",
+   "v": "Silos & Conveyors",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.26",
+   "t": "text",
+   "v": "Get in Touch",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.27",
+   "t": "text",
+   "v": "+91 90999 11179",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.28",
+   "t": "text",
+   "v": "info@shaktiew.in",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.29",
+   "t": "text",
+   "v": "Bardhaman, West Bengal, India",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.30",
+   "t": "text",
+   "v": "© 2026 Shakti Engineering Works. All rights reserved.",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.31",
+   "t": "text",
+   "v": "ISO 9001:2015 Certified",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.32",
+   "t": "link",
+   "v": "https://cre8nex.com",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.33",
+   "t": "text",
+   "v": "Designed and Deployed by",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.34",
+   "t": "img",
+   "v": "images/logo-cre8nex.png",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.f.34a",
+   "t": "alt",
+   "v": "Cre8nex",
+   "secLabel": "Footer",
+   "sec": "g.f"
+  },
+  {
+   "k": "g.q.1",
+   "t": "link",
+   "v": "https://wa.me/919099911179",
+   "secLabel": "Quick-contact button",
+   "sec": "g.q"
+  },
+  {
+   "k": "g.q.2",
+   "t": "text",
+   "v": "WhatsApp",
+   "secLabel": "Quick-contact button",
+   "sec": "g.q"
+  },
+  {
+   "k": "g.q.3",
+   "t": "link",
+   "v": "tel:+919099911179",
+   "secLabel": "Quick-contact button",
+   "sec": "g.q"
+  },
+  {
+   "k": "g.q.4",
+   "t": "text",
+   "v": "Call Us",
+   "secLabel": "Quick-contact button",
+   "sec": "g.q"
+  },
+  {
+   "k": "g.q.5",
+   "t": "link",
+   "v": "mailto:info@shaktiew.in",
+   "secLabel": "Quick-contact button",
+   "sec": "g.q"
+  },
+  {
+   "k": "g.q.6",
+   "t": "text",
+   "v": "Email Us",
+   "secLabel": "Quick-contact button",
+   "sec": "g.q"
+  },
+  {
+   "k": "g.c.1",
+   "t": "text",
+   "v": "Ask Shakti — Chat with us",
+   "secLabel": "Chat widget",
+   "sec": "g.c"
+  },
+  {
+   "k": "g.c.2",
+   "t": "text",
+   "v": "Send",
+   "secLabel": "Chat widget",
+   "sec": "g.c"
+  }
+ ],
+ "pages": {
+  "index": {
+   "title": "Shakti Engineering Works | Rice Mill Machinery Manufacturer, West Bengal",
+   "description": "Rice mill machinery manufacturer in Bardhaman, West Bengal, India — bucket elevators, paddy dryers, parboiling plants, silos and pre-milling equipment since 2004.",
+   "sections": [
+    {
+     "id": "index.s1",
+     "label": "Hero: Engineering the Next Generation of Rice Mills",
+     "ord": 1
+    },
+    {
+     "id": "index.s2",
+     "label": "ISO 9001:2015 Certified",
+     "ord": 2
+    },
+    {
+     "id": "index.s3",
+     "label": "The Shakti Process",
+     "ord": 3
+    },
+    {
+     "id": "index.s4",
+     "label": "Our Range",
+     "ord": 4
+    },
+    {
+     "id": "index.s5",
+     "label": "Our Works",
+     "ord": 5
+    },
+    {
+     "id": "index.s6",
+     "label": "Ready to Upgrade Your Mill?",
+     "ord": 6
+    }
+   ],
+   "items": [
+    {
+     "k": "index.1",
+     "t": "text",
+     "v": "BARDHAMAN, WEST BENGAL · 20+ YEARS IN RICE MILLING",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.2",
+     "t": "text",
+     "v": "Engineering the",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.3",
+     "t": "text",
+     "v": "Next Generation",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.4",
+     "t": "text",
+     "v": "of Rice Mills",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.5",
+     "t": "text",
+     "v": "For over two decades, Shakti Engineering Works designs and builds the elevators, dryers, parboiling plants and silos that power modern rice mills across India, Bangladesh, Myanmar and Sri Lanka.",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.6",
+     "t": "link",
+     "v": "https://wa.me/919099911179",
+     "sec": "index.s1",
+     "secLabel": "Hero: Engineering the Next Generation of Rice Mills"
+    },
+    {
+     "k": "index.7",
+     "t": "text",
+     "v": "WhatsApp for Quote",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.8",
+     "t": "link",
+     "v": "tel:+919099911179",
+     "sec": "index.s1",
+     "secLabel": "Hero: Engineering the Next Generation of Rice Mills"
+    },
+    {
+     "k": "index.9",
+     "t": "text",
+     "v": "Call +91 90999 11179",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.10",
+     "t": "text",
+     "v": "20+",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.11",
+     "t": "text",
+     "v": "Years Engineering",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.12",
+     "t": "text",
+     "v": "500+",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.13",
+     "t": "text",
+     "v": "Mills Equipped",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.14",
+     "t": "text",
+     "v": "4",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.15",
+     "t": "text",
+     "v": "Export Regions",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.16",
+     "t": "img",
+     "v": "images/machine-01.jpg",
+     "sec": "index.s1",
+     "secLabel": "Hero: Engineering the Next Generation of Rice Mills"
+    },
+    {
+     "k": "index.16a",
+     "t": "alt",
+     "v": "Engineering the Next Generation of Rice Mills",
+     "sec": "index.s1",
+     "secLabel": "Hero: Engineering the Next Generation of Rice Mills"
+    },
+    {
+     "k": "index.17",
+     "t": "text",
+     "v": "Certified",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.18",
+     "t": "text",
+     "v": "ISO 9001 Quality",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.19",
+     "t": "text",
+     "v": "304 Grade Stainless Steel",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.20",
+     "t": "text",
+     "v": "ISO 9001:2015 Certified",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.21",
+     "t": "text",
+     "v": "304 Grade Stainless Steel",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.22",
+     "t": "text",
+     "v": "Pan-India Installation",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.23",
+     "t": "text",
+     "v": "Bangladesh · Myanmar · Sri Lanka Export",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.24",
+     "t": "text",
+     "v": "In-House Design & Fabrication",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.25",
+     "t": "text",
+     "v": "The Shakti Process",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.26",
+     "t": "text",
+     "v": "From Raw Paddy to Perfectly Milled Rice",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.27",
+     "t": "text",
+     "v": "One connected line, engineered end to end — every machine designed to hand off cleanly to the next.",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.28",
+     "t": "img",
+     "v": "images/machine-05.jpg",
+     "sec": "index.s3",
+     "secLabel": "The Shakti Process"
+    },
+    {
+     "k": "index.28a",
+     "t": "alt",
+     "v": "Pre-Cleaning",
+     "sec": "index.s3",
+     "secLabel": "The Shakti Process"
+    },
+    {
+     "k": "index.29",
+     "t": "text",
+     "v": "01",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.30",
+     "t": "text",
+     "v": "Pre-Cleaning",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.31",
+     "t": "text",
+     "v": "Removes stalks, dust and stones before paddy enters the mill.",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.32",
+     "t": "img",
+     "v": "images/machine-06.jpg",
+     "sec": "index.s3",
+     "secLabel": "The Shakti Process"
+    },
+    {
+     "k": "index.32a",
+     "t": "alt",
+     "v": "Vertical Drying",
+     "sec": "index.s3",
+     "secLabel": "The Shakti Process"
+    },
+    {
+     "k": "index.33",
+     "t": "text",
+     "v": "02",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.34",
+     "t": "text",
+     "v": "Vertical Drying",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.35",
+     "t": "text",
+     "v": "Reduces moisture evenly for consistent milling quality.",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.36",
+     "t": "img",
+     "v": "images/machine-07.jpg",
+     "sec": "index.s3",
+     "secLabel": "The Shakti Process"
+    },
+    {
+     "k": "index.36a",
+     "t": "alt",
+     "v": "Parboiling",
+     "sec": "index.s3",
+     "secLabel": "The Shakti Process"
+    },
+    {
+     "k": "index.37",
+     "t": "text",
+     "v": "03",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.38",
+     "t": "text",
+     "v": "Parboiling",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.39",
+     "t": "text",
+     "v": "Steam-pressure plants that lock in nutrition and grain strength.",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.40",
+     "t": "img",
+     "v": "images/machine-08.jpg",
+     "sec": "index.s3",
+     "secLabel": "The Shakti Process"
+    },
+    {
+     "k": "index.40a",
+     "t": "alt",
+     "v": "Elevator Transfer",
+     "sec": "index.s3",
+     "secLabel": "The Shakti Process"
+    },
+    {
+     "k": "index.41",
+     "t": "text",
+     "v": "04",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.42",
+     "t": "text",
+     "v": "Elevator Transfer",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.43",
+     "t": "text",
+     "v": "Heavy-duty bucket elevators move grain between every stage.",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.44",
+     "t": "img",
+     "v": "images/machine-09.jpg",
+     "sec": "index.s3",
+     "secLabel": "The Shakti Process"
+    },
+    {
+     "k": "index.44a",
+     "t": "alt",
+     "v": "Silo & Storage",
+     "sec": "index.s3",
+     "secLabel": "The Shakti Process"
+    },
+    {
+     "k": "index.45",
+     "t": "text",
+     "v": "05",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.46",
+     "t": "text",
+     "v": "Silo & Storage",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.47",
+     "t": "text",
+     "v": "Custom-capacity paddy and rice silos with dust collection.",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.48",
+     "t": "img",
+     "v": "images/machine-10.jpg",
+     "sec": "index.s3",
+     "secLabel": "The Shakti Process"
+    },
+    {
+     "k": "index.48a",
+     "t": "alt",
+     "v": "Milling & Output",
+     "sec": "index.s3",
+     "secLabel": "The Shakti Process"
+    },
+    {
+     "k": "index.49",
+     "t": "text",
+     "v": "06",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.50",
+     "t": "text",
+     "v": "Milling & Output",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.51",
+     "t": "text",
+     "v": "A complete, tension-free pre-milling section ready for your mill.",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.52",
+     "t": "text",
+     "v": "Our Range",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.53",
+     "t": "text",
+     "v": "Everything Your Pre-Milling Line Needs",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.54",
+     "t": "img",
+     "v": "images/machine-11.jpg",
+     "sec": "index.s4",
+     "secLabel": "Our Range"
+    },
+    {
+     "k": "index.54a",
+     "t": "alt",
+     "v": "Bucket Elevators",
+     "sec": "index.s4",
+     "secLabel": "Our Range"
+    },
+    {
+     "k": "index.55",
+     "t": "text",
+     "v": "Bucket Elevators",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.56",
+     "t": "text",
+     "v": "304 SS bucket chain · 150–600mm width",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.57",
+     "t": "img",
+     "v": "images/machine-12.jpg",
+     "sec": "index.s4",
+     "secLabel": "Our Range"
+    },
+    {
+     "k": "index.57a",
+     "t": "alt",
+     "v": "Paddy Dryers (24–56 Ton)",
+     "sec": "index.s4",
+     "secLabel": "Our Range"
+    },
+    {
+     "k": "index.58",
+     "t": "text",
+     "v": "Paddy Dryers (24–56 Ton)",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.59",
+     "t": "text",
+     "v": "24 / 32 / 56 ton capacity",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.60",
+     "t": "img",
+     "v": "images/machine-13.jpg",
+     "sec": "index.s4",
+     "secLabel": "Our Range"
+    },
+    {
+     "k": "index.60a",
+     "t": "alt",
+     "v": "Parboiling Plants (18–32 Ton)",
+     "sec": "index.s4",
+     "secLabel": "Our Range"
+    },
+    {
+     "k": "index.61",
+     "t": "text",
+     "v": "Parboiling Plants (18–32 Ton)",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.62",
+     "t": "text",
+     "v": "18 / 32 ton capacity",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.63",
+     "t": "img",
+     "v": "images/machine-14.jpg",
+     "sec": "index.s4",
+     "secLabel": "Our Range"
+    },
+    {
+     "k": "index.63a",
+     "t": "alt",
+     "v": "Paddy & Rice Storage Silos",
+     "sec": "index.s4",
+     "secLabel": "Our Range"
+    },
+    {
+     "k": "index.64",
+     "t": "text",
+     "v": "Paddy & Rice Storage Silos",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.65",
+     "t": "text",
+     "v": "304 SS · custom capacity",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.66",
+     "t": "text",
+     "v": "Our Works",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.67",
+     "t": "text",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.68",
+     "t": "img",
+     "v": "images/machine-02.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.68a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.69",
+     "t": "img",
+     "v": "images/machine-03.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.69a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.70",
+     "t": "img",
+     "v": "images/machine-04.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.70a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.71",
+     "t": "img",
+     "v": "images/factory-01.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.71a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.72",
+     "t": "img",
+     "v": "images/factory-02.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.72a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.73",
+     "t": "img",
+     "v": "images/machine-24.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.73a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.74",
+     "t": "text",
+     "v": "Ready to Upgrade Your Mill?",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.75",
+     "t": "text",
+     "v": "Tell us your capacity and site details — our engineers will size the right machine for you.",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.76",
+     "t": "link",
+     "v": "https://wa.me/919099911179",
+     "sec": "index.s6",
+     "secLabel": "Ready to Upgrade Your Mill?"
+    },
+    {
+     "k": "index.77",
+     "t": "text",
+     "v": "Chat on WhatsApp",
+     "sec": "index.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "index.78",
+     "t": "link",
+     "v": "mailto:info@shaktiew.in",
+     "sec": "index.s6",
+     "secLabel": "Ready to Upgrade Your Mill?"
+    },
+    {
+     "k": "index.79",
+     "t": "text",
+     "v": "Email Us",
+     "sec": "index.top",
+     "secLabel": "Page"
+    }
+   ]
+  },
+  "about": {
+   "title": "About Us | Shakti Engineering Works — Rice Mill Machinery Manufacturer",
+   "description": "20+ years designing and manufacturing rice mill pre-milling machinery in Bardhaman, West Bengal. ISO 9001:2015 certified, exporting across South Asia.",
+   "sections": [
+    {
+     "id": "about.s1",
+     "label": "Hero: Built in the Workshop, Proven on the Mill Floor",
+     "ord": 1
+    },
+    {
+     "id": "about.s2",
+     "label": "Our Story",
+     "ord": 2
+    },
+    {
+     "id": "about.s3",
+     "label": "The Journey",
+     "ord": 3
+    },
+    {
+     "id": "about.s4",
+     "label": "Why Shakti",
+     "ord": 4
+    },
+    {
+     "id": "about.s5",
+     "label": "Our Works",
+     "ord": 5
+    },
+    {
+     "id": "about.s6",
+     "label": "Downloads",
+     "ord": 6
+    }
+   ],
+   "items": [
+    {
+     "k": "about.1",
+     "t": "text",
+     "v": "ABOUT SHAKTI",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.2",
+     "t": "text",
+     "v": "Built in the Workshop, Proven on the Mill Floor",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.3",
+     "t": "text",
+     "v": "Founded in Bardhaman, West Bengal, Shakti Engineering Works has spent over 20 years designing and fabricating the pre-milling machinery that modern rice mills across India, Bangladesh, Myanmar and Sri Lanka run on every day.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.4",
+     "t": "text",
+     "v": "Our Story",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.5",
+     "t": "text",
+     "v": "From a Small Fabrication Unit to a Pan-India Manufacturer",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.6",
+     "t": "text",
+     "v": "What began as a small fabrication workshop serving local rice mills has grown into a full pre-milling machinery manufacturer — every elevator, dryer, parboiling plant and silo engineered, fabricated and quality-checked in-house.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.7",
+     "t": "text",
+     "v": "Today Shakti Engineering Works equips more than 500 mills, with installations pan-India and exports to Bangladesh, Myanmar and Sri Lanka, backed by ISO 9001:2015 certified quality systems.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.8",
+     "t": "img",
+     "v": "images/factory-01.jpg",
+     "sec": "about.s2",
+     "secLabel": "Our Story"
+    },
+    {
+     "k": "about.8a",
+     "t": "alt",
+     "v": "From a Small Fabrication Unit to a Pan-India Manufacturer",
+     "sec": "about.s2",
+     "secLabel": "Our Story"
+    },
+    {
+     "k": "about.9",
+     "t": "text",
+     "v": "The Journey",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.10",
+     "t": "text",
+     "v": "Two Decades, One Standard of Engineering",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.11",
+     "t": "text",
+     "v": "2004",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.12",
+     "t": "text",
+     "v": "Workshop Founded",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.13",
+     "t": "text",
+     "v": "Started as a small fabrication unit serving local rice mills in Bardhaman, West Bengal.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.14",
+     "t": "text",
+     "v": "2011",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.15",
+     "t": "text",
+     "v": "In-House Fabrication",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.16",
+     "t": "text",
+     "v": "Brought design, welding and quality control fully under one roof.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.17",
+     "t": "text",
+     "v": "2017",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.18",
+     "t": "text",
+     "v": "ISO 9001 Certified",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.19",
+     "t": "text",
+     "v": "Formalised quality systems across every stage of manufacturing.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.20",
+     "t": "text",
+     "v": "2026",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.21",
+     "t": "text",
+     "v": "500+ Mills Equipped",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.22",
+     "t": "text",
+     "v": "Exporting to Bangladesh, Myanmar and Sri Lanka alongside a pan-India footprint.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.23",
+     "t": "text",
+     "v": "Why Shakti",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.24",
+     "t": "text",
+     "v": "Two Decades of Tension-Free Rice Milling",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.25",
+     "t": "text",
+     "v": "15–35 Years of Team Experience",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.26",
+     "t": "text",
+     "v": "Our engineers, makers and fitters have spent decades solving rice mill pre-milling problems.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.27",
+     "t": "text",
+     "v": "In-House Design & Fabrication",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.28",
+     "t": "text",
+     "v": "Every machine is engineered, fabricated and quality-checked under one roof.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.29",
+     "t": "text",
+     "v": "India, Bangladesh, Myanmar & Sri Lanka",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.30",
+     "t": "text",
+     "v": "Serving rice’s largest markets with export-ready engineering and support.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.31",
+     "t": "text",
+     "v": "Built to Last, Built to Spec",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.32",
+     "t": "text",
+     "v": "304-grade stainless steel, 150mm–600mm range, with fully customised solutions.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.33",
+     "t": "text",
+     "v": "20+",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.34",
+     "t": "text",
+     "v": "years of innovative engineering creativity, trusted by rice millers nationwide.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.35",
+     "t": "text",
+     "v": "Rice mills equipped",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.36",
+     "t": "text",
+     "v": "500+",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.37",
+     "t": "text",
+     "v": "Grade of steel used",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.38",
+     "t": "text",
+     "v": "304 SS",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.39",
+     "t": "text",
+     "v": "Size range",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.40",
+     "t": "text",
+     "v": "150–600mm",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.41",
+     "t": "text",
+     "v": "Our Works",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.42",
+     "t": "text",
+     "v": "In-House Fabrication, Start to Finish",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.43",
+     "t": "text",
+     "v": "From plate cutting to final assembly, every machine takes shape in our own workshop before it ships.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.44",
+     "t": "img",
+     "v": "images/machine-02.jpg",
+     "sec": "about.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "about.44a",
+     "t": "alt",
+     "v": "In-House Fabrication, Start to Finish",
+     "sec": "about.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "about.45",
+     "t": "img",
+     "v": "images/machine-03.jpg",
+     "sec": "about.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "about.45a",
+     "t": "alt",
+     "v": "In-House Fabrication, Start to Finish",
+     "sec": "about.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "about.46",
+     "t": "img",
+     "v": "images/machine-04.jpg",
+     "sec": "about.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "about.46a",
+     "t": "alt",
+     "v": "In-House Fabrication, Start to Finish",
+     "sec": "about.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "about.47",
+     "t": "text",
+     "v": "Downloads",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.48",
+     "t": "text",
+     "v": "Brochure & Customer List",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.49",
+     "t": "text",
+     "v": "Download our product brochure and see the mills we already work with.",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.50",
+     "t": "link",
+     "v": "docs/E-Brochure.pdf",
+     "sec": "about.s6",
+     "secLabel": "Downloads"
+    },
+    {
+     "k": "about.51",
+     "t": "text",
+     "v": "E-Brochure",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.52",
+     "t": "text",
+     "v": "Full product catalogue (PDF)",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.53",
+     "t": "link",
+     "v": "docs/Customer-List.pdf",
+     "sec": "about.s6",
+     "secLabel": "Downloads"
+    },
+    {
+     "k": "about.54",
+     "t": "text",
+     "v": "Customer List",
+     "sec": "about.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "about.55",
+     "t": "text",
+     "v": "Mills we've equipped (PDF)",
+     "sec": "about.top",
+     "secLabel": "Page"
+    }
+   ]
+  },
+  "process": {
+   "title": "Our Process | Shakti Engineering Works — Rice Mill Pre-Milling Line",
+   "description": "See the complete pre-milling process: pre-cleaning, vertical drying, parboiling, elevator transfer, silo storage and milling output.",
+   "sections": [
+    {
+     "id": "process.s1",
+     "label": "Hero: From Raw Paddy to Perfectly Milled Rice",
+     "ord": 1
+    },
+    {
+     "id": "process.s2",
+     "label": "Section 2",
+     "ord": 2
+    },
+    {
+     "id": "process.s3",
+     "label": "Want This Line at Your Mill?",
+     "ord": 3
+    }
+   ],
+   "items": [
+    {
+     "k": "process.1",
+     "t": "text",
+     "v": "OUR PROCESS",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.2",
+     "t": "text",
+     "v": "From Raw Paddy to Perfectly Milled Rice",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.3",
+     "t": "text",
+     "v": "One connected line, engineered end to end — every machine designed to hand off cleanly to the next.",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.4",
+     "t": "img",
+     "v": "images/machine-05.jpg",
+     "sec": "process.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "process.4a",
+     "t": "alt",
+     "v": "Pre-Cleaning",
+     "sec": "process.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "process.5",
+     "t": "text",
+     "v": "01",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.6",
+     "t": "text",
+     "v": "Pre-Cleaning",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.7",
+     "t": "text",
+     "v": "Removes stalks, dust and stones before paddy enters the mill, protecting every downstream machine from debris and wear.",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.8",
+     "t": "text",
+     "v": "02",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.9",
+     "t": "text",
+     "v": "Vertical Drying",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.10",
+     "t": "text",
+     "v": "Multi-pass vertical dryers reduce moisture evenly across the grain, sized to your daily throughput from 18 to 56 tons, for consistent milling quality batch after batch.",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.11",
+     "t": "img",
+     "v": "images/machine-06.jpg",
+     "sec": "process.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "process.11a",
+     "t": "alt",
+     "v": "Pre-Cleaning",
+     "sec": "process.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "process.12",
+     "t": "img",
+     "v": "images/machine-07.jpg",
+     "sec": "process.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "process.12a",
+     "t": "alt",
+     "v": "Pre-Cleaning",
+     "sec": "process.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "process.13",
+     "t": "text",
+     "v": "03",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.14",
+     "t": "text",
+     "v": "Parboiling",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.15",
+     "t": "text",
+     "v": "Steam-pressure parboiling plants lock in nutrition and grain strength, with integrated water tanks sized up to 50 KL for continuous operation.",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.16",
+     "t": "text",
+     "v": "04",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.17",
+     "t": "text",
+     "v": "Elevator Transfer",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.18",
+     "t": "text",
+     "v": "Heavy-duty bucket elevators move grain cleanly between every stage of the line, engineered for dryers, parboiling sections, silos and standalone use.",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.19",
+     "t": "img",
+     "v": "images/machine-08.jpg",
+     "sec": "process.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "process.19a",
+     "t": "alt",
+     "v": "Pre-Cleaning",
+     "sec": "process.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "process.20",
+     "t": "img",
+     "v": "images/machine-09.jpg",
+     "sec": "process.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "process.20a",
+     "t": "alt",
+     "v": "Pre-Cleaning",
+     "sec": "process.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "process.21",
+     "t": "text",
+     "v": "05",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.22",
+     "t": "text",
+     "v": "Silo & Storage",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.23",
+     "t": "text",
+     "v": "Custom-capacity paddy and rice silos, plus dust collection and cyclone systems, keep grain protected and your mill floor clean until it's ready to move on.",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.24",
+     "t": "text",
+     "v": "06",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.25",
+     "t": "text",
+     "v": "Milling & Output",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.26",
+     "t": "text",
+     "v": "A complete, tension-free pre-milling section — screw and tube conveyors, blowers, pulleys and pipeline fittings all engineered to work as one line, ready for your mill.",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.27",
+     "t": "img",
+     "v": "images/machine-10.jpg",
+     "sec": "process.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "process.27a",
+     "t": "alt",
+     "v": "Pre-Cleaning",
+     "sec": "process.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "process.28",
+     "t": "text",
+     "v": "Want This Line at Your Mill?",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.29",
+     "t": "text",
+     "v": "Send us your capacity and footprint — we'll design the right pre-milling section for you.",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.30",
+     "t": "link",
+     "v": "https://wa.me/919099911179",
+     "sec": "process.s3",
+     "secLabel": "Want This Line at Your Mill?"
+    },
+    {
+     "k": "process.31",
+     "t": "text",
+     "v": "Chat on WhatsApp",
+     "sec": "process.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "process.32",
+     "t": "link",
+     "v": "mailto:info@shaktiew.in",
+     "sec": "process.s3",
+     "secLabel": "Want This Line at Your Mill?"
+    },
+    {
+     "k": "process.33",
+     "t": "text",
+     "v": "Email Us",
+     "sec": "process.top",
+     "secLabel": "Page"
+    }
+   ]
+  },
+  "products": {
+   "title": "Products | Shakti Engineering Works — Rice Mill Machinery Manufacturer",
+   "description": "Full product range: bucket elevators, paddy dryers, parboiling plants, storage silos, dust collectors, conveyors and more — built in 304-grade stainless steel.",
+   "sections": [
+    {
+     "id": "products.s1",
+     "label": "Hero: Everything Your Pre-Milling Line Needs",
+     "ord": 1
+    },
+    {
+     "id": "products.s2",
+     "label": "Section 2",
+     "ord": 2
+    },
+    {
+     "id": "products.s3",
+     "label": "Need a Custom Specification?",
+     "ord": 3
+    }
+   ],
+   "items": [
+    {
+     "k": "products.1",
+     "t": "text",
+     "v": "FULL RANGE",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.2",
+     "t": "text",
+     "v": "Everything Your Pre-Milling Line Needs",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.3",
+     "t": "text",
+     "v": "304-grade stainless steel construction, sized from 150mm to 600mm, with fully customised solutions on request — every machine designed, fabricated and quality-checked in-house.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.4",
+     "t": "img",
+     "v": "images/machine-11.jpg",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.4a",
+     "t": "alt",
+     "v": "Bucket Elevators",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.5",
+     "t": "text",
+     "v": "Bucket Elevators",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.6",
+     "t": "text",
+     "v": "Engineered for dryers, parboiling lines and silos, plus standalone individual elevators.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.7",
+     "t": "text",
+     "v": "304 SS bucket chain · 150–600mm width",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.8",
+     "t": "img",
+     "v": "images/machine-12.jpg",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.8a",
+     "t": "alt",
+     "v": "Paddy Dryers (24–56 Ton)",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.9",
+     "t": "text",
+     "v": "Paddy Dryers (24–56 Ton)",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.10",
+     "t": "text",
+     "v": "Single and double vertical dryers, even moisture reduction sized to your throughput.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.11",
+     "t": "text",
+     "v": "24 / 32 / 56 ton capacity",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.12",
+     "t": "img",
+     "v": "images/machine-13.jpg",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.12a",
+     "t": "alt",
+     "v": "Parboiling Plants (18–32 Ton)",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.13",
+     "t": "text",
+     "v": "Parboiling Plants (18–32 Ton)",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.14",
+     "t": "text",
+     "v": "Pressure parboiling systems, with water-tank integration, built for consistent grain strength and colour.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.15",
+     "t": "text",
+     "v": "18 / 32 ton capacity",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.16",
+     "t": "img",
+     "v": "images/machine-14.jpg",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.16a",
+     "t": "alt",
+     "v": "Paddy & Rice Storage Silos",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.17",
+     "t": "text",
+     "v": "Paddy & Rice Storage Silos",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.18",
+     "t": "text",
+     "v": "Custom-capacity paddy and rice storage silos built to your site footprint.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.19",
+     "t": "text",
+     "v": "304 SS · custom capacity",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.20",
+     "t": "img",
+     "v": "images/machine-15.jpg",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.20a",
+     "t": "alt",
+     "v": "Dust Collector Systems",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.21",
+     "t": "text",
+     "v": "Dust Collector Systems",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.22",
+     "t": "text",
+     "v": "Twin-cyclone separators and dust collection units for a cleaner mill floor.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.23",
+     "t": "text",
+     "v": "twin-cyclone design",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.24",
+     "t": "img",
+     "v": "images/machine-16.jpg",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.24a",
+     "t": "alt",
+     "v": "Centrifugal Blowers & Pulleys",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.25",
+     "t": "text",
+     "v": "Centrifugal Blowers & Pulleys",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.26",
+     "t": "text",
+     "v": "Low-power-consumption blowers, pulleys and vibrating screens engineered to last.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.27",
+     "t": "text",
+     "v": "low power draw",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.28",
+     "t": "img",
+     "v": "images/machine-17.jpg",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.28a",
+     "t": "alt",
+     "v": "Screw & Tube Conveyors",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.29",
+     "t": "text",
+     "v": "Screw & Tube Conveyors",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.30",
+     "t": "text",
+     "v": "FRP tube and screw conveyors for flour mills and rice mill transfer lines.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.31",
+     "t": "text",
+     "v": "FRP / 304 SS body",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.32",
+     "t": "img",
+     "v": "images/machine-18.jpg",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.32a",
+     "t": "alt",
+     "v": "Belt Conveyors",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.33",
+     "t": "text",
+     "v": "Belt Conveyors",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.34",
+     "t": "text",
+     "v": "Heavy-duty trough belt conveyors for high-volume grain transfer.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.35",
+     "t": "text",
+     "v": "reinforced belt",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.36",
+     "t": "img",
+     "v": "images/machine-19.jpg",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.36a",
+     "t": "alt",
+     "v": "Water Tanks",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.37",
+     "t": "text",
+     "v": "Water Tanks",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.38",
+     "t": "text",
+     "v": "Steel water tanks sized for parboiling plants, up to 50 KL capacity.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.39",
+     "t": "text",
+     "v": "up to 50 KL",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.40",
+     "t": "img",
+     "v": "images/machine-20.jpg",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.40a",
+     "t": "alt",
+     "v": "Paddy Separators (Stroke Chalna)",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.41",
+     "t": "text",
+     "v": "Paddy Separators (Stroke Chalna)",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.42",
+     "t": "text",
+     "v": "Vibrating stroke chalna units that separate paddy from brown rice with precision.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.43",
+     "t": "text",
+     "v": "vibrating stroke deck",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.44",
+     "t": "img",
+     "v": "images/machine-21.jpg",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.44a",
+     "t": "alt",
+     "v": "Heat Exchangers",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.45",
+     "t": "text",
+     "v": "Heat Exchangers",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.46",
+     "t": "text",
+     "v": "Finned-tube heat exchangers for efficient, even drying performance.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.47",
+     "t": "text",
+     "v": "finned-tube design",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.48",
+     "t": "img",
+     "v": "images/machine-22.jpg",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.48a",
+     "t": "alt",
+     "v": "S.S. Pipeline Fittings",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.49",
+     "t": "text",
+     "v": "S.S. Pipeline Fittings",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.50",
+     "t": "text",
+     "v": "Polished stainless-steel Y and T-joint pipeline fittings for flour mill ducting.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.51",
+     "t": "text",
+     "v": "304 SS polished finish",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.52",
+     "t": "img",
+     "v": "images/machine-23.jpg",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.52a",
+     "t": "alt",
+     "v": "Screw Conveyor Drive Units",
+     "sec": "products.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "products.53",
+     "t": "text",
+     "v": "Screw Conveyor Drive Units",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.54",
+     "t": "text",
+     "v": "Geared motor drive assemblies built for continuous-duty screw and tube conveyors.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.55",
+     "t": "text",
+     "v": "geared motor drive",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.56",
+     "t": "text",
+     "v": "Need a Custom Specification?",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.57",
+     "t": "text",
+     "v": "Send us your capacity, footprint and grain type — we'll size the right machine for your mill.",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.58",
+     "t": "link",
+     "v": "https://wa.me/919099911179",
+     "sec": "products.s3",
+     "secLabel": "Need a Custom Specification?"
+    },
+    {
+     "k": "products.59",
+     "t": "text",
+     "v": "Chat on WhatsApp",
+     "sec": "products.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "products.60",
+     "t": "link",
+     "v": "mailto:info@shaktiew.in",
+     "sec": "products.s3",
+     "secLabel": "Need a Custom Specification?"
+    },
+    {
+     "k": "products.61",
+     "t": "text",
+     "v": "Email Us",
+     "sec": "products.top",
+     "secLabel": "Page"
+    }
+   ]
+  },
+  "blog": {
+   "title": "Blog | Shakti Engineering Works",
+   "description": "Notes on rice mill pre-milling engineering — elevator sizing, drying, parboiling and storage — from Shakti Engineering Works, Bardhaman, West Bengal.",
+   "sections": [
+    {
+     "id": "blog.s1",
+     "label": "Hero: Notes on Rice Mill Engineering",
+     "ord": 1
+    },
+    {
+     "id": "blog.s2",
+     "label": "Section 2",
+     "ord": 2
+    }
+   ],
+   "items": [
+    {
+     "k": "blog.1",
+     "t": "text",
+     "v": "FROM THE WORKS",
+     "sec": "blog.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "blog.2",
+     "t": "text",
+     "v": "Notes on Rice Mill Engineering",
+     "sec": "blog.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "blog.3",
+     "t": "text",
+     "v": "Practical notes from two decades of designing and installing pre-milling lines — sizing, process choices and what tends to go wrong.",
+     "sec": "blog.top",
+     "secLabel": "Page"
+    }
+   ]
+  },
+  "contact": {
+   "title": "Contact | Shakti Engineering Works — Bardhaman, West Bengal",
+   "description": "Get in touch with Shakti Engineering Works in Bardhaman, West Bengal for rice mill pre-milling machinery quotes, specifications and support.",
+   "sections": [
+    {
+     "id": "contact.s1",
+     "label": "Hero: Let’s Talk About Your Mill",
+     "ord": 1
+    },
+    {
+     "id": "contact.s2",
+     "label": "Section 2",
+     "ord": 2
+    }
+   ],
+   "items": [
+    {
+     "k": "contact.1",
+     "t": "text",
+     "v": "GET IN TOUCH",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.2",
+     "t": "text",
+     "v": "Let’s Talk About Your Mill",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.3",
+     "t": "text",
+     "v": "Tell us your capacity and footprint and we’ll get back with a specification and quote — usually within a business day.",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.4",
+     "t": "text",
+     "v": "Your Name",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.5",
+     "t": "text",
+     "v": "Phone / WhatsApp",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.6",
+     "t": "text",
+     "v": "Email",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.7",
+     "t": "text",
+     "v": "What do you need?",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.8",
+     "t": "text",
+     "v": "Send Enquiry",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.9",
+     "t": "text",
+     "v": "This opens WhatsApp with your message, and notifies our team by email — your details are only used to respond to your enquiry.",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.10",
+     "t": "text",
+     "v": "PHONE & WHATSAPP",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.11",
+     "t": "link",
+     "v": "tel:+919099911179",
+     "sec": "contact.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "contact.12",
+     "t": "text",
+     "v": "+91 90999 11179",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.13",
+     "t": "text",
+     "v": "EMAIL",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.14",
+     "t": "link",
+     "v": "mailto:info@shaktiew.in",
+     "sec": "contact.s2",
+     "secLabel": "Section 2"
+    },
+    {
+     "k": "contact.15",
+     "t": "text",
+     "v": "info@shaktiew.in",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.16",
+     "t": "text",
+     "v": "WORKS & ADDRESS",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.17",
+     "t": "text",
+     "v": "Bardhaman, West Bengal, India",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    },
+    {
+     "k": "contact.18",
+     "t": "text",
+     "v": "Installations across India · Exports to Bangladesh, Myanmar & Sri Lanka",
+     "sec": "contact.top",
+     "secLabel": "Page"
+    }
+   ]
+  }
+ }
+}
