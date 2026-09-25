@@ -14,6 +14,14 @@ const UPLOADS = path.join(db.DATA_DIR, 'uploads');
 const PUBLIC = path.join(__dirname, '..', 'public');
 const MAX_BYTES = 15 * 1024 * 1024;
 
+// Cloudinary (used when there's no persistent disk, e.g. Render's free tier) vs. local disk (default,
+// e.g. a VPS). Same on-disk/on-Cloudinary-either-way pattern as lib/store.js's Mongo/file split.
+const CLOUD_MEDIA = !!process.env.CLOUDINARY_URL;
+let cloudinary = null;
+if (CLOUD_MEDIA) {
+  cloudinary = require('cloudinary').v2; // reads CLOUDINARY_URL from the environment automatically
+}
+
 const upload = multer({ storage: multer.memoryStorage(), limits: { fileSize: MAX_BYTES, files: 1 } });
 
 /** decide the real type from the file's bytes — filename and client mime are ignored */
@@ -45,6 +53,18 @@ r.get('/media', editor, (req, res) => {
   if (kind === 'image' || kind === 'pdf') list = list.filter((m) => m.kind === kind);
   res.json(list);
 });
+
+/** Uploads a processed buffer to Cloudinary and returns {url, publicId}. */
+function uploadToCloudinary(buf, type, folder) {
+  return new Promise((resolve, reject) => {
+    cloudinary.uploader
+      .upload_stream(
+        { folder, resource_type: type.kind === 'pdf' ? 'raw' : 'image', format: type.ext, overwrite: false, unique_filename: true },
+        (err, result) => (err ? reject(err) : resolve(result))
+      )
+      .end(buf);
+  });
+}
 
 r.post(
   '/media',
@@ -80,10 +100,24 @@ r.post(
         throw new HttpError(400, 'That image could not be read — it may be corrupted.');
       }
     }
-    const file = crypto.randomBytes(9).toString('hex') + '.' + type.ext;
-    fs.writeFileSync(path.join(UPLOADS, file), out);
     const base = path.basename(req.file.originalname || 'file', path.extname(req.file.originalname || ''));
-    const rec = { id: db.id(), name: clip(base.replace(/[^\w\- .()]+/g, '_'), 80) + '.' + type.ext, file, url: 'uploads/' + file, kind: type.kind, mime: type.mime, size: out.length, w, h, by: req.user.email, at: new Date().toISOString() };
+    const rec = { id: db.id(), name: clip(base.replace(/[^\w\- .()]+/g, '_'), 80) + '.' + type.ext, kind: type.kind, mime: type.mime, size: out.length, w, h, by: req.user.email, at: new Date().toISOString() };
+    if (CLOUD_MEDIA) {
+      let result;
+      try {
+        result = await uploadToCloudinary(out, type, 'shakti-cms');
+      } catch (e) {
+        throw new HttpError(502, 'Upload to Cloudinary failed: ' + (e.message || 'unknown error'));
+      }
+      rec.url = result.secure_url;
+      rec.cloudinaryId = result.public_id;
+      rec.cloudinaryType = result.resource_type;
+    } else {
+      const file = crypto.randomBytes(9).toString('hex') + '.' + type.ext;
+      fs.writeFileSync(path.join(UPLOADS, file), out);
+      rec.file = file;
+      rec.url = 'uploads/' + file;
+    }
     db.data.media.unshift(rec);
     db.log(req.user, 'Uploaded ' + rec.name);
     db.save();
@@ -111,9 +145,15 @@ r.delete(
     const used = usage(m.url);
     if (used.length && req.query.force !== '1') throw new HttpError(409, 'This file is in use: ' + used.slice(0, 4).join(', ') + '. Deleting it will break those. Delete anyway?');
     db.data.media.splice(i, 1);
-    try {
-      fs.unlinkSync(path.join(UPLOADS, path.basename(m.file)));
-    } catch (_) {}
+    if (CLOUD_MEDIA && m.cloudinaryId) {
+      try {
+        await cloudinary.uploader.destroy(m.cloudinaryId, { resource_type: m.cloudinaryType || 'image' });
+      } catch (_) {}
+    } else if (m.file) {
+      try {
+        fs.unlinkSync(path.join(UPLOADS, path.basename(m.file)));
+      } catch (_) {}
+    }
     db.log(req.user, 'Deleted ' + m.name);
     db.save();
     res.json({ ok: true });

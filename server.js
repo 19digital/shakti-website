@@ -38,7 +38,8 @@ app.use('/css', express.static(path.join(PUB, 'css'), staticOpts('5m')));
 app.use('/js', express.static(path.join(PUB, 'js'), staticOpts('5m')));
 app.use('/images', express.static(path.join(PUB, 'images'), staticOpts('7d')));
 app.use('/docs', express.static(path.join(PUB, 'docs'), staticOpts('1d')));
-app.use('/uploads', express.static(path.join(db.DATA_DIR, 'uploads'), { maxAge: '30d', immutable: true, dotfiles: 'deny', index: false, setHeaders: (res) => res.set('X-Content-Type-Options', 'nosniff') }));
+// In MongoDB/Cloudinary mode, uploads live on Cloudinary (absolute URLs) — nothing local to serve.
+if (!db.MONGO_MODE) app.use('/uploads', express.static(path.join(db.DATA_DIR, 'uploads'), { maxAge: '30d', immutable: true, dotfiles: 'deny', index: false, setHeaders: (res) => res.set('X-Content-Type-Options', 'nosniff') }));
 app.use('/admin-assets', express.static(path.join(__dirname, 'admin'), { maxAge: 0, index: false }));
 const sendAdmin = (req, res) => res.set('Cache-Control', 'no-store').sendFile(path.join(__dirname, 'admin', 'index.html'));
 app.get(['/admin', '/admin/'], sendAdmin);
@@ -75,12 +76,28 @@ app.use((err, req, res, next) => {
   res.status(status).type('text/plain').send(msg);
 });
 
-app.listen(PORT, HOST, () => {
-  console.log(`\nSite:       http://localhost:${PORT}/`);
-  console.log(`Dashboard:  http://localhost:${PORT}/admin`);
-  if (!db.data.users.length) {
-    global.SETUP_TOKEN = token(9);
-    console.log(`\nFIRST-TIME SETUP — open the dashboard and enter this one-time code:\n\n    ${global.SETUP_TOKEN}\n`);
+(async () => {
+  if (db.MONGO_MODE && !process.env.SECRET_KEY) {
+    console.error('\nFATAL: MONGODB_URI is set but SECRET_KEY is not.');
+    console.error('Without a persistent disk, a locally-generated key would be lost on every restart,');
+    console.error('permanently breaking any previously-saved Gemini/SMTP secrets. Set SECRET_KEY and retry.\n');
+    process.exit(1);
   }
-  if (!process.env.SECRET_KEY) console.log('(Encryption key for the Gemini API key is stored in data/secret.key — back it up with data/db.json.)');
-});
+  try {
+    await db.connect();
+  } catch (e) {
+    console.error('\nFATAL: could not connect to MongoDB (' + e.message + ').');
+    console.error('Check MONGODB_URI — for Atlas, remember to add 0.0.0.0/0 (or your host\'s IP) under Network Access.\n');
+    process.exit(1);
+  }
+  app.listen(PORT, HOST, () => {
+    console.log(`\nSite:       http://localhost:${PORT}/`);
+    console.log(`Dashboard:  http://localhost:${PORT}/admin`);
+    console.log(`Storage:    ${db.MONGO_MODE ? 'MongoDB Atlas' : 'local JSON file (' + db.DATA_DIR + ')'}`);
+    if (!db.data.users.length) {
+      global.SETUP_TOKEN = token(9);
+      console.log(`\nFIRST-TIME SETUP — open the dashboard and enter this one-time code:\n\n    ${global.SETUP_TOKEN}\n`);
+    }
+    if (!db.MONGO_MODE && !process.env.SECRET_KEY) console.log('(Encryption key for the Gemini API key is stored in data/secret.key — back it up with data/db.json.)');
+  });
+})();

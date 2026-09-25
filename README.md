@@ -6,9 +6,18 @@ frontend — text, images, PDFs, colours/theme, fonts, the navigation menu, cust
 (including AI-drafted ones), the AI chatbot's Gemini API key and behaviour, contact-form email
 notifications, and user accounts.
 
-There is no separate database server: content lives in `data/db.json` (a single JSON file, written
-atomically with a rolling 14-day backup in `data/backups/`), and uploaded images/PDFs live in
-`data/uploads/`. That directory is the only thing that needs backing up.
+**Storage has two interchangeable modes, auto-selected by which environment variables are set:**
+
+| | Default (file mode) | Free-tier mode |
+|---|---|---|
+| When it's used | `MONGODB_URI` / `CLOUDINARY_URL` unset | either one is set |
+| Database | `data/db.json` (a single JSON file, written atomically with a rolling 14-day backup in `data/backups/`) | a single document in a MongoDB Atlas collection |
+| Uploaded images/PDFs | `data/uploads/` | Cloudinary |
+| Fits | a VPS or any host with a real, persistent disk | a host whose free tier has **no** persistent disk (e.g. Render's free web service) |
+
+The rest of the app (every route, the dashboard, the public site) never knows which mode is active —
+both are exercised by `scripts/test-mongo-store.js` and by running `scripts/smoketest.js` against a
+server started with `CLOUDINARY_URL` set (see [Running the test suite](#running-the-test-suite)).
 
 ## Requirements
 
@@ -37,6 +46,9 @@ Environment variables (all optional):
 | `SECRET_KEY` | auto-generated into `data/secret.key` | Master key used to encrypt the Gemini API key and SMTP password at rest. Set this explicitly in production and keep it secret — if it's lost, saved keys can't be decrypted and must be re-entered. |
 | `TRUST_PROXY` | unset | Set to `true` (or a hop count) when running behind a reverse proxy/load balancer, so rate-limiting and `req.secure` see the real client. |
 | `COOKIE_SECURE` | auto (on when the request is HTTPS) | Set to `true` to force the session cookie to `Secure` even behind a proxy that terminates TLS before Node sees it. |
+| `MONGODB_URI` | unset (file mode) | An Atlas (or any MongoDB) connection string. Setting this switches the database to MongoDB — see [Deploying for free](#deploying-for-free-no-card-needed). |
+| `MONGODB_DB` | `shakti_cms` | Database name to use inside the Mongo cluster. Only relevant when `MONGODB_URI` is set. |
+| `CLOUDINARY_URL` | unset (local disk) | A Cloudinary account's API connection string (`cloudinary://key:secret@cloud_name`, from their dashboard). Setting this switches image/PDF uploads to Cloudinary instead of local disk. |
 
 ## What the dashboard can do
 
@@ -103,6 +115,30 @@ me as a **collaborator** on the hPanel account (if Hostinger supports it on your
 **SSH key access** / an **API token** scoped just for deployment. If none of those are available and
 a password is the only option, change it right after deployment is done.
 
+## Deploying for free (no card needed)
+
+This is the path actually used for shaktiew.in. Three free accounts, none of which ask for a card:
+
+1. **Code**: push this repo to a GitHub repository.
+2. **Compute — [Render](https://render.com)**, free Web Service:
+   - New → Web Service → connect the repo (or paste its public GitHub URL under "Public Git Repository" if you don't want to link GitHub to Render at all)
+   - Build command: `npm install` · Start command: `node server.js`
+   - Instance type: **Free** (do *not* add a paid disk — the whole point of this path is not needing one)
+   - Environment variables: `SECRET_KEY` (generate one, see the table above), `MONGODB_URI`, `CLOUDINARY_URL` (from steps 3–4), `NODE_ENV=production`
+3. **Database — [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register)**, free M0 cluster:
+   - Create a free M0 cluster (any provider/region)
+   - Database Access → add a database user with a password
+   - Network Access → add `0.0.0.0/0` (Render's free tier has no fixed IP to allowlist more narrowly)
+   - Connect → Drivers → copy the connection string, put your DB user's username/password into it → this is `MONGODB_URI`
+4. **File storage — [Cloudinary](https://cloudinary.com/users/register/free)**, free tier:
+   - Dashboard → copy the **API Environment variable** value, shown as `CLOUDINARY_URL=cloudinary://<key>:<secret>@<cloud_name>` → the part after the `=` is what you set as `CLOUDINARY_URL` on Render
+5. **Domain**: in Hostinger's DNS zone editor for your domain, point it at Render (Render's dashboard shows the exact CNAME/A record to add once the service exists; Render also issues the free SSL certificate automatically once the DNS record resolves).
+
+Cost: **$0/month.** Tradeoffs versus a VPS or Hostinger's paid Node hosting: Render's free tier spins
+the service down after ~15 minutes of no traffic (the next visitor waits a few seconds for it to wake
+up), and Atlas's free M0 tier doesn't include automated backups — use the dashboard's **Backup** page
+to download a JSON snapshot periodically.
+
 ## Project layout
 
 ```
@@ -146,6 +182,19 @@ BASE_URL=http://127.0.0.1:4173 SETUP_TOKEN=<code> node scripts/smoketest.js
 blog/page publishing and nav sync, theme, contact-form + honeypot/rate-limiting, SMTP settings, AI
 settings and the chatbot's fallback behaviour, and account-safety edge cases. It always runs against a
 disposable `DATA_DIR` — never point it at a real site's data.
+
+To check the MongoDB/Cloudinary code paths without a real account, `scripts/test-mongo-store.js`
+verifies `lib/store.js`'s Mongo logic against a stub that mimics the real driver, and
+`scripts/fake-cloudinary-preload.js` (used via `NODE_OPTIONS="--require ..."`) lets the real HTTP
+server run with uploads faked instead of hitting Cloudinary — both are what actually caught bugs
+while building the free-tier deployment, not just theoretical coverage:
+
+```bash
+node scripts/test-mongo-store.js
+
+CLOUDINARY_URL="cloudinary://fake:fake@fake" NODE_OPTIONS="--require ./scripts/fake-cloudinary-preload.js" \
+  DATA_DIR=/some/empty/temp/dir PORT=4175 node server.js
+```
 
 ### Resetting a forgotten password
 

@@ -25,7 +25,7 @@ r.post(
     db.log(user, 'Created the first admin account');
     global.SETUP_TOKEN = null;
     A.startSession(req, res, user);
-    db.saveNow();
+    await db.saveNow();
     res.json({ ok: true });
   })
 );
