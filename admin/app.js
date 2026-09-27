@@ -114,6 +114,8 @@ function closeModal() {
 
 // --------------------------------------------------------------- boot ----
 async function boot() {
+  const resetTok = new URLSearchParams(location.search).get('reset');
+  if (resetTok) return renderResetPassword(resetTok);
   try {
     const s = await api('GET', '/auth/state');
     if (s.needsSetup) return renderSetup();
@@ -275,6 +277,7 @@ function renderLogin(notice) {
       <div class="field"><label>Password</label><input class="input" type="password" name="password" required autocomplete="current-password"></div>
       <button class="btn primary" type="submit" style="width:100%;justify-content:center;">Sign in</button>
     </form>
+    <div style="margin-top:16px;text-align:center;font-size:13.5px;"><a href="#" id="forgot-link" style="color:var(--accent);cursor:pointer;text-decoration:underline;">Forgot password?</a></div>
   </div></div>`;
   document.getElementById('login-form').addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -286,6 +289,77 @@ function renderLogin(notice) {
     try {
       await api('POST', '/auth/login', { email: f.get('email'), password: f.get('password') });
       await boot();
+    } catch (err) {
+      box.innerHTML = `<div class="banner err">${esc(errText(err))}</div>`;
+      btn.disabled = false;
+    }
+  });
+  document.getElementById('forgot-link').addEventListener('click', (e) => {
+    e.preventDefault();
+    renderForgot();
+  });
+}
+
+function renderForgot() {
+  $app.innerHTML = `<div class="auth-wrap"><div class="auth-card">
+    <div class="auth-logo">S</div>
+    <h1>Reset your password</h1>
+    <div class="sub">Enter your dashboard email and we'll send a reset link, if email notifications are set up for this site.</div>
+    <div id="forgot-err"></div>
+    <form id="forgot-form">
+      <div class="field"><label>Email</label><input class="input" type="email" name="email" required autocomplete="username" autofocus></div>
+      <button class="btn primary" type="submit" style="width:100%;justify-content:center;">Send reset link</button>
+    </form>
+    <div style="margin-top:16px;text-align:center;font-size:13.5px;"><a href="#" id="back-to-login" style="color:var(--accent);cursor:pointer;text-decoration:underline;">Back to sign in</a></div>
+  </div></div>`;
+  document.getElementById('forgot-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    const box = document.getElementById('forgot-err');
+    const btn = e.target.querySelector('button');
+    btn.disabled = true;
+    try {
+      await api('POST', '/auth/forgot', { email: f.get('email') });
+      box.innerHTML = `<div class="banner ok">If an account exists for that email, a reset link is on its way — check your inbox (and spam folder). The link expires in 1 hour.</div>`;
+      e.target.remove();
+    } catch (err) {
+      box.innerHTML = `<div class="banner err">${esc(errText(err))}</div>`;
+      btn.disabled = false;
+    }
+  });
+  document.getElementById('back-to-login').addEventListener('click', (e) => {
+    e.preventDefault();
+    renderLogin();
+  });
+}
+
+function renderResetPassword(tok) {
+  $app.innerHTML = `<div class="auth-wrap"><div class="auth-card">
+    <div class="auth-logo">S</div>
+    <h1>Set a new password</h1>
+    <div class="sub">Shakti Engineering Works — dashboard</div>
+    <div id="reset-err"></div>
+    <form id="reset-form">
+      <div class="field"><label>New password</label><input class="input" type="password" name="password" required minlength="10" autocomplete="new-password"><div class="hint">At least 10 characters, with letters and numbers.</div></div>
+      <div class="field"><label>Confirm new password</label><input class="input" type="password" name="confirm" required minlength="10" autocomplete="new-password"></div>
+      <button class="btn primary" type="submit" style="width:100%;justify-content:center;">Set new password</button>
+    </form>
+  </div></div>`;
+  document.getElementById('reset-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const f = new FormData(e.target);
+    const box = document.getElementById('reset-err');
+    box.innerHTML = '';
+    if (f.get('password') !== f.get('confirm')) {
+      box.innerHTML = `<div class="banner err">Passwords do not match.</div>`;
+      return;
+    }
+    const btn = e.target.querySelector('button');
+    btn.disabled = true;
+    try {
+      await api('POST', '/auth/reset', { token: tok, password: f.get('password') });
+      history.replaceState(null, '', location.pathname);
+      renderLogin('Password changed — sign in with your new password.');
     } catch (err) {
       box.innerHTML = `<div class="banner err">${esc(errText(err))}</div>`;
       btn.disabled = false;

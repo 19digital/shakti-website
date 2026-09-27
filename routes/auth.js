@@ -1,12 +1,15 @@
 const express = require('express');
 const db = require('../lib/store');
 const A = require('../lib/auth');
+const mailer = require('../lib/mailer');
+const { sha256, token } = require('../lib/crypto');
 const { wrap, HttpError, clip } = require('../lib/util');
 
 const r = express.Router();
 const pub = (u) => ({ id: u.id, email: u.email, name: u.name, role: u.role, disabled: !!u.disabled, createdAt: u.createdAt, lastLogin: u.lastLogin || null });
 const emailOk = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e) && e.length <= 200;
 const DUMMY = A.hashPassword('dummy-password-1');
+const RESET_TTL = 60 * 60 * 1000;
 
 r.get('/auth/state', (req, res) => res.json({ needsSetup: db.data.users.length === 0 }));
 
@@ -41,6 +44,51 @@ r.post(
     if (!user || !ok || user.disabled) throw new HttpError(401, 'Incorrect email or password.');
     user.lastLogin = new Date().toISOString();
     A.startSession(req, res, user);
+    res.json({ ok: true });
+  })
+);
+
+r.post(
+  '/auth/forgot',
+  wrap(async (req, res) => {
+    const e = String((req.body && req.body.email) || '').trim().toLowerCase();
+    if (!A.hit('forgot-ip:' + req.ip, 8, 15 * 60 * 1000) || !A.hit('forgot:' + e, 4, 15 * 60 * 1000)) throw new HttpError(429, 'Too many attempts. Please wait 15 minutes.');
+    // Always respond the same way regardless of whether the email exists or SMTP is set up,
+    // so this endpoint can't be used to discover which emails have accounts.
+    const user = db.data.users.find((u) => u.email === e && !u.disabled);
+    if (user && mailer.isConfigured()) {
+      const tok = token(32);
+      db.data.resetTokens[sha256(tok)] = { uid: user.id, exp: Date.now() + RESET_TTL };
+      db.save();
+      const link = `${req.protocol}://${req.get('host')}/admin?reset=${tok}`;
+      const site = db.data.settings.site.name;
+      mailer
+        .send({
+          to: user.email,
+          subject: `Reset your ${site} dashboard password`,
+          text: `Someone asked to reset the dashboard password for ${user.email}.\n\nOpen this link within 1 hour to set a new password:\n${link}\n\nIf you didn't request this, ignore this email — your password will stay the same.`,
+          html: `<p>Someone asked to reset the dashboard password for <strong>${user.email}</strong>.</p><p>Open this link within 1 hour to set a new password:</p><p><a href="${link}">${link}</a></p><p>If you didn't request this, ignore this email — your password will stay the same.</p>`,
+        })
+        .catch((err) => console.error('[auth] password reset email failed:', err.message));
+    }
+    res.json({ ok: true });
+  })
+);
+
+r.post(
+  '/auth/reset',
+  wrap(async (req, res) => {
+    const tok = String((req.body && req.body.token) || '');
+    if (!A.hit('reset:' + req.ip, 20, 15 * 60 * 1000)) throw new HttpError(429, 'Too many attempts. Please wait 15 minutes.');
+    const rec = tok && db.data.resetTokens[sha256(tok)];
+    const user = rec && !(rec.exp < Date.now()) && db.data.users.find((u) => u.id === rec.uid);
+    if (!user) throw new HttpError(400, 'This reset link is invalid or has expired. Request a new one.');
+    A.validatePassword(req.body && req.body.password);
+    user.passHash = A.hashPassword(req.body.password);
+    delete db.data.resetTokens[sha256(tok)];
+    for (const [h, s] of Object.entries(db.data.sessions)) if (s.uid === user.id) delete db.data.sessions[h];
+    db.log(user, 'Reset their password via email link');
+    await db.saveNow();
     res.json({ ok: true });
   })
 );
