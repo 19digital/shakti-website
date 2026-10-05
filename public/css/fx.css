@@ -1,0 +1,104 @@
+/* Shakti Engineering Works — immersive motion layer.
+   Loaded after style.css + theme.css. Everything that changes the classic look is gated on html.fx,
+   which fx.js only sets when the visitor has not asked for reduced motion. */
+
+@property --ang{syntax:'<angle>';inherits:false;initial-value:0deg;}
+
+/* ---------- scroll progress + cursor ---------- */
+.fx-progress{position:fixed;left:0;top:0;width:100%;height:3px;z-index:9997;pointer-events:none;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--accent),var(--teal));box-shadow:0 0 14px var(--accent-soft);}
+.fx-ring,.fx-dot{position:fixed;left:0;top:0;pointer-events:none;z-index:9999;opacity:0;transition:opacity .25s ease,background-color .25s ease,border-color .25s ease;}
+.fx-ring{width:42px;height:42px;margin:-21px 0 0 -21px;border-radius:50%;border:1.5px solid var(--accent);background:transparent;}
+.fx-dot{width:6px;height:6px;margin:-3px 0 0 -3px;border-radius:50%;background:var(--accent);}
+.fx-ring.on,.fx-dot.on{opacity:1;}
+.fx-ring.on{opacity:.75;}
+.fx-ring.is-link{background:var(--accent-soft);opacity:1;}
+.fx-ring.is-text,.fx-dot.is-text{opacity:0 !important;}
+@media (hover:none),(pointer:coarse){.fx-ring,.fx-dot{display:none;}}
+
+/* ---------- navigation ---------- */
+html.fx .site-nav-row{transition:box-shadow .3s ease,background-color .3s ease;}
+html.fx .site-nav-row.fx-stuck{box-shadow:0 16px 36px -24px rgba(0,0,0,.4);}
+html.fx .nav-links{position:relative;}
+html.fx .navlink{position:relative;z-index:1;}
+.fx-pill{position:absolute;left:0;top:50%;height:34px;margin-top:-17px;width:0;border-radius:9px;background:var(--accent-soft);box-shadow:inset 0 0 0 1px var(--accent-soft);opacity:0;pointer-events:none;z-index:0;transition:transform .4s cubic-bezier(.22,.61,.36,1),width .4s cubic-bezier(.22,.61,.36,1),opacity .2s ease;}
+.fx-pill.on{opacity:1;}
+
+/* ---------- buttons: magnetic + shine ---------- */
+html.fx .btn-primary,html.fx .btn-ghost{position:relative;overflow:hidden;isolation:isolate;translate:var(--bx,0px) var(--by,0px);transition:transform .2s ease,box-shadow .2s ease,background .2s ease,translate .28s cubic-bezier(.22,.61,.36,1);}
+html.fx .btn-primary::after,html.fx .btn-ghost::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.5) 50%,transparent 65%);transform:translateX(-130%);}
+html.fx .btn-primary:hover::after,html.fx .btn-ghost:hover::after{transform:translateX(130%);transition:transform .75s ease;}
+html.fx .btn-primary:active,html.fx .btn-ghost:active{transform:translateY(0) scale(.97);}
+html.fx .cw-btn,html.fx .qc-btn,html.fx .social-btn{translate:var(--bx,0px) var(--by,0px);transition:transform .2s ease,translate .28s cubic-bezier(.22,.61,.36,1);}
+html.fx .cw-btn::before{content:"";position:absolute;inset:0;border-radius:50%;box-shadow:0 0 0 0 var(--accent);opacity:.5;animation:fxPulse 2.8s ease-out infinite;pointer-events:none;}
+html.fx .cw-btn{position:relative;}
+@keyframes fxPulse{0%{box-shadow:0 0 0 0 var(--accent);opacity:.45;}70%,100%{box-shadow:0 0 0 18px var(--accent);opacity:0;}}
+html.fx .footlink{transition:color .2s ease,transform .25s cubic-bezier(.22,.61,.36,1);}
+html.fx .footlink:hover{transform:translateX(6px);}
+
+/* ---------- hero ---------- */
+html.fx .fx-host{position:relative;isolation:isolate;overflow:hidden;overflow:clip;}
+html.fx .fx-hero > :not(.fx-layer):not(.parallax-blob){position:relative;z-index:1;}
+.fx-canvas{position:absolute;left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none;}
+html.fx .fx-hero::before,html.fx .fx-hero::after{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0;transition:opacity .5s ease;}
+html.fx .fx-hero::before{background-image:linear-gradient(var(--accent) 1px,transparent 1px),linear-gradient(90deg,var(--accent) 1px,transparent 1px);background-size:56px 56px;-webkit-mask-image:radial-gradient(240px circle at var(--mx,-999px) var(--my,-999px),#000,transparent 72%);mask-image:radial-gradient(240px circle at var(--mx,-999px) var(--my,-999px),#000,transparent 72%);}
+html.fx .fx-hero::after{background:radial-gradient(460px circle at var(--mx,-999px) var(--my,-999px),var(--accent-soft),transparent 62%);}
+html.fx .fx-hero.fx-hot::before,html.fx .fx-hero.fx-hot::after{opacity:1;}
+html.fx .fx-depth{translate:calc(var(--tx,0) * var(--d,0) * 1px) calc(var(--ty,0) * var(--d,0) * .6px);}
+html.fx .fx-hero h1 > span[style*="background-clip"]{background:linear-gradient(90deg,var(--accent),var(--teal),var(--accent)) !important;background-size:220% 100% !important;-webkit-background-clip:text !important;background-clip:text !important;animation:fxShine 7s linear infinite;}
+@keyframes fxShine{to{background-position:-220% 0;}}
+
+/* the hero image becomes a 3D scene that follows the cursor / device tilt */
+html.fx .fx-scene{transform-style:preserve-3d;}
+html.fx .fx-scene.fx-live{transform:perspective(1200px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) !important;transition:opacity .85s ease !important;}
+html.fx .fx-scene .fx-media{transform:translateZ(0);}
+html.fx .fx-scene .fx-media img{transform:scale(1.14) translate3d(calc(var(--px,0) * -16px),calc(var(--py,0) * -12px),0);}
+html.fx .fx-scene .fx-badge{transform:translateZ(80px);box-shadow:0 34px 56px -22px rgba(0,0,0,.5);}
+.fx-glare{position:absolute;inset:0;pointer-events:none;background:radial-gradient(520px circle at var(--gx,30%) var(--gy,20%),rgba(255,255,255,.34),transparent 55%);mix-blend-mode:soft-light;opacity:.9;}
+.fx-halo{position:absolute;inset:-7% -9%;border-radius:36px;background:conic-gradient(from var(--ang),var(--accent),var(--teal),var(--accent));filter:blur(38px);opacity:.38;transform:translateZ(-70px);animation:fxHalo 14s linear infinite;pointer-events:none;}
+@keyframes fxHalo{to{--ang:360deg;}}
+.fx-orbit{position:absolute;left:-12%;top:-10%;width:124%;aspect-ratio:1;border-radius:50%;border:1.5px dashed var(--accent);opacity:.28;transform:translateZ(-36px);animation:fxSpin 46s linear infinite;pointer-events:none;}
+.fx-orbit.b{left:-4%;top:-2%;width:108%;border-color:var(--teal);animation-duration:64s;animation-direction:reverse;opacity:.22;transform:translateZ(-18px);}
+@keyframes fxSpin{to{rotate:360deg;}}
+
+/* ---------- cards: 3D tilt, glare, inner-image parallax ---------- */
+html.fx .card{position:relative;}
+html.fx .card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;opacity:0;transition:opacity .3s ease;background:radial-gradient(380px circle at var(--gx,50%) var(--gy,50%),var(--accent-soft),transparent 62%);}
+html.fx .card.fx-on::after{opacity:1;}
+html.fx .fx-tilt.fx-live{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translate3d(0,var(--lift,0px),0) !important;transition:box-shadow .35s ease,border-color .25s ease,opacity .75s ease !important;transition-delay:0s !important;will-change:transform;}
+html.fx .fx-tilt.fx-live.fx-on{box-shadow:var(--shx,0px) calc(var(--shy,0px) + 24px) 48px -24px rgba(0,0,0,.35);}
+html.fx .fx-pimg{transform:translate3d(var(--ix,0px),calc(var(--py,0px) + var(--iy,0px)),0) scale(1.18);transition:transform .45s cubic-bezier(.22,.61,.36,1);will-change:transform;}
+html.fx .fx-on .fx-pimg{transform:translate3d(var(--ix,0px),calc(var(--py,0px) + var(--iy,0px)),0) scale(1.26);}
+
+/* ---------- headings: words rise out of a mask ---------- */
+.fx-split .fx-w{display:inline-block;overflow:hidden;vertical-align:top;padding:.04em .02em .16em;margin:-.04em -.02em -.16em;perspective:700px;}
+.fx-split .fx-wi{display:inline-block;transform:translate3d(0,108%,0) rotateX(-70deg);transform-origin:50% 100%;opacity:0;transition:transform 1s cubic-bezier(.16,.84,.24,1) calc(var(--i) * 60ms),opacity .6s ease calc(var(--i) * 60ms);}
+.fx-split.fx-in .fx-wi{transform:none;opacity:1;}
+.fx-num{font-variant-numeric:tabular-nums;}
+
+/* ---------- trust strip becomes a marquee ---------- */
+html.fx .fx-marquee{display:flex !important;flex-wrap:nowrap !important;justify-content:flex-start !important;gap:0 !important;overflow:hidden;padding-left:0 !important;padding-right:0 !important;-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);}
+.fx-track{display:flex;flex:none;gap:16px;padding-right:16px;animation:fxMarquee var(--dur,40s) linear infinite;}
+.fx-marquee:hover .fx-track{animation-play-state:paused;}
+.fx-track .chip{white-space:nowrap;}
+@keyframes fxMarquee{to{transform:translateX(-100%);}}
+
+/* ---------- depth orbs behind sections ---------- */
+.fx-orb{position:absolute;border-radius:50%;filter:blur(72px);opacity:.2;pointer-events:none;z-index:-1;will-change:transform;}
+.fx-orb.a{background:var(--accent);}
+.fx-orb.t{background:var(--teal);}
+
+/* ---------- page transition curtain ---------- */
+.fx-curtain{position:fixed;inset:0;z-index:9998;display:flex;pointer-events:none;}
+.fx-curtain i{flex:1;background:var(--text);transform:scaleY(0);transform-origin:50% 100%;transition:transform .55s cubic-bezier(.76,0,.24,1) calc(var(--i) * 50ms);}
+.fx-curtain i:nth-child(odd){background:var(--accent);}
+.fx-curtain.cover i{transform:scaleY(1);}
+.fx-curtain.leave i{transform-origin:50% 0;}
+.fx-curtain.still i{transition:none;}
+
+@media (max-width:900px){
+  .fx-orb{filter:blur(56px);opacity:.16;}
+  html.fx .footlink:hover{transform:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  .fx-progress,.fx-ring,.fx-dot,.fx-curtain,.fx-canvas,.fx-halo,.fx-orbit,.fx-orb{display:none !important;}
+}
