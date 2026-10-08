@@ -56,6 +56,7 @@ api.use((req, res, next) => {
 api.use(A.csrf);
 api.use(require('./routes/auth'));
 api.use(require('./routes/content'));
+api.use(require('./routes/catalog'));
 api.use(require('./routes/media'));
 api.use(require('./routes/blog'));
 api.use(require('./routes/ai'));

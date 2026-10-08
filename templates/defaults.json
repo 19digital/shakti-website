@@ -817,419 +817,55 @@
     },
     {
      "k": "index.54",
-     "t": "img",
-     "v": "images/machine-11.jpg",
-     "sec": "index.s4",
-     "secLabel": "Our Range"
-    },
-    {
-     "k": "index.54a",
-     "t": "alt",
-     "v": "Bucket Elevators",
-     "sec": "index.s4",
-     "secLabel": "Our Range"
-    },
-    {
-     "k": "index.55",
-     "t": "text",
-     "v": "Bucket Elevators",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.56",
-     "t": "text",
-     "v": "304 SS bucket chain · 150–600mm width",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.57",
-     "t": "img",
-     "v": "images/dryer-24-ton.jpg",
-     "sec": "index.s4",
-     "secLabel": "Our Range"
-    },
-    {
-     "k": "index.57a",
-     "t": "alt",
-     "v": "Paddy Dryers",
-     "sec": "index.s4",
-     "secLabel": "Our Range"
-    },
-    {
-     "k": "index.58",
-     "t": "text",
-     "v": "Paddy Dryers",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.59",
-     "t": "text",
-     "v": "Made to any capacity",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.60",
-     "t": "img",
-     "v": "images/parboiling-32-ton.jpg",
-     "sec": "index.s4",
-     "secLabel": "Our Range"
-    },
-    {
-     "k": "index.60a",
-     "t": "alt",
-     "v": "Parboiling Plants",
-     "sec": "index.s4",
-     "secLabel": "Our Range"
-    },
-    {
-     "k": "index.61",
-     "t": "text",
-     "v": "Parboiling Plants",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.62",
-     "t": "text",
-     "v": "Made to any capacity",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.63",
-     "t": "img",
-     "v": "images/paddy-silo-wall.jpg",
-     "sec": "index.s4",
-     "secLabel": "Our Range"
-    },
-    {
-     "k": "index.63a",
-     "t": "alt",
-     "v": "Paddy & Rice Storage Silos",
-     "sec": "index.s4",
-     "secLabel": "Our Range"
-    },
-    {
-     "k": "index.64",
-     "t": "text",
-     "v": "Paddy & Rice Storage Silos",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.65",
-     "t": "text",
-     "v": "304 SS · custom capacity",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.66",
      "t": "text",
      "v": "Our Works",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.67",
+     "k": "index.55",
      "t": "text",
      "v": "Installations Across Rice Mills",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.68",
-     "t": "img",
-     "v": "images/hero-plant.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.68a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.69",
-     "t": "img",
-     "v": "images/works-14.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.69a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.70",
-     "t": "img",
-     "v": "images/factory-01.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.70a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.71",
-     "t": "img",
-     "v": "images/works-10.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.71a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.72",
-     "t": "img",
-     "v": "images/works-15.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.72a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.73",
-     "t": "img",
-     "v": "images/machine-03.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.73a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.74",
-     "t": "img",
-     "v": "images/works-07.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.74a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.75",
-     "t": "img",
-     "v": "images/works-12.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.75a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.76",
-     "t": "img",
-     "v": "images/parboiling-dual-type.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.76a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.77",
-     "t": "img",
-     "v": "images/works-13.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.77a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.78",
-     "t": "img",
-     "v": "images/machine-04.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.78a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.79",
-     "t": "img",
-     "v": "images/paddy-dryer-56-ton.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.79a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.80",
-     "t": "img",
-     "v": "images/factory-02.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.80a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.81",
-     "t": "img",
-     "v": "images/works-16.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.81a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.82",
-     "t": "img",
-     "v": "images/works-08.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.82a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.83",
-     "t": "img",
-     "v": "images/parboiling-32-ton.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.83a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.84",
-     "t": "img",
-     "v": "images/machine-02.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.84a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.85",
-     "t": "img",
-     "v": "images/machine-24.jpg",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.85a",
-     "t": "alt",
-     "v": "Installations Across Rice Mills",
-     "sec": "index.s5",
-     "secLabel": "Our Works"
-    },
-    {
-     "k": "index.86",
+     "k": "index.56",
      "t": "text",
      "v": "Ready to Upgrade Your Mill?",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.87",
+     "k": "index.57",
      "t": "text",
      "v": "Tell us your capacity and site details — our engineers will size the right machine for you.",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.88",
+     "k": "index.58",
      "t": "link",
      "v": "https://wa.me/919475086888",
      "sec": "index.s6",
      "secLabel": "Ready to Upgrade Your Mill?"
     },
     {
-     "k": "index.89",
+     "k": "index.59",
      "t": "text",
      "v": "Chat on WhatsApp",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.90",
+     "k": "index.60",
      "t": "link",
      "v": "mailto:info@shaktiew.in",
      "sec": "index.s6",
      "secLabel": "Ready to Upgrade Your Mill?"
     },
     {
-     "k": "index.91",
+     "k": "index.61",
      "t": "text",
      "v": "Email Us",
      "sec": "index.top",
@@ -2028,496 +1664,41 @@
     },
     {
      "k": "products.4",
-     "t": "img",
-     "v": "images/machine-11.jpg",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.4a",
-     "t": "alt",
-     "v": "Bucket Elevators",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.5",
-     "t": "text",
-     "v": "Bucket Elevators",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.6",
-     "t": "text",
-     "v": "Engineered for dryers, parboiling lines and silos, plus standalone individual elevators.",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.7",
-     "t": "text",
-     "v": "304 SS bucket chain · 150–600mm width",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.8",
-     "t": "img",
-     "v": "images/dryer-24-ton.jpg",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.8a",
-     "t": "alt",
-     "v": "Paddy Dryers",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.9",
-     "t": "text",
-     "v": "Paddy Dryers",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.10",
-     "t": "text",
-     "v": "Single and double vertical dryers, even moisture reduction sized to your throughput.",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.11",
-     "t": "text",
-     "v": "Made to any capacity",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.12",
-     "t": "img",
-     "v": "images/parboiling-32-ton.jpg",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.12a",
-     "t": "alt",
-     "v": "Parboiling Plants",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.13",
-     "t": "text",
-     "v": "Parboiling Plants",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.14",
-     "t": "text",
-     "v": "Pressure parboiling systems, with water-tank integration, built for consistent grain strength and colour.",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.15",
-     "t": "text",
-     "v": "Made to any capacity",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.16",
-     "t": "img",
-     "v": "images/paddy-silo-wall.jpg",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.16a",
-     "t": "alt",
-     "v": "Paddy & Rice Storage Silos",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.17",
-     "t": "text",
-     "v": "Paddy & Rice Storage Silos",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.18",
-     "t": "text",
-     "v": "Custom-capacity paddy and rice storage silos built to your site footprint.",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.19",
-     "t": "text",
-     "v": "304 SS · custom capacity",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.20",
-     "t": "img",
-     "v": "images/dust-collector.jpg",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.20a",
-     "t": "alt",
-     "v": "Dust Collector Systems",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.21",
-     "t": "text",
-     "v": "Dust Collector Systems",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.22",
-     "t": "text",
-     "v": "Twin-cyclone separators and dust collection units for a cleaner mill floor.",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.23",
-     "t": "text",
-     "v": "twin-cyclone design",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.24",
-     "t": "img",
-     "v": "images/machine-16.jpg",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.24a",
-     "t": "alt",
-     "v": "Centrifugal Blowers & Pulleys",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.25",
-     "t": "text",
-     "v": "Centrifugal Blowers & Pulleys",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.26",
-     "t": "text",
-     "v": "Low-power-consumption blowers, pulleys and vibrating screens engineered to last.",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.27",
-     "t": "text",
-     "v": "low power draw",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.28",
-     "t": "img",
-     "v": "images/screw-tube-conveyor.jpg",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.28a",
-     "t": "alt",
-     "v": "Screw & Tube Conveyors",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.29",
-     "t": "text",
-     "v": "Screw & Tube Conveyors",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.30",
-     "t": "text",
-     "v": "FRP tube and screw conveyors for flour mills and rice mill transfer lines.",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.31",
-     "t": "text",
-     "v": "FRP / 304 SS body",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.32",
-     "t": "img",
-     "v": "images/belt-conveyor.jpg",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.32a",
-     "t": "alt",
-     "v": "Belt Conveyors",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.33",
-     "t": "text",
-     "v": "Belt Conveyors",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.34",
-     "t": "text",
-     "v": "Heavy-duty trough belt conveyors for high-volume grain transfer.",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.35",
-     "t": "text",
-     "v": "reinforced belt",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.36",
-     "t": "img",
-     "v": "images/water-tank.jpg",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.36a",
-     "t": "alt",
-     "v": "Water Tanks",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.37",
-     "t": "text",
-     "v": "Water Tanks",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.38",
-     "t": "text",
-     "v": "Steel water tanks sized for parboiling plants, up to 50 KL capacity.",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.39",
-     "t": "text",
-     "v": "up to 50 KL",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.40",
-     "t": "img",
-     "v": "images/stroke-chalna.jpg",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.40a",
-     "t": "alt",
-     "v": "Paddy Separators (Stroke Chalna)",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.41",
-     "t": "text",
-     "v": "Paddy Separators (Stroke Chalna)",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.42",
-     "t": "text",
-     "v": "Vibrating stroke chalna units that separate paddy from brown rice with precision.",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.43",
-     "t": "text",
-     "v": "vibrating stroke deck",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.44",
-     "t": "img",
-     "v": "images/heat-exchanger.jpg",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.44a",
-     "t": "alt",
-     "v": "Heat Exchangers",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.45",
-     "t": "text",
-     "v": "Heat Exchangers",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.46",
-     "t": "text",
-     "v": "Finned-tube heat exchangers for efficient, even drying performance.",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.47",
-     "t": "text",
-     "v": "finned-tube design",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.48",
-     "t": "img",
-     "v": "images/pipeline-fittings.jpg",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.48a",
-     "t": "alt",
-     "v": "S.S. Pipeline Fittings",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.49",
-     "t": "text",
-     "v": "S.S. Pipeline Fittings",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.50",
-     "t": "text",
-     "v": "Polished stainless-steel Y and T-joint pipeline fittings for flour mill ducting.",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.51",
-     "t": "text",
-     "v": "304 SS polished finish",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.52",
-     "t": "img",
-     "v": "images/machine-23.jpg",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.52a",
-     "t": "alt",
-     "v": "Screw Conveyor Drive Units",
-     "sec": "products.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "products.53",
-     "t": "text",
-     "v": "Screw Conveyor Drive Units",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.54",
-     "t": "text",
-     "v": "Geared motor drive assemblies built for continuous-duty screw and tube conveyors.",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.55",
-     "t": "text",
-     "v": "geared motor drive",
-     "sec": "products.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "products.56",
      "t": "text",
      "v": "Need a Custom Specification?",
      "sec": "products.top",
      "secLabel": "Page"
     },
     {
-     "k": "products.57",
+     "k": "products.5",
      "t": "text",
      "v": "Send us your capacity, footprint and grain type — we'll size the right machine for your mill.",
      "sec": "products.top",
      "secLabel": "Page"
     },
     {
-     "k": "products.58",
+     "k": "products.6",
      "t": "link",
      "v": "https://wa.me/919475086888",
      "sec": "products.s3",
      "secLabel": "Need a Custom Specification?"
     },
     {
-     "k": "products.59",
+     "k": "products.7",
      "t": "text",
      "v": "Chat on WhatsApp",
      "sec": "products.top",
      "secLabel": "Page"
     },
     {
-     "k": "products.60",
+     "k": "products.8",
      "t": "link",
      "v": "mailto:info@shaktiew.in",
      "sec": "products.s3",
      "secLabel": "Need a Custom Specification?"
     },
     {
-     "k": "products.61",
+     "k": "products.9",
      "t": "text",
      "v": "Email Us",
      "sec": "products.top",

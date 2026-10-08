@@ -202,10 +202,12 @@
       capEl.textContent = photos.length > 1 ? p.label : "";
       [].forEach.call(thumbsEl.children, function(btn, n){ btn.classList.toggle("on", n === k); });
     }
-    function setPhotos(d){
+    function setPhotos(d, card){
       var file = d.src.split("/").pop().split("?")[0];
-      var set = GALLERY[file];
-      photos = set ? set.map(function(x){ return { src: "images/" + x[0], label: x[1] }; }) : [{ src: d.src, label: d.title }];
+      var set = GALLERY[file], listed = null;
+      try { listed = JSON.parse((card && card.getAttribute("data-photos")) || "null"); } catch (err) { listed = null; }
+      if (listed && listed.length) photos = listed.map(function(x){ return { src: x[0], label: x[1] || d.title }; });
+      else photos = set ? set.map(function(x){ return { src: "images/" + x[0], label: x[1] }; }) : [{ src: d.src, label: d.title }];
       thumbsEl.innerHTML = "";
       if (photos.length > 1) photos.forEach(function(p, n){
         var btn = document.createElement("button");
@@ -235,7 +237,7 @@
     function show(i){
       idx = (i + group.length) % group.length;
       var d = info(group[idx]);
-      setPhotos(d);
+      setPhotos(d, group[idx]);
       titleEl.textContent = d.title;
       descEl.textContent = d.desc; descEl.style.display = d.desc ? "" : "none";
       specEl.textContent = d.spec; specEl.style.display = d.spec ? "" : "none";

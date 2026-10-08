@@ -300,6 +300,70 @@ async function main() {
   r = await req(admin, 'GET', '/api/nope');
   ok(r.status === 404, 'unknown API route 404s cleanly');
 
+  console.log('\n== Products & gallery manager ==');
+  const CH = { headers: { 'x-csrf-token': csrf } };
+  const visitor = jar();
+  r = await req(visitor, 'GET', '/api/products');
+  ok(r.status === 401, 'product list requires sign-in');
+  r = await req(admin, 'GET', '/api/products');
+  ok(r.status === 200 && Array.isArray(r.data) && r.data.length >= 10, 'the default products are seeded', 'n=' + (r.data && r.data.length));
+  const seededCount = r.data.length;
+
+  r = await req(admin, 'POST', '/api/products', { name: 'Test Rice Grader', summary: 'Grades grain by size.', spec: 'Custom capacity', image: 'images/machine-11.jpg', photos: [{ src: 'images/machine-12.jpg', caption: 'Large model' }], home: true }, CH);
+  ok(r.status === 200 && r.data && r.data.id, 'a product can be created', 'status=' + r.status);
+  const pid = r.data && r.data.id;
+  r = await req(admin, 'GET', '/products.html');
+  ok(r.text.includes('Test Rice Grader') && r.text.includes('Large model'), 'the new product shows on the public Products page with its extra photo list');
+  r = await req(admin, 'GET', '/');
+  ok(r.text.includes('Test Rice Grader'), 'a product ticked "show on home page" appears on the home page');
+
+  r = await req(admin, 'POST', '/api/products', { name: '', image: 'images/machine-11.jpg' }, CH);
+  ok(r.status === 400, 'a product without a name is rejected');
+  r = await req(admin, 'POST', '/api/products', { name: 'Bad image', image: 'javascript:alert(1)' }, CH);
+  ok(r.status === 400, 'an unsafe image address is rejected');
+
+  r = await req(admin, 'PUT', '/api/products/' + pid, { name: '<script>alert(1)</script>Grader', summary: '<b>x</b>', image: 'images/machine-11.jpg', visible: true, home: false }, CH);
+  ok(r.status === 200, 'a product can be edited');
+  r = await req(admin, 'GET', '/products.html');
+  ok(!r.text.includes('<script>alert(1)</script>'), 'markup typed into a product name is not rendered as HTML');
+
+  r = await req(admin, 'PUT', '/api/products/' + pid, { name: 'Hidden Grader', image: 'images/machine-11.jpg', visible: false }, CH);
+  r = await req(admin, 'GET', '/products.html');
+  ok(!r.text.includes('Hidden Grader'), 'a product marked hidden is not shown publicly');
+
+  r = await req(admin, 'GET', '/api/products');
+  const ids = r.data.map((p) => p.id);
+  r = await req(admin, 'POST', '/api/products/reorder', { ids: ids.slice().reverse() }, CH);
+  ok(r.status === 200, 'products can be reordered');
+  r = await req(admin, 'GET', '/api/products');
+  ok(r.data[0].id === ids[ids.length - 1] && r.data.length === ids.length, 'the new order is saved and nothing is lost');
+
+  r = await req(admin, 'DELETE', '/api/products/' + pid, undefined, CH);
+  ok(r.status === 200, 'a product can be deleted');
+  r = await req(admin, 'GET', '/api/products');
+  ok(r.data.length === seededCount, 'the product list is back to its original size');
+
+  r = await req(admin, 'GET', '/api/gallery');
+  ok(r.status === 200 && r.data.length >= 10, 'the default "Our Works" gallery is seeded');
+  const galCount = r.data.length;
+  r = await req(admin, 'POST', '/api/gallery', { items: [{ src: 'images/machine-11.jpg', shape: 'arch', w: 100, h: 200, caption: 'Zebra test photo' }] }, CH);
+  ok(r.status === 200 && r.data.length === 1, 'a gallery photo can be added');
+  const gid = r.data && r.data[0] && r.data[0].id;
+  r = await req(admin, 'GET', '/');
+  ok(r.text.includes('Zebra test photo') && r.text.includes('c-arch'), 'the new photo appears in the home page collage with its chosen shape');
+  r = await req(admin, 'PUT', '/api/gallery/' + gid, { shape: 'pill' }, CH);
+  ok(r.status === 200 && r.data.shape === 'pill', 'a gallery photo shape can be changed');
+  r = await req(admin, 'PUT', '/api/gallery/' + gid, { shape: 'triangle' }, CH);
+  ok(r.status === 400, 'an unknown shape is rejected');
+  r = await req(admin, 'POST', '/api/gallery', { items: [{ src: 'data:image/svg+xml,<svg onload=alert(1)>' }] }, CH);
+  ok(r.status === 400, 'an unsafe gallery image address is rejected');
+  r = await req(admin, 'DELETE', '/api/gallery/' + gid, undefined, CH);
+  ok(r.status === 200, 'a gallery photo can be removed');
+  r = await req(admin, 'GET', '/api/gallery');
+  ok(r.data.length === galCount, 'the gallery is back to its original size');
+  r = await req(visitor, 'POST', '/api/gallery', { items: [{ src: 'images/machine-11.jpg' }] });
+  ok(r.status === 401 || r.status === 403, 'visitors cannot change the gallery');
+
   console.log('\n== Password change & re-login ==');
   // sign in a second, independent session as the same admin first, to prove the *other* session
   // gets signed out while the session that made the change does not (intentional: you shouldn't

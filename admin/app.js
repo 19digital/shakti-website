@@ -149,6 +149,8 @@ function route() {
     case 'pages': return parts[1] ? viewPageEditor(parts[1]) : viewPagesList();
     case 'blog': return parts[1] ? viewPostEditor(parts[1]) : viewPostsList();
     case 'media': return viewMedia();
+    case 'catalog': return viewCatalog();
+    case 'gallery': return viewGallery();
     case 'nav': return viewNav();
     case 'theme': return viewTheme();
     case 'site': return viewSite();
@@ -177,6 +179,8 @@ function sidebarHtml(active) {
   <div class="nav-group">
     <div class="nav-group-label">Website content</div>
     ${CORE_PAGES.map((p) => item(p, PAGE_LABEL[p])).join('')}
+    ${item('catalog', 'Products manager')}
+    ${item('gallery', 'Gallery (Our Works)')}
     ${item('globals', 'Header, footer & widgets')}
     ${item('pages', 'Custom pages')}
     ${admin ? item('nav', 'Navigation menu') : ''}
@@ -224,7 +228,7 @@ function shell(active, contentHtml, title) {
 }
 function navTitle(key) {
   if (CORE_PAGES.includes(key)) return PAGE_LABEL[key] + ' page';
-  return { dashboard: 'Dashboard', globals: 'Header, footer & widgets', pages: 'Custom pages', blog: 'Blog articles', media: 'Media library', nav: 'Navigation menu', theme: 'Theme & colours', site: 'Site settings', email: 'Email notifications', ai: 'AI & chatbot', leads: 'Enquiries', users: 'Users', backup: 'Backup', account: 'My account' }[key] || 'Dashboard';
+  return { dashboard: 'Dashboard', catalog: 'Products', gallery: 'Gallery — Our Works', globals: 'Header, footer & widgets', pages: 'Custom pages', blog: 'Blog articles', media: 'Media library', nav: 'Navigation menu', theme: 'Theme & colours', site: 'Site settings', email: 'Email notifications', ai: 'AI & chatbot', leads: 'Enquiries', users: 'Users', backup: 'Backup', account: 'My account' }[key] || 'Dashboard';
 }
 async function doLogout() {
   try {
@@ -481,6 +485,7 @@ async function viewContent(page) {
     const dirty = Object.keys(pending).length || Object.keys(pendingSections).length || orderChanged() || seoTouched;
     c.innerHTML = `
       ${page === 'globals' ? `<div class="banner ok" style="background:var(--panel-2);color:var(--text-dim);">These items appear on every page (header, footer, quick-contact button, chat widget) — edit once here.</div>` : `<div class="toolbar"><div class="spacer"></div><a class="btn small" href="/${attr(page)}.html" target="_blank" rel="noopener">View live &#8599;</a></div>`}
+      ${page === 'index' || page === 'products' ? `<div class="banner ok" style="background:var(--panel-2);color:var(--text-dim);">The <strong>product cards</strong>${page === 'index' ? ' and the <strong>“Our Works” photo collage</strong>' : ''} are managed in ${page === 'index' ? '<a href="#catalog">Products manager</a> and <a href="#gallery">Gallery</a>' : '<a href="#catalog">Products manager</a>'} — add, edit, reorder or hide them there.</div>` : ''}
       ${sectionsHtml()}
       ${seoHtml()}
       <div class="save-bar">
@@ -609,13 +614,13 @@ function mediaTile(m, onClick) {
   tile.addEventListener('click', () => onClick(m, tile));
   return tile;
 }
-function openMediaPicker(kind, onPick) {
+function openMediaPicker(kind, onPick, onCancel) {
   const modal = openModal(`
     <div class="mhead"><h2>${kind === 'pdf' ? 'Choose a document' : 'Choose an image'}</h2><button class="icon-btn" id="m-close">&#10005;</button></div>
     <div class="dropzone" id="m-drop">Drag a file here, or <label style="color:var(--accent);cursor:pointer;text-decoration:underline;">browse<input type="file" id="m-file" accept="${kind === 'pdf' ? 'application/pdf' : 'image/*'}" style="display:none;"></label><div id="m-progress" class="muted" style="margin-top:6px;"></div></div>
     <div class="media-grid" id="m-grid"><div class="empty">Loading…</div></div>
   `, true);
-  document.getElementById('m-close').addEventListener('click', closeModal);
+  document.getElementById('m-close').addEventListener('click', () => { closeModal(); if (onCancel) onCancel(); });
   async function refresh() {
     const grid = document.getElementById('m-grid');
     try {
@@ -1193,6 +1198,350 @@ async function viewNav() {
       }
     });
   }
+  render();
+}
+
+// ================================================================
+//  PRODUCTS MANAGER + GALLERY MANAGER
+// ================================================================
+const imgSrc = (u) => (/^https?:/i.test(String(u || '')) ? u : '/' + String(u || '').replace(/^\//, ''));
+const guessShape = (w, hgt, i) => {
+  if (w && hgt) {
+    if (hgt / w > 1.35) return 'arch';
+    if (w / hgt > 1.9) return 'pill';
+  }
+  return i % 2 ? 'round' : 'leaf';
+};
+
+async function viewCatalog() {
+  const c = shell('catalog', `<div class="muted">Loading…</div>`);
+  let list;
+  try {
+    list = await api('GET', '/products');
+  } catch (e) {
+    c.innerHTML = `<div class="banner err">${esc(errText(e))}</div>`;
+    return;
+  }
+  let q = '';
+
+  async function saveOrder() {
+    try {
+      await api('POST', '/products/reorder', { ids: list.map((p) => p.id) });
+    } catch (e) {
+      toast(errText(e), 'err');
+    }
+  }
+
+  function render() {
+    const shown = list.filter((p) => !q || (p.name + ' ' + p.summary + ' ' + p.spec).toLowerCase().includes(q));
+    c.innerHTML = `
+      <div class="toolbar">
+        <button class="btn primary" id="p-add" type="button">+ Add product</button>
+        <input class="input" id="p-q" placeholder="Search products…" style="max-width:260px;" value="${attr(q)}">
+        <div class="spacer"></div>
+        <span class="muted">${list.length} product${list.length === 1 ? '' : 's'} &middot; ${list.filter((p) => p.home && p.visible !== false).length} on the home page</span>
+      </div>
+      <div class="muted" style="margin-bottom:14px;">These are the product cards on your <strong>Products</strong> page and (when ticked) the <strong>home page</strong>. Use the arrows to change the order. Customers can click a product to see its photos in full.</div>
+      ${shown.length ? `<div class="prod-list">${shown.map((p) => `
+        <div class="prod-row" data-id="${attr(p.id)}">
+          <div class="prod-thumb"><img src="${attr(imgSrc(p.image))}" alt="" loading="lazy"></div>
+          <div class="prod-main">
+            <div class="prod-name">${esc(p.name)} ${p.home ? '<span class="pill published">Home page</span>' : ''} ${p.visible === false ? '<span class="pill hidden">Hidden</span>' : ''}</div>
+            <div class="muted prod-sum">${esc(p.summary || '')}</div>
+            <div class="muted" style="font-size:12px;">${esc(p.spec || '')}${p.photos && p.photos.length ? (p.spec ? ' &middot; ' : '') + (p.photos.length + 1) + ' photos' : ''}</div>
+          </div>
+          <div class="prod-actions">
+            <button class="icon-btn" data-up type="button" title="Move up" ${q ? 'disabled' : ''}>&#8593;</button>
+            <button class="icon-btn" data-down type="button" title="Move down" ${q ? 'disabled' : ''}>&#8595;</button>
+            <button class="btn small" data-edit type="button">Edit</button>
+            <button class="icon-btn" data-del type="button" title="Delete">&#128465;</button>
+          </div>
+        </div>`).join('')}</div>` : `<div class="empty">${q ? 'No products match your search.' : 'No products yet — click “Add product”.'}</div>`}`;
+    document.getElementById('p-add').addEventListener('click', () => openEditor(null));
+    document.getElementById('p-q').addEventListener('input', (e) => {
+      q = e.target.value.trim().toLowerCase();
+      render();
+      const el = document.getElementById('p-q');
+      el.focus();
+      el.setSelectionRange(el.value.length, el.value.length);
+    });
+    c.querySelectorAll('.prod-row').forEach((row) => {
+      const id = row.getAttribute('data-id');
+      const i = list.findIndex((p) => p.id === id);
+      const move = async (d) => {
+        const j = i + d;
+        if (j < 0 || j >= list.length) return;
+        [list[i], list[j]] = [list[j], list[i]];
+        render();
+        await saveOrder();
+      };
+      row.querySelector('[data-up]').addEventListener('click', () => move(-1));
+      row.querySelector('[data-down]').addEventListener('click', () => move(1));
+      row.querySelector('[data-edit]').addEventListener('click', () => openEditor(list[i]));
+      row.querySelector('.prod-thumb').addEventListener('click', () => openEditor(list[i]));
+      row.querySelector('.prod-main').addEventListener('click', () => openEditor(list[i]));
+      row.querySelector('[data-del]').addEventListener('click', async () => {
+        if (!confirm('Delete "' + list[i].name + '"? It will disappear from the website.')) return;
+        try {
+          await api('DELETE', '/products/' + id);
+          list.splice(i, 1);
+          toast('Deleted.', 'ok');
+          render();
+        } catch (e) {
+          toast(errText(e), 'err');
+        }
+      });
+    });
+  }
+
+  function openEditor(existing, draftIn) {
+    const d = draftIn || {
+      name: existing ? existing.name : '',
+      summary: existing ? existing.summary : '',
+      spec: existing ? existing.spec : '',
+      image: existing ? existing.image : '',
+      imageCaption: existing ? existing.imageCaption || '' : '',
+      photos: existing ? (existing.photos || []).map((x) => ({ ...x })) : [],
+      home: existing ? !!existing.home : false,
+      visible: existing ? existing.visible !== false : true,
+    };
+    const modal = openModal(`
+      <div class="mhead"><h2>${existing ? 'Edit product' : 'Add product'}</h2><button class="icon-btn" id="pe-x" type="button">&#10005;</button></div>
+      <div class="field"><label>Product name</label><input class="input" id="pe-name" maxlength="120" value="${attr(d.name)}" placeholder="e.g. Paddy Dryers"></div>
+      <div class="field"><label>Short description</label><textarea class="input" id="pe-sum" maxlength="600" rows="3" placeholder="One or two sentences shown on the product card.">${esc(d.summary)}</textarea></div>
+      <div class="field"><label>Highlight line</label><input class="input" id="pe-spec" maxlength="160" value="${attr(d.spec)}" placeholder="e.g. 304 SS · custom capacity"><div class="hint">A short line shown at the bottom of the card (size, material, capacity…).</div></div>
+      <div class="field"><label>Main photo</label>
+        <div class="pe-main">
+          <div class="pe-thumb">${d.image ? `<img src="${attr(imgSrc(d.image))}" alt="">` : '<span class="muted">No photo</span>'}</div>
+          <div style="flex:1;"><button class="btn small" id="pe-pick" type="button">${d.image ? 'Change photo' : 'Choose or upload photo'}</button>
+          <input class="input" id="pe-cap" maxlength="140" style="margin-top:8px;" value="${attr(d.imageCaption)}" placeholder="Caption for this photo (optional)"></div>
+        </div>
+      </div>
+      <div class="field"><label>More photos &mdash; different sizes or views</label>
+        <div class="hint" style="margin:0 0 8px;">Shown as a photo strip when a visitor clicks the product. Add a caption such as "24 ton dryer" or "32 ton parboiling".</div>
+        <div id="pe-photos"></div>
+        <button class="btn small" id="pe-addphoto" type="button">+ Add photo</button>
+      </div>
+      <div class="row" style="margin:14px 0 4px;">
+        <label class="check"><input type="checkbox" id="pe-home" ${d.home ? 'checked' : ''}> Show on the home page</label>
+        <label class="check"><input type="checkbox" id="pe-vis" ${d.visible ? 'checked' : ''}> Visible on the website</label>
+      </div>
+      <div class="divider"></div>
+      <div class="row" style="justify-content:flex-end;"><button class="btn" id="pe-cancel" type="button">Cancel</button><button class="btn primary" id="pe-save" type="button">${existing ? 'Save changes' : 'Add product'}</button></div>
+    `, true);
+
+    const val = (id) => document.getElementById(id);
+    const capture = () => {
+      d.name = val('pe-name').value;
+      d.summary = val('pe-sum').value;
+      d.spec = val('pe-spec').value;
+      d.imageCaption = val('pe-cap').value;
+      d.home = val('pe-home').checked;
+      d.visible = val('pe-vis').checked;
+    };
+    const photosBox = val('pe-photos');
+    function drawPhotos() {
+      photosBox.innerHTML = d.photos.length ? '' : '<div class="muted" style="padding:4px 0 8px;">No extra photos yet.</div>';
+      d.photos.forEach((ph, i) => {
+        const row = h(`<div class="pe-photo">
+          <img src="${attr(imgSrc(ph.src))}" alt="">
+          <input class="input" maxlength="140" placeholder="Caption, e.g. 24 ton dryer" value="${attr(ph.caption || '')}">
+          <button class="icon-btn" data-l type="button" ${i === 0 ? 'disabled' : ''} title="Move earlier">&#8593;</button>
+          <button class="icon-btn" data-r type="button" ${i === d.photos.length - 1 ? 'disabled' : ''} title="Move later">&#8595;</button>
+          <button class="icon-btn" data-x type="button" title="Remove">&#10005;</button>
+        </div>`);
+        row.querySelector('input').addEventListener('input', (e) => (ph.caption = e.target.value));
+        row.querySelector('[data-l]').addEventListener('click', () => { [d.photos[i - 1], d.photos[i]] = [d.photos[i], d.photos[i - 1]]; drawPhotos(); });
+        row.querySelector('[data-r]').addEventListener('click', () => { [d.photos[i + 1], d.photos[i]] = [d.photos[i], d.photos[i + 1]]; drawPhotos(); });
+        row.querySelector('[data-x]').addEventListener('click', () => { d.photos.splice(i, 1); drawPhotos(); });
+        photosBox.appendChild(row);
+      });
+    }
+    drawPhotos();
+
+    // The media picker replaces the open dialog, so keep the draft and reopen the editor afterwards.
+    const choose = (apply) => {
+      capture();
+      closeModal();
+      openMediaPicker(
+        'image',
+        (m) => { apply(m); setTimeout(() => openEditor(existing, d), 0); },
+        () => setTimeout(() => openEditor(existing, d), 0)
+      );
+    };
+    val('pe-pick').addEventListener('click', () => choose((m) => (d.image = m.url)));
+    val('pe-addphoto').addEventListener('click', () => choose((m) => d.photos.push({ src: m.url, caption: '' })));
+    val('pe-x').addEventListener('click', closeModal);
+    val('pe-cancel').addEventListener('click', closeModal);
+    val('pe-save').addEventListener('click', async () => {
+      capture();
+      if (!d.name.trim()) return toast('Enter a product name.', 'err');
+      if (!d.image) return toast('Choose a main photo.', 'err');
+      const btn = val('pe-save');
+      btn.disabled = true;
+      try {
+        if (existing) {
+          const saved = await api('PUT', '/products/' + existing.id, d);
+          list[list.findIndex((p) => p.id === existing.id)] = saved;
+        } else {
+          list.push(await api('POST', '/products', d));
+        }
+        closeModal();
+        toast('Saved.', 'ok');
+        render();
+      } catch (e) {
+        toast(errText(e), 'err');
+        btn.disabled = false;
+      }
+    });
+    return modal;
+  }
+
+  render();
+}
+
+async function viewGallery() {
+  const c = shell('gallery', `<div class="muted">Loading…</div>`);
+  let list;
+  try {
+    list = await api('GET', '/gallery');
+  } catch (e) {
+    c.innerHTML = `<div class="banner err">${esc(errText(e))}</div>`;
+    return;
+  }
+  const SHAPES = [['leaf', 'Leaf'], ['round', 'Rounded'], ['arch', 'Arch'], ['pill', 'Pill']];
+
+  async function addItems(items) {
+    const added = await api('POST', '/gallery', { items });
+    list.push(...added);
+  }
+  async function saveOrder() {
+    try {
+      await api('POST', '/gallery/reorder', { ids: list.map((g) => g.id) });
+    } catch (e) {
+      toast(errText(e), 'err');
+    }
+  }
+
+  function render() {
+    c.innerHTML = `
+      <div class="toolbar">
+        <label class="btn primary">+ Upload photos<input type="file" id="g-up" multiple accept="image/*" style="display:none;"></label>
+        <button class="btn" id="g-lib" type="button">Choose from library</button>
+        <div class="spacer"></div>
+        <span class="muted">${list.length} photo${list.length === 1 ? '' : 's'}</span>
+      </div>
+      <div class="muted" style="margin-bottom:14px;">This is the <strong>“Our Works”</strong> collage on the home page. Drag photos to reorder them (or use the arrows). Each photo keeps its own shape, and you can pick the corner style of every tile.</div>
+      <div id="g-progress" class="muted" style="margin-bottom:10px;"></div>
+      ${list.length ? `<div class="gal-grid">${list.map((g, i) => `
+        <div class="gal-tile" draggable="true" data-id="${attr(g.id)}">
+          <div class="gal-img"><img src="${attr(imgSrc(g.src))}" alt="" loading="lazy" draggable="false"></div>
+          <div class="gal-foot">
+            <input class="input" data-cap maxlength="140" placeholder="Caption (optional)" value="${attr(g.caption || '')}">
+            <div class="gal-ctl">
+              <select class="input" data-shape>${SHAPES.map(([v, l]) => `<option value="${v}" ${g.shape === v ? 'selected' : ''}>${l}</option>`).join('')}</select>
+              <button class="icon-btn" data-l type="button" ${i === 0 ? 'disabled' : ''} title="Move earlier">&#8592;</button>
+              <button class="icon-btn" data-r type="button" ${i === list.length - 1 ? 'disabled' : ''} title="Move later">&#8594;</button>
+              <button class="icon-btn" data-x type="button" title="Remove from gallery">&#128465;</button>
+            </div>
+          </div>
+        </div>`).join('')}</div>` : `<div class="empty">The gallery is empty — upload some photos.</div>`}`;
+
+    const prog = document.getElementById('g-progress');
+    document.getElementById('g-up').addEventListener('change', async (e) => {
+      const files = [...e.target.files];
+      if (!files.length) return;
+      const items = [];
+      try {
+        for (let k = 0; k < files.length; k++) {
+          prog.textContent = `Uploading ${k + 1} of ${files.length}…`;
+          const m = await apiUpload(files[k]);
+          items.push({ src: m.url, w: m.w, h: m.h, shape: guessShape(m.w, m.h, list.length + k) });
+        }
+        await addItems(items);
+        toast(items.length + ' photo' + (items.length === 1 ? '' : 's') + ' added.', 'ok');
+      } catch (err) {
+        toast(errText(err), 'err');
+        if (items.length) { try { await addItems(items); } catch (e2) {} }
+      }
+      render();
+    });
+    document.getElementById('g-lib').addEventListener('click', () => {
+      const again = () =>
+        openMediaPicker('image', async (m) => {
+          try {
+            await addItems([{ src: m.url, w: m.w, h: m.h, shape: guessShape(m.w, m.h, list.length) }]);
+            toast('Added. Pick another, or close the window.', 'ok');
+          } catch (err) {
+            toast(errText(err), 'err');
+          }
+          render();
+          setTimeout(again, 0);
+        });
+      again();
+    });
+
+    c.querySelectorAll('.gal-tile').forEach((tile) => {
+      const id = tile.getAttribute('data-id');
+      const i = list.findIndex((g) => g.id === id);
+      const item = list[i];
+      const move = async (d) => {
+        const j = i + d;
+        if (j < 0 || j >= list.length) return;
+        [list[i], list[j]] = [list[j], list[i]];
+        render();
+        await saveOrder();
+      };
+      tile.querySelector('[data-l]').addEventListener('click', () => move(-1));
+      tile.querySelector('[data-r]').addEventListener('click', () => move(1));
+      tile.querySelector('[data-x]').addEventListener('click', async () => {
+        if (!confirm('Remove this photo from the gallery? (The file stays in your media library.)')) return;
+        try {
+          await api('DELETE', '/gallery/' + id);
+          list.splice(i, 1);
+          render();
+        } catch (err) {
+          toast(errText(err), 'err');
+        }
+      });
+      tile.querySelector('[data-shape]').addEventListener('change', async (e) => {
+        try {
+          item.shape = e.target.value;
+          await api('PUT', '/gallery/' + id, { shape: item.shape });
+          toast('Saved.', 'ok');
+        } catch (err) {
+          toast(errText(err), 'err');
+        }
+      });
+      tile.querySelector('[data-cap]').addEventListener('change', async (e) => {
+        try {
+          item.caption = e.target.value;
+          await api('PUT', '/gallery/' + id, { caption: item.caption });
+          toast('Saved.', 'ok');
+        } catch (err) {
+          toast(errText(err), 'err');
+        }
+      });
+      tile.addEventListener('dragstart', (e) => {
+        e.dataTransfer.setData('text/plain', id);
+        e.dataTransfer.effectAllowed = 'move';
+        tile.classList.add('dragging');
+      });
+      tile.addEventListener('dragend', () => tile.classList.remove('dragging'));
+      tile.addEventListener('dragover', (e) => { e.preventDefault(); tile.classList.add('over'); });
+      tile.addEventListener('dragleave', () => tile.classList.remove('over'));
+      tile.addEventListener('drop', async (e) => {
+        e.preventDefault();
+        const from = list.findIndex((g) => g.id === e.dataTransfer.getData('text/plain'));
+        if (from < 0 || from === i) return render();
+        const [moved] = list.splice(from, 1);
+        list.splice(i, 0, moved);
+        render();
+        await saveOrder();
+      });
+    });
+  }
+
   render();
 }
 
