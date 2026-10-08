@@ -153,6 +153,124 @@
     update();
   }
 
+  // Click-to-enlarge viewer for every product / step card that has a photo: full uncropped image, details, prev/next, quote buttons.
+  function initProductCards(){
+    var cards = [].slice.call(document.querySelectorAll(".card")).filter(function(c){
+      return c.tagName !== "A" && c.firstElementChild && c.firstElementChild.tagName === "IMG";
+    });
+    if (!cards.length) return;
+
+    var viewer = document.createElement("div");
+    viewer.className = "pm";
+    viewer.setAttribute("role", "dialog");
+    viewer.setAttribute("aria-modal", "true");
+    viewer.setAttribute("aria-label", "Product details");
+    viewer.innerHTML =
+      '<div class="pm-bg"></div>' +
+      '<div class="pm-card">' +
+        '<button type="button" class="pm-x" aria-label="Close">&times;</button>' +
+        '<div class="pm-img"><img alt=""></div>' +
+        '<div class="pm-body">' +
+          '<div class="eyebrow">Shakti Engineering Works</div>' +
+          '<h3 class="pm-title"></h3>' +
+          '<div class="pm-desc"></div>' +
+          '<div class="pm-spec"></div>' +
+          '<div class="pm-actions">' +
+            '<a class="btn-primary pm-wa" target="_blank" rel="noopener">WhatsApp for quote</a>' +
+            '<a class="btn-ghost pm-call">Call ' + CONTACT.phone + '</a>' +
+          '</div>' +
+          '<div class="pm-nav"><button type="button" class="pm-prev" aria-label="Previous">&larr;</button><span class="pm-count"></span><button type="button" class="pm-next" aria-label="Next">&rarr;</button></div>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(viewer);
+
+    var $ = function(s){ return viewer.querySelector(s); };
+    var imgEl = $(".pm-img img"), titleEl = $(".pm-title"), descEl = $(".pm-desc"), specEl = $(".pm-spec");
+    var group = [], idx = 0, lastFocus = null;
+
+    function info(card){
+      var leaves = [].slice.call(card.querySelectorAll("div")).filter(function(d){
+        return !d.children.length && d.textContent.trim() && !/^\d{1,2}$/.test(d.textContent.trim());
+      }).map(function(d){ return d.textContent.trim().replace(/\s+/g, " "); });
+      var img = card.firstElementChild;
+      return {
+        src: img.currentSrc || img.src,
+        title: leaves[0] || "Product",
+        desc: leaves.length > 2 ? leaves.slice(1, -1).join(" ") : (leaves[1] || ""),
+        spec: leaves.length > 2 ? leaves[leaves.length - 1] : ""
+      };
+    }
+
+    function show(i){
+      idx = (i + group.length) % group.length;
+      var d = info(group[idx]);
+      imgEl.src = d.src; imgEl.alt = d.title;
+      titleEl.textContent = d.title;
+      descEl.textContent = d.desc; descEl.style.display = d.desc ? "" : "none";
+      specEl.textContent = d.spec; specEl.style.display = d.spec ? "" : "none";
+      $(".pm-wa").href = "https://wa.me/" + CONTACT.phoneRaw + "?text=" + encodeURIComponent("Hello Shakti Engineering Works, I'd like a quote for: " + d.title);
+      $(".pm-call").href = "tel:+" + CONTACT.phoneRaw;
+      $(".pm-count").textContent = (idx + 1) + " / " + group.length;
+      var multi = group.length > 1;
+      $(".pm-prev").style.visibility = $(".pm-next").style.visibility = multi ? "visible" : "hidden";
+    }
+    function open(card){
+      group = [].slice.call(card.parentElement.children).filter(function(c){ return cards.indexOf(c) > -1; });
+      lastFocus = document.activeElement;
+      show(group.indexOf(card));
+      viewer.classList.add("open");
+      document.documentElement.classList.add("pm-lock");
+      setTimeout(function(){ $(".pm-x").focus(); }, 50);
+    }
+    function close(){
+      viewer.classList.remove("open");
+      document.documentElement.classList.remove("pm-lock");
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    }
+
+    cards.forEach(function(card){
+      var t = info(card).title;
+      card.classList.add("pc-open");
+      card.setAttribute("role", "button");
+      card.setAttribute("tabindex", "0");
+      card.setAttribute("aria-label", "View " + t);
+      var hint = document.createElement("span");
+      hint.className = "pc-hint";
+      hint.setAttribute("aria-hidden", "true");
+      hint.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>';
+      card.appendChild(hint);
+      card.addEventListener("click", function(){ open(card); });
+      card.addEventListener("keydown", function(e){
+        if (e.key === "Enter" || e.key === " "){ e.preventDefault(); open(card); }
+      });
+    });
+
+    $(".pm-bg").addEventListener("click", close);
+    $(".pm-x").addEventListener("click", close);
+    $(".pm-prev").addEventListener("click", function(){ show(idx - 1); });
+    $(".pm-next").addEventListener("click", function(){ show(idx + 1); });
+    document.addEventListener("keydown", function(e){
+      if (!viewer.classList.contains("open")) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") show(idx - 1);
+      else if (e.key === "ArrowRight") show(idx + 1);
+      else if (e.key === "Tab"){
+        var f = [].slice.call(viewer.querySelectorAll("button, a[href]")).filter(function(n){ return n.offsetParent !== null && n.style.visibility !== "hidden"; });
+        if (!f.length) return;
+        var first = f[0], last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
+      }
+    });
+    var sx = null, imgBox = $(".pm-img");
+    imgBox.addEventListener("pointerdown", function(e){ if (e.pointerType === "touch") sx = e.clientX; });
+    imgBox.addEventListener("pointerup", function(e){
+      if (sx === null) return;
+      var dx = e.clientX - sx; sx = null;
+      if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+    });
+  }
+
   function initMobileNav(){
     var btn = document.querySelector(".mobile-menu-btn");
     var panel = document.getElementById("mnav-panel");
@@ -286,6 +404,7 @@
     initPageTransition();
     initReveal();
     initContactForm();
+    initProductCards();
     setTimeout(function(){ bindTiltCards(); bindParallax(); }, 200);
   });
 })();

@@ -389,7 +389,7 @@
   var pimgs = [];
   function initImages() {
     $$('img').forEach(function (img) {
-      if (img.closest('.fx-scene,.site-nav-row,.credit-badge,#chat-widget,.logo-row')) return;
+      if (img.closest('.fx-scene,.site-nav-row,.credit-badge,#chat-widget,.logo-row,.card')) return; // card photos stay fully visible (no zoom-crop)
       var host = img.parentElement;
       if (!host) return;
       var cs = getComputedStyle(host);
