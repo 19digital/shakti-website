@@ -594,7 +594,7 @@
     {
      "k": "index.28",
      "t": "img",
-     "v": "images/machine-05.jpg",
+     "v": "images/paddy-precleaner.jpg",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
@@ -846,7 +846,7 @@
     {
      "k": "index.57",
      "t": "img",
-     "v": "images/machine-12.jpg",
+     "v": "images/dryer-24-ton.jpg",
      "sec": "index.s4",
      "secLabel": "Our Range"
     },
@@ -874,7 +874,7 @@
     {
      "k": "index.60",
      "t": "img",
-     "v": "images/machine-13.jpg",
+     "v": "images/parboiling-32-ton.jpg",
      "sec": "index.s4",
      "secLabel": "Our Range"
     },
@@ -902,7 +902,7 @@
     {
      "k": "index.63",
      "t": "img",
-     "v": "images/machine-14.jpg",
+     "v": "images/paddy-silo-wall.jpg",
      "sec": "index.s4",
      "secLabel": "Our Range"
     },
@@ -1896,7 +1896,7 @@
     {
      "k": "products.8",
      "t": "img",
-     "v": "images/machine-12.jpg",
+     "v": "images/dryer-24-ton.jpg",
      "sec": "products.s2",
      "secLabel": "Section 2"
     },
@@ -1931,7 +1931,7 @@
     {
      "k": "products.12",
      "t": "img",
-     "v": "images/machine-13.jpg",
+     "v": "images/parboiling-32-ton.jpg",
      "sec": "products.s2",
      "secLabel": "Section 2"
     },
@@ -1966,7 +1966,7 @@
     {
      "k": "products.16",
      "t": "img",
-     "v": "images/machine-14.jpg",
+     "v": "images/paddy-silo-wall.jpg",
      "sec": "products.s2",
      "secLabel": "Section 2"
     },
@@ -2001,7 +2001,7 @@
     {
      "k": "products.20",
      "t": "img",
-     "v": "images/machine-15.jpg",
+     "v": "images/dust-collector.jpg",
      "sec": "products.s2",
      "secLabel": "Section 2"
     },
@@ -2071,7 +2071,7 @@
     {
      "k": "products.28",
      "t": "img",
-     "v": "images/machine-17.jpg",
+     "v": "images/screw-tube-conveyor.jpg",
      "sec": "products.s2",
      "secLabel": "Section 2"
     },
@@ -2106,7 +2106,7 @@
     {
      "k": "products.32",
      "t": "img",
-     "v": "images/machine-18.jpg",
+     "v": "images/belt-conveyor.jpg",
      "sec": "products.s2",
      "secLabel": "Section 2"
     },
@@ -2141,7 +2141,7 @@
     {
      "k": "products.36",
      "t": "img",
-     "v": "images/machine-19.jpg",
+     "v": "images/water-tank.jpg",
      "sec": "products.s2",
      "secLabel": "Section 2"
     },
@@ -2176,7 +2176,7 @@
     {
      "k": "products.40",
      "t": "img",
-     "v": "images/machine-20.jpg",
+     "v": "images/stroke-chalna.jpg",
      "sec": "products.s2",
      "secLabel": "Section 2"
     },
@@ -2211,7 +2211,7 @@
     {
      "k": "products.44",
      "t": "img",
-     "v": "images/machine-21.jpg",
+     "v": "images/heat-exchanger.jpg",
      "sec": "products.s2",
      "secLabel": "Section 2"
     },
@@ -2246,7 +2246,7 @@
     {
      "k": "products.48",
      "t": "img",
-     "v": "images/machine-22.jpg",
+     "v": "images/pipeline-fittings.jpg",
      "sec": "products.s2",
      "secLabel": "Section 2"
     },

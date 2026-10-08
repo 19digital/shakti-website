@@ -25,13 +25,15 @@ const ctrl = (s) => String(s == null ? '' : s).replace(CTRL_RE, '');
 // ---------------- settings (admin) ----------------
 const publicAi = () => {
   const a = db.data.settings.ai;
-  return { hasKey: gemini.hasKey(), keyHint: a.keyHint, model: a.model, chatEnabled: a.chatEnabled, chatName: a.chatName, greeting: a.greeting, chatInstructions: a.chatInstructions, knowledge: a.knowledge, useSiteText: a.useSiteText, dailyLimit: a.dailyLimit, blogTone: a.blogTone, blogLanguage: a.blogLanguage };
+  const envKey = gemini.keySource() === 'env' ? gemini.getKey() : '';
+  const keyHint = a.keyHint || (envKey ? envKey.slice(0, 4) + '…' + envKey.slice(-4) : '');
+  return { hasKey: gemini.hasKey(), keySource: gemini.keySource(), keyHint, model: a.model, chatEnabled: a.chatEnabled, chatName: a.chatName, greeting: a.greeting, chatInstructions: a.chatInstructions, knowledge: a.knowledge, useSiteText: a.useSiteText, dailyLimit: a.dailyLimit, blogTone: a.blogTone, blogLanguage: a.blogLanguage };
 };
 
 r.get('/ai/settings', admin, (req, res) => res.json(publicAi()));
 r.get('/ai/status', editor, (req, res) => res.json({ hasKey: gemini.hasKey(), model: db.data.settings.ai.model, blogTone: db.data.settings.ai.blogTone, blogLanguage: db.data.settings.ai.blogLanguage }));
 
-const KEY_RE = /^[A-Za-z0-9_\-]{20,120}$/;
+const KEY_RE = /^[A-Za-z0-9_.\-]{20,120}$/;
 
 r.put(
   '/ai/settings',
@@ -45,7 +47,7 @@ r.put(
       db.log(req.user, 'Removed the Gemini API key');
     } else if (typeof b.apiKey === 'string' && b.apiKey.trim()) {
       const k = b.apiKey.trim();
-      if (!KEY_RE.test(k)) throw new HttpError(400, "That doesn't look like a Gemini API key (letters, numbers, - and _ only).");
+      if (!KEY_RE.test(k)) throw new HttpError(400, "That doesn't look like a Gemini API key (letters, numbers, . - and _ only).");
       a.keyEnc = encrypt(k);
       a.keyHint = k.slice(0, 4) + '…' + k.slice(-4);
       db.log(req.user, 'Saved a new Gemini API key');

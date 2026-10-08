@@ -169,7 +169,7 @@
       '<div class="pm-bg"></div>' +
       '<div class="pm-card">' +
         '<button type="button" class="pm-x" aria-label="Close">&times;</button>' +
-        '<div class="pm-img"><img alt=""></div>' +
+        '<div class="pm-img"><img alt=""><div class="pm-cap"></div><div class="pm-thumbs"></div></div>' +
         '<div class="pm-body">' +
           '<div class="eyebrow">Shakti Engineering Works</div>' +
           '<h3 class="pm-title"></h3>' +
@@ -186,7 +186,38 @@
 
     var $ = function(s){ return viewer.querySelector(s); };
     var imgEl = $(".pm-img img"), titleEl = $(".pm-title"), descEl = $(".pm-desc"), specEl = $(".pm-spec");
-    var group = [], idx = 0, lastFocus = null;
+    var capEl = $(".pm-cap"), thumbsEl = $(".pm-thumbs");
+    var group = [], idx = 0, lastFocus = null, photos = [];
+
+    // Extra photos per product (keyed by the card's main image file): shown as a strip under the large photo.
+    var GALLERY = {
+      "dryer-24-ton.jpg": [["dryer-24-ton.jpg", "24 ton double dryer"], ["paddy-dryer-56-ton.jpg", "56 ton paddy dryer"], ["complete-dryer-parboiling-silo-set-1.jpg", "Complete dryer, parboiling and silo set"], ["complete-dryer-parboiling-silo-set-2.jpg", "Complete dryer, parboiling and silo set (another view)"]],
+      "parboiling-32-ton.jpg": [["parboiling-32-ton.jpg", "32 ton parboiling plant"], ["parboiling-18-ton.jpg", "18 ton parboiling plant"], ["parboiling-dual-type.jpg", "Dual type pressure cum parboiling plant"], ["parboiling-32-ton-water-tank.jpg", "32 ton parboiling with 50 KL water tank"], ["dryer-parboiling-full-plant.jpg", "Dryer and parboiling full plant"]],
+      "screw-tube-conveyor.jpg": [["screw-tube-conveyor.jpg", "Screw conveyor and tube conveyor in flour mill"], ["tube-conveyor.jpg", "Tube conveyor"], ["screw-conveyor-flour-mill.jpg", "Screw conveyor for flour mill"]],
+      "paddy-silo-wall.jpg": [["paddy-silo-wall.jpg", "Paddy storage silo"], ["paddy-silo-tall.jpg", "Paddy storage silo (full height)"], ["rice-silo.jpg", "Rice storage silo"]]
+    };
+    function setPhoto(k){
+      var p = photos[k];
+      imgEl.src = p.src; imgEl.alt = p.label;
+      capEl.textContent = photos.length > 1 ? p.label : "";
+      [].forEach.call(thumbsEl.children, function(btn, n){ btn.classList.toggle("on", n === k); });
+    }
+    function setPhotos(d){
+      var file = d.src.split("/").pop().split("?")[0];
+      var set = GALLERY[file];
+      photos = set ? set.map(function(x){ return { src: "images/" + x[0], label: x[1] }; }) : [{ src: d.src, label: d.title }];
+      thumbsEl.innerHTML = "";
+      if (photos.length > 1) photos.forEach(function(p, n){
+        var btn = document.createElement("button");
+        btn.type = "button"; btn.setAttribute("aria-label", p.label);
+        var im = document.createElement("img");
+        im.src = p.src; im.alt = ""; im.loading = "lazy";
+        btn.appendChild(im);
+        btn.addEventListener("click", function(){ setPhoto(n); });
+        thumbsEl.appendChild(btn);
+      });
+      setPhoto(0);
+    }
 
     function info(card){
       var leaves = [].slice.call(card.querySelectorAll("div")).filter(function(d){
@@ -204,7 +235,7 @@
     function show(i){
       idx = (i + group.length) % group.length;
       var d = info(group[idx]);
-      imgEl.src = d.src; imgEl.alt = d.title;
+      setPhotos(d);
       titleEl.textContent = d.title;
       descEl.textContent = d.desc; descEl.style.display = d.desc ? "" : "none";
       specEl.textContent = d.spec; specEl.style.display = d.spec ? "" : "none";

@@ -49,6 +49,7 @@ Environment variables (all optional):
 | `MONGODB_URI` | unset (file mode) | An Atlas (or any MongoDB) connection string. Setting this switches the database to MongoDB — see [Deploying for free](#deploying-for-free-no-card-needed). |
 | `MONGODB_DB` | `shakti_cms` | Database name to use inside the Mongo cluster. Only relevant when `MONGODB_URI` is set. |
 | `CLOUDINARY_URL` | unset (local disk) | A Cloudinary account's API connection string (`cloudinary://key:secret@cloud_name`, from their dashboard). Setting this switches image/PDF uploads to Cloudinary instead of local disk. |
+| `GEMINI_API_KEY` | unset | Gemini API key used for the chatbot and AI blog writer when no key has been saved in the dashboard. Keeps the secret in the host's environment settings instead of the database or code. A key saved in the dashboard (encrypted) takes priority. |
 
 ## What the dashboard can do
 
