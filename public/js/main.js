@@ -15,7 +15,7 @@
     { keywords:["material","steel","grade","quality","304"], a:"Every machine is built in 304-grade stainless steel with in-house fabrication and ISO 9001:2015 quality systems." },
     { keywords:["experience","year","old","since","history"], a:"Shakti Engineering Works has over 20 years of experience designing and building rice mill pre-milling machinery." },
     { keywords:["price","cost","quote","quotation"], a:"Pricing depends on capacity and specification — the fastest way to get an accurate quote is to WhatsApp or call us with your requirement." },
-    { keywords:["contact","call","phone","whatsapp","email","reach"], a:"You can call or WhatsApp us at " + CONTACT.phone + ", or email " + CONTACT.email + "." },
+    { keywords:["contact","call","phone","whatsapp","email","reach","number"], a:"You can call or WhatsApp us at " + CONTACT.phone + ", or email " + CONTACT.email + "." },
     { keywords:["process","how","work","install","time","deliver"], a:"We design, fabricate and quality-check every machine in-house, then handle installation and commissioning at your mill site." }
   ];
 
@@ -390,9 +390,35 @@
       return d;
     }
 
+    var head = panel.querySelector(".cw-head");
+    if (head && !head.__built){
+      head.__built = true;
+      var full = head.textContent.trim();
+      var title = full.split(/\s*[—–-]\s*/)[0] || full;
+      head.innerHTML = '<span class="cw-avatar"></span><div class="cw-who"><div class="cw-title"></div><div class="cw-sub"><i></i>Online &middot; replies instantly</div></div><button type="button" class="cw-close" aria-label="Close chat">&times;</button>';
+      head.querySelector(".cw-avatar").textContent = (title.split(" ").pop().charAt(0) || "S").toUpperCase();
+      head.querySelector(".cw-title").textContent = title;
+      head.querySelector(".cw-close").addEventListener("click", function(){ panel.classList.remove("open"); });
+    }
+    sendBtn.setAttribute("aria-label", "Send message");
+    sendBtn.innerHTML = '<svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4z"/></svg>';
+    var chipsEl = null;
+
     if (!scroll.__seeded){
       scroll.__seeded = true;
       addMsg(AI.greeting || "Hi! Ask me anything about our rice mill machinery — products, capacity, location or pricing.", "bot");
+    }
+    if (!chipsEl && !scroll.__chips){
+      scroll.__chips = true;
+      chipsEl = document.createElement("div");
+      chipsEl.className = "cw-chips";
+      ["What products do you make?", "Get a quote", "Where are you located?"].forEach(function(label){
+        var c = document.createElement("button");
+        c.type = "button"; c.className = "cw-chip"; c.textContent = label;
+        c.addEventListener("click", function(){ input.value = label; send(); });
+        chipsEl.appendChild(c);
+      });
+      scroll.appendChild(chipsEl);
     }
 
     toggleBtn.addEventListener("click", function(){
@@ -414,6 +440,7 @@
       if (!text || busy || (ended && !useAi)) return;
       addMsg(text, "user");
       input.value = "";
+      if (chipsEl && chipsEl.parentNode) chipsEl.parentNode.removeChild(chipsEl);
 
       if (!useAi){
         setTimeout(function(){ addMsg(localReply(text), "bot"); }, 400);
