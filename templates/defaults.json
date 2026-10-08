@@ -241,7 +241,7 @@
   {
    "k": "g.f.27",
    "t": "text",
-   "v": "+91 90999 11179",
+   "v": "+91 94750 86888",
    "secLabel": "Footer",
    "sec": "g.f"
   },
@@ -304,7 +304,7 @@
   {
    "k": "g.q.1",
    "t": "link",
-   "v": "https://wa.me/919099911179",
+   "v": "https://wa.me/919475086888",
    "secLabel": "Quick-contact button",
    "sec": "g.q"
   },
@@ -318,7 +318,7 @@
   {
    "k": "g.q.3",
    "t": "link",
-   "v": "tel:+919099911179",
+   "v": "tel:+919475086888",
    "secLabel": "Quick-contact button",
    "sec": "g.q"
   },
@@ -433,7 +433,7 @@
     {
      "k": "index.6",
      "t": "link",
-     "v": "https://wa.me/919099911179",
+     "v": "https://wa.me/919475086888",
      "sec": "index.s1",
      "secLabel": "Hero: Engineering the Next Generation of Rice Mills"
     },
@@ -447,14 +447,14 @@
     {
      "k": "index.8",
      "t": "link",
-     "v": "tel:+919099911179",
+     "v": "tel:+919475086888",
      "sec": "index.s1",
      "secLabel": "Hero: Engineering the Next Generation of Rice Mills"
     },
     {
      "k": "index.9",
      "t": "text",
-     "v": "Call +91 90999 11179",
+     "v": "Call +91 94750 86888",
      "sec": "index.top",
      "secLabel": "Page"
     },
@@ -1042,7 +1042,7 @@
     {
      "k": "index.76",
      "t": "link",
-     "v": "https://wa.me/919099911179",
+     "v": "https://wa.me/919475086888",
      "sec": "index.s6",
      "secLabel": "Ready to Upgrade Your Mill?"
     },
@@ -1789,7 +1789,7 @@
     {
      "k": "process.30",
      "t": "link",
-     "v": "https://wa.me/919099911179",
+     "v": "https://wa.me/919475086888",
      "sec": "process.s3",
      "secLabel": "Want This Line at Your Mill?"
     },
@@ -2330,7 +2330,7 @@
     {
      "k": "products.58",
      "t": "link",
-     "v": "https://wa.me/919099911179",
+     "v": "https://wa.me/919475086888",
      "sec": "products.s3",
      "secLabel": "Need a Custom Specification?"
     },
@@ -2485,14 +2485,14 @@
     {
      "k": "contact.11",
      "t": "link",
-     "v": "tel:+919099911179",
+     "v": "tel:+919475086888",
      "sec": "contact.s2",
      "secLabel": "Section 2"
     },
     {
      "k": "contact.12",
      "t": "text",
-     "v": "+91 90999 11179",
+     "v": "+91 94750 86888",
      "sec": "contact.top",
      "secLabel": "Page"
     },

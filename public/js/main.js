@@ -5,7 +5,7 @@
   // SITE_CONFIG is injected server-side (site-config.js) from whatever the admin set in the dashboard.
   // The literals below are only a fallback for opening main.js outside the CMS server (e.g. a raw static copy).
   var SC = window.SITE_CONFIG || {};
-  var CONTACT = { phone: SC.phone || "+91 90999 11179", phoneRaw: SC.phoneRaw || "919099911179", email: SC.email || "info@shaktiew.in", address: SC.address || "Bardhaman, West Bengal, India" };
+  var CONTACT = { phone: SC.phone || "+91 94750 86888", phoneRaw: SC.phoneRaw || "919475086888", email: SC.email || "info@shaktiew.in", address: SC.address || "Bardhaman, West Bengal, India" };
   var AI = SC.ai || { chat: false };
 
   var FAQS = [
