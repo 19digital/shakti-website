@@ -10,7 +10,7 @@
 
   var FAQS = [
     { keywords:["product","machine","elevator","dryer","silo","offer","make"], a:"We manufacture bucket elevators, paddy dryers, parboiling plants, storage silos, dust collectors, conveyors, blowers and more — the full pre-milling section of a rice mill. See the Products page for the full range." },
-    { keywords:["capacity","ton","size","how much"], a:"Our machines are sized from small standalone units up to 56-ton dryers and 32-ton parboiling plants, with fully custom capacities on request." },
+    { keywords:["capacity","ton","size","how much"], a:"Dryers and parboiling plants are built to any capacity you need, from small standalone units to large plants, with fully custom sizes on request." },
     { keywords:["where","location","export","country","bardhaman","bengal","address","based"], a:"We're based in Bardhaman, West Bengal, India, with installations pan-India and exports to Bangladesh, Myanmar and Sri Lanka." },
     { keywords:["material","steel","grade","quality","304"], a:"Every machine is built in 304-grade stainless steel with in-house fabrication and ISO 9001:2015 quality systems." },
     { keywords:["experience","year","old","since","history"], a:"Shakti Engineering Works has over 20 years of experience designing and building rice mill pre-milling machinery." },
@@ -302,6 +302,64 @@
     });
   }
 
+  // "Our Works" collage: click any photo to see it full size, with prev/next, keyboard and swipe.
+  function initCollage(){
+    var tiles = [].slice.call(document.querySelectorAll(".collage .c-tile"));
+    if (!tiles.length) return;
+    var v = document.createElement("div");
+    v.className = "pm pl";
+    v.setAttribute("role", "dialog");
+    v.setAttribute("aria-modal", "true");
+    v.setAttribute("aria-label", "Photo viewer");
+    v.innerHTML = '<div class="pm-bg"></div><button type="button" class="pm-x" aria-label="Close">&times;</button><button type="button" class="pl-nav pl-prev" aria-label="Previous photo">&larr;</button><img class="pl-img" alt=""><button type="button" class="pl-nav pl-next" aria-label="Next photo">&rarr;</button><div class="pl-count"></div>';
+    document.body.appendChild(v);
+    var img = v.querySelector(".pl-img"), count = v.querySelector(".pl-count"), idx = 0, last = null, sx = null;
+    function show(i){
+      idx = (i + tiles.length) % tiles.length;
+      var im = tiles[idx].querySelector("img");
+      img.src = im.currentSrc || im.src;
+      img.alt = im.alt;
+      count.textContent = (idx + 1) + " / " + tiles.length;
+    }
+    function open(i){
+      last = document.activeElement;
+      show(i);
+      v.classList.add("open");
+      document.documentElement.classList.add("pm-lock");
+      v.querySelector(".pm-x").focus();
+    }
+    function close(){
+      v.classList.remove("open");
+      document.documentElement.classList.remove("pm-lock");
+      if (last && last.focus) last.focus();
+    }
+    tiles.forEach(function(t, i){
+      var im = t.querySelector("img");
+      if (im && !im.getAttribute("alt")) im.setAttribute("alt", "Shakti Engineering Works rice mill installation");
+      t.setAttribute("role", "button");
+      t.setAttribute("tabindex", "0");
+      t.setAttribute("aria-label", "Open photo " + (i + 1) + " of " + tiles.length);
+      t.addEventListener("click", function(){ open(i); });
+      t.addEventListener("keydown", function(e){ if (e.key === "Enter" || e.key === " "){ e.preventDefault(); open(i); } });
+    });
+    v.querySelector(".pm-bg").addEventListener("click", close);
+    v.querySelector(".pm-x").addEventListener("click", close);
+    v.querySelector(".pl-prev").addEventListener("click", function(){ show(idx - 1); });
+    v.querySelector(".pl-next").addEventListener("click", function(){ show(idx + 1); });
+    document.addEventListener("keydown", function(e){
+      if (!v.classList.contains("open")) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") show(idx - 1);
+      else if (e.key === "ArrowRight") show(idx + 1);
+    });
+    img.addEventListener("pointerdown", function(e){ if (e.pointerType === "touch") sx = e.clientX; });
+    img.addEventListener("pointerup", function(e){
+      if (sx === null) return;
+      var dx = e.clientX - sx; sx = null;
+      if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+    });
+  }
+
   function initMobileNav(){
     var btn = document.querySelector(".mobile-menu-btn");
     var panel = document.getElementById("mnav-panel");
@@ -436,6 +494,7 @@
     initReveal();
     initContactForm();
     initProductCards();
+    initCollage();
     setTimeout(function(){ bindTiltCards(); bindParallax(); }, 200);
   });
 })();

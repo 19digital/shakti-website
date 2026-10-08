@@ -629,14 +629,14 @@
     {
      "k": "index.32",
      "t": "img",
-     "v": "images/machine-06.jpg",
+     "v": "images/machine-07.jpg",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
      "k": "index.32a",
      "t": "alt",
-     "v": "Vertical Drying",
+     "v": "Parboiling",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
@@ -650,28 +650,28 @@
     {
      "k": "index.34",
      "t": "text",
-     "v": "Vertical Drying",
+     "v": "Parboiling",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
      "k": "index.35",
      "t": "text",
-     "v": "Reduces moisture evenly for consistent milling quality.",
+     "v": "Steam-pressure plants that lock in nutrition and grain strength.",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
      "k": "index.36",
      "t": "img",
-     "v": "images/machine-07.jpg",
+     "v": "images/machine-06.jpg",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
      "k": "index.36a",
      "t": "alt",
-     "v": "Parboiling",
+     "v": "Vertical Drying",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
@@ -685,14 +685,14 @@
     {
      "k": "index.38",
      "t": "text",
-     "v": "Parboiling",
+     "v": "Vertical Drying",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
      "k": "index.39",
      "t": "text",
-     "v": "Steam-pressure plants that lock in nutrition and grain strength.",
+     "v": "Reduces moisture evenly for consistent milling quality.",
      "sec": "index.top",
      "secLabel": "Page"
     },
@@ -853,21 +853,21 @@
     {
      "k": "index.57a",
      "t": "alt",
-     "v": "Paddy Dryers (24–56 Ton)",
+     "v": "Paddy Dryers",
      "sec": "index.s4",
      "secLabel": "Our Range"
     },
     {
      "k": "index.58",
      "t": "text",
-     "v": "Paddy Dryers (24–56 Ton)",
+     "v": "Paddy Dryers",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
      "k": "index.59",
      "t": "text",
-     "v": "24 / 32 / 56 ton capacity",
+     "v": "Made to any capacity",
      "sec": "index.top",
      "secLabel": "Page"
     },
@@ -881,21 +881,21 @@
     {
      "k": "index.60a",
      "t": "alt",
-     "v": "Parboiling Plants (18–32 Ton)",
+     "v": "Parboiling Plants",
      "sec": "index.s4",
      "secLabel": "Our Range"
     },
     {
      "k": "index.61",
      "t": "text",
-     "v": "Parboiling Plants (18–32 Ton)",
+     "v": "Parboiling Plants",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
      "k": "index.62",
      "t": "text",
-     "v": "18 / 32 ton capacity",
+     "v": "Made to any capacity",
      "sec": "index.top",
      "secLabel": "Page"
     },
@@ -944,7 +944,7 @@
     {
      "k": "index.68",
      "t": "img",
-     "v": "images/machine-02.jpg",
+     "v": "images/hero-plant.jpg",
      "sec": "index.s5",
      "secLabel": "Our Works"
     },
@@ -958,7 +958,7 @@
     {
      "k": "index.69",
      "t": "img",
-     "v": "images/machine-03.jpg",
+     "v": "images/works-14.jpg",
      "sec": "index.s5",
      "secLabel": "Our Works"
     },
@@ -972,7 +972,7 @@
     {
      "k": "index.70",
      "t": "img",
-     "v": "images/machine-04.jpg",
+     "v": "images/factory-01.jpg",
      "sec": "index.s5",
      "secLabel": "Our Works"
     },
@@ -986,7 +986,7 @@
     {
      "k": "index.71",
      "t": "img",
-     "v": "images/factory-01.jpg",
+     "v": "images/works-10.jpg",
      "sec": "index.s5",
      "secLabel": "Our Works"
     },
@@ -1000,7 +1000,7 @@
     {
      "k": "index.72",
      "t": "img",
-     "v": "images/factory-02.jpg",
+     "v": "images/works-15.jpg",
      "sec": "index.s5",
      "secLabel": "Our Works"
     },
@@ -1014,7 +1014,7 @@
     {
      "k": "index.73",
      "t": "img",
-     "v": "images/machine-24.jpg",
+     "v": "images/machine-03.jpg",
      "sec": "index.s5",
      "secLabel": "Our Works"
     },
@@ -1027,41 +1027,209 @@
     },
     {
      "k": "index.74",
+     "t": "img",
+     "v": "images/works-07.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.74a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.75",
+     "t": "img",
+     "v": "images/works-12.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.75a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.76",
+     "t": "img",
+     "v": "images/parboiling-dual-type.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.76a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.77",
+     "t": "img",
+     "v": "images/works-13.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.77a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.78",
+     "t": "img",
+     "v": "images/machine-04.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.78a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.79",
+     "t": "img",
+     "v": "images/paddy-dryer-56-ton.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.79a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.80",
+     "t": "img",
+     "v": "images/factory-02.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.80a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.81",
+     "t": "img",
+     "v": "images/works-16.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.81a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.82",
+     "t": "img",
+     "v": "images/works-08.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.82a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.83",
+     "t": "img",
+     "v": "images/parboiling-32-ton.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.83a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.84",
+     "t": "img",
+     "v": "images/machine-02.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.84a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.85",
+     "t": "img",
+     "v": "images/machine-24.jpg",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.85a",
+     "t": "alt",
+     "v": "Installations Across Rice Mills",
+     "sec": "index.s5",
+     "secLabel": "Our Works"
+    },
+    {
+     "k": "index.86",
      "t": "text",
      "v": "Ready to Upgrade Your Mill?",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.75",
+     "k": "index.87",
      "t": "text",
      "v": "Tell us your capacity and site details — our engineers will size the right machine for you.",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.76",
+     "k": "index.88",
      "t": "link",
      "v": "https://wa.me/919475086888",
      "sec": "index.s6",
      "secLabel": "Ready to Upgrade Your Mill?"
     },
     {
-     "k": "index.77",
+     "k": "index.89",
      "t": "text",
      "v": "Chat on WhatsApp",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.78",
+     "k": "index.90",
      "t": "link",
      "v": "mailto:info@shaktiew.in",
      "sec": "index.s6",
      "secLabel": "Ready to Upgrade Your Mill?"
     },
     {
-     "k": "index.79",
+     "k": "index.91",
      "t": "text",
      "v": "Email Us",
      "sec": "index.top",
@@ -1522,7 +1690,7 @@
   },
   "process": {
    "title": "Our Process | Shakti Engineering Works — Rice Mill Pre-Milling Line",
-   "description": "See the complete pre-milling process: pre-cleaning, vertical drying, parboiling, elevator transfer, silo storage and milling output.",
+   "description": "See the complete pre-milling process: pre-cleaning, parboiling, vertical drying, elevator transfer, silo storage and milling output.",
    "sections": [
     {
      "id": "process.s1",
@@ -1607,21 +1775,21 @@
     {
      "k": "process.9",
      "t": "text",
-     "v": "Vertical Drying",
+     "v": "Parboiling",
      "sec": "process.top",
      "secLabel": "Page"
     },
     {
      "k": "process.10",
      "t": "text",
-     "v": "Multi-pass vertical dryers reduce moisture evenly across the grain, sized to your daily throughput from 18 to 56 tons, for consistent milling quality batch after batch.",
+     "v": "Steam-pressure parboiling plants lock in nutrition and grain strength, with integrated water tanks sized up to 50 KL for continuous operation.",
      "sec": "process.top",
      "secLabel": "Page"
     },
     {
      "k": "process.11",
      "t": "img",
-     "v": "images/machine-06.jpg",
+     "v": "images/machine-07.jpg",
      "sec": "process.s2",
      "secLabel": "Section 2"
     },
@@ -1635,7 +1803,7 @@
     {
      "k": "process.12",
      "t": "img",
-     "v": "images/machine-07.jpg",
+     "v": "images/machine-06.jpg",
      "sec": "process.s2",
      "secLabel": "Section 2"
     },
@@ -1656,14 +1824,14 @@
     {
      "k": "process.14",
      "t": "text",
-     "v": "Parboiling",
+     "v": "Vertical Drying",
      "sec": "process.top",
      "secLabel": "Page"
     },
     {
      "k": "process.15",
      "t": "text",
-     "v": "Steam-pressure parboiling plants lock in nutrition and grain strength, with integrated water tanks sized up to 50 KL for continuous operation.",
+     "v": "Multi-pass vertical dryers reduce moisture evenly across the grain, sized to your daily throughput in any capacity you need, for consistent milling quality batch after batch.",
      "sec": "process.top",
      "secLabel": "Page"
     },
@@ -1903,14 +2071,14 @@
     {
      "k": "products.8a",
      "t": "alt",
-     "v": "Paddy Dryers (24–56 Ton)",
+     "v": "Paddy Dryers",
      "sec": "products.s2",
      "secLabel": "Section 2"
     },
     {
      "k": "products.9",
      "t": "text",
-     "v": "Paddy Dryers (24–56 Ton)",
+     "v": "Paddy Dryers",
      "sec": "products.top",
      "secLabel": "Page"
     },
@@ -1924,7 +2092,7 @@
     {
      "k": "products.11",
      "t": "text",
-     "v": "24 / 32 / 56 ton capacity",
+     "v": "Made to any capacity",
      "sec": "products.top",
      "secLabel": "Page"
     },
@@ -1938,14 +2106,14 @@
     {
      "k": "products.12a",
      "t": "alt",
-     "v": "Parboiling Plants (18–32 Ton)",
+     "v": "Parboiling Plants",
      "sec": "products.s2",
      "secLabel": "Section 2"
     },
     {
      "k": "products.13",
      "t": "text",
-     "v": "Parboiling Plants (18–32 Ton)",
+     "v": "Parboiling Plants",
      "sec": "products.top",
      "secLabel": "Page"
     },
@@ -1959,7 +2127,7 @@
     {
      "k": "products.15",
      "t": "text",
-     "v": "18 / 32 ton capacity",
+     "v": "Made to any capacity",
      "sec": "products.top",
      "secLabel": "Page"
     },
