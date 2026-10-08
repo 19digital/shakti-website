@@ -811,7 +811,7 @@
     {
      "k": "index.53",
      "t": "text",
-     "v": "Everything Your Pre-Milling Line Needs",
+     "v": "Everything Your Milling Line Needs",
      "sec": "index.top",
      "secLabel": "Page"
     },
@@ -1822,7 +1822,7 @@
    "sections": [
     {
      "id": "products.s1",
-     "label": "Hero: Everything Your Pre-Milling Line Needs",
+     "label": "Hero: Everything Your Milling Line Needs",
      "ord": 1
     },
     {
@@ -1847,7 +1847,7 @@
     {
      "k": "products.2",
      "t": "text",
-     "v": "Everything Your Pre-Milling Line Needs",
+     "v": "Everything Your Milling Line Needs",
      "sec": "products.top",
      "secLabel": "Page"
     },
