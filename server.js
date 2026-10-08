@@ -31,6 +31,9 @@ app.use(express.json({ limit: '1mb' }));
 app.use(cookieParser());
 app.use(A.attachUser);
 
+// lightweight liveness check for uptime monitors (keeps a free Render instance awake)
+app.get('/healthz', (req, res) => res.set('Cache-Control', 'no-store').type('text/plain').send('ok'));
+
 // ---- static assets ----
 const PUB = path.join(__dirname, 'public');
 const staticOpts = (age) => ({ maxAge: age, setHeaders: (res) => res.set('X-Content-Type-Options', 'nosniff') });
