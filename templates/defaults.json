@@ -426,7 +426,7 @@
     {
      "k": "index.5",
      "t": "text",
-     "v": "For over two decades, Shakti Engineering Works designs and builds the elevators, dryers, parboiling plants and silos that power modern rice mills across India, Bangladesh, Myanmar and Sri Lanka.",
+     "v": "For over two decades, Shakti Engineering Works designs and builds the elevators, dryers, parboiling plants and silos that power modern rice mills across India, Bangladesh, Myanmar, Sri Lanka and South Africa.",
      "sec": "index.top",
      "secLabel": "Page"
     },
@@ -531,341 +531,327 @@
     {
      "k": "index.19",
      "t": "text",
-     "v": "304 Grade Stainless Steel",
+     "v": "ISO 9001:2015 Certified",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
      "k": "index.20",
      "t": "text",
-     "v": "ISO 9001:2015 Certified",
+     "v": "Pan-India Installation",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
      "k": "index.21",
      "t": "text",
-     "v": "304 Grade Stainless Steel",
+     "v": "Bangladesh · Myanmar · Sri Lanka · South Africa Export",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
      "k": "index.22",
      "t": "text",
-     "v": "Pan-India Installation",
+     "v": "In-House Design & Fabrication",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
      "k": "index.23",
      "t": "text",
-     "v": "Bangladesh · Myanmar · Sri Lanka Export",
+     "v": "The Shakti Process",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
      "k": "index.24",
      "t": "text",
-     "v": "In-House Design & Fabrication",
+     "v": "From Raw Paddy to Perfectly Milled Rice",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
      "k": "index.25",
      "t": "text",
-     "v": "The Shakti Process",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.26",
-     "t": "text",
-     "v": "From Raw Paddy to Perfectly Milled Rice",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.27",
-     "t": "text",
      "v": "One connected line, engineered end to end — every machine designed to hand off cleanly to the next.",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.28",
+     "k": "index.26",
      "t": "img",
      "v": "images/paddy-precleaner.jpg",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
-     "k": "index.28a",
+     "k": "index.26a",
      "t": "alt",
      "v": "Pre-Cleaning",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
-     "k": "index.29",
+     "k": "index.27",
      "t": "text",
      "v": "01",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.30",
+     "k": "index.28",
      "t": "text",
      "v": "Pre-Cleaning",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.31",
+     "k": "index.29",
      "t": "text",
      "v": "Removes stalks, dust and stones before paddy enters the mill.",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.32",
+     "k": "index.30",
      "t": "img",
-     "v": "images/machine-07.jpg",
+     "v": "images/parboiling-32-ton.jpg",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
-     "k": "index.32a",
+     "k": "index.30a",
      "t": "alt",
      "v": "Parboiling",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
-     "k": "index.33",
+     "k": "index.31",
      "t": "text",
      "v": "02",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.34",
+     "k": "index.32",
      "t": "text",
      "v": "Parboiling",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.35",
+     "k": "index.33",
      "t": "text",
      "v": "Steam-pressure plants that lock in nutrition and grain strength.",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.36",
+     "k": "index.34",
      "t": "img",
-     "v": "images/machine-06.jpg",
+     "v": "images/dryer-24-ton.jpg",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
-     "k": "index.36a",
+     "k": "index.34a",
      "t": "alt",
      "v": "Vertical Drying",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
-     "k": "index.37",
+     "k": "index.35",
      "t": "text",
      "v": "03",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.38",
+     "k": "index.36",
      "t": "text",
      "v": "Vertical Drying",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.39",
+     "k": "index.37",
      "t": "text",
      "v": "Reduces moisture evenly for consistent milling quality.",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.40",
+     "k": "index.38",
      "t": "img",
-     "v": "images/machine-08.jpg",
+     "v": "images/works-12.jpg",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
-     "k": "index.40a",
+     "k": "index.38a",
      "t": "alt",
      "v": "Elevator Transfer",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
-     "k": "index.41",
+     "k": "index.39",
      "t": "text",
      "v": "04",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.42",
+     "k": "index.40",
      "t": "text",
      "v": "Elevator Transfer",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.43",
+     "k": "index.41",
      "t": "text",
      "v": "Heavy-duty bucket elevators move grain between every stage.",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.44",
+     "k": "index.42",
      "t": "img",
-     "v": "images/machine-09.jpg",
+     "v": "images/paddy-silo-wall.jpg",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
-     "k": "index.44a",
+     "k": "index.42a",
      "t": "alt",
      "v": "Silo & Storage",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
-     "k": "index.45",
+     "k": "index.43",
      "t": "text",
      "v": "05",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.46",
+     "k": "index.44",
      "t": "text",
      "v": "Silo & Storage",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.47",
+     "k": "index.45",
      "t": "text",
      "v": "Custom-capacity paddy and rice silos with dust collection.",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.48",
+     "k": "index.46",
      "t": "img",
-     "v": "images/machine-10.jpg",
+     "v": "images/screw-tube-conveyor.jpg",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
-     "k": "index.48a",
+     "k": "index.46a",
      "t": "alt",
      "v": "Milling & Output",
      "sec": "index.s3",
      "secLabel": "The Shakti Process"
     },
     {
-     "k": "index.49",
+     "k": "index.47",
      "t": "text",
      "v": "06",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.50",
+     "k": "index.48",
      "t": "text",
      "v": "Milling & Output",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.51",
+     "k": "index.49",
      "t": "text",
      "v": "A complete, tension-free pre-milling section ready for your mill.",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.52",
+     "k": "index.50",
      "t": "text",
      "v": "Our Range",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.53",
+     "k": "index.51",
      "t": "text",
      "v": "Everything Your Milling Line Needs",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.54",
+     "k": "index.52",
      "t": "text",
      "v": "Our Works",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.55",
+     "k": "index.53",
      "t": "text",
      "v": "Installations Across Rice Mills",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.56",
+     "k": "index.54",
      "t": "text",
      "v": "Ready to Upgrade Your Mill?",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.57",
+     "k": "index.55",
      "t": "text",
      "v": "Tell us your capacity and site details — our engineers will size the right machine for you.",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.58",
+     "k": "index.56",
      "t": "link",
      "v": "https://wa.me/919475086888",
      "sec": "index.s6",
      "secLabel": "Ready to Upgrade Your Mill?"
     },
     {
-     "k": "index.59",
+     "k": "index.57",
      "t": "text",
      "v": "Chat on WhatsApp",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.60",
+     "k": "index.58",
      "t": "link",
      "v": "mailto:info@shaktiew.in",
      "sec": "index.s6",
      "secLabel": "Ready to Upgrade Your Mill?"
     },
     {
-     "k": "index.61",
+     "k": "index.59",
      "t": "text",
      "v": "Email Us",
      "sec": "index.top",
@@ -875,7 +861,7 @@
   },
   "about": {
    "title": "About Us | Shakti Engineering Works — Rice Mill Machinery Manufacturer",
-   "description": "20+ years designing and manufacturing rice mill pre-milling machinery in Bardhaman, West Bengal. ISO 9001:2015 certified, exporting across South Asia.",
+   "description": "20+ years designing and manufacturing rice mill pre-milling machinery in Bardhaman, West Bengal. ISO 9001:2015 certified, exporting across Asia and Africa.",
    "sections": [
     {
      "id": "about.s1",
@@ -926,7 +912,7 @@
     {
      "k": "about.3",
      "t": "text",
-     "v": "Founded in Bardhaman, West Bengal, Shakti Engineering Works has spent over 20 years designing and fabricating the pre-milling machinery that modern rice mills across India, Bangladesh, Myanmar and Sri Lanka run on every day.",
+     "v": "Founded in Bardhaman, West Bengal, Shakti Engineering Works has spent over 20 years designing and fabricating the pre-milling machinery that modern rice mills across India, Bangladesh, Myanmar, Sri Lanka and South Africa run on every day.",
      "sec": "about.top",
      "secLabel": "Page"
     },
@@ -954,7 +940,7 @@
     {
      "k": "about.7",
      "t": "text",
-     "v": "Today Shakti Engineering Works equips more than 500 mills, with installations pan-India and exports to Bangladesh, Myanmar and Sri Lanka, backed by ISO 9001:2015 certified quality systems.",
+     "v": "Today Shakti Engineering Works equips more than 500 mills, with installations pan-India and exports to Bangladesh, Myanmar, Sri Lanka and South Africa, backed by ISO 9001:2015 certified quality systems.",
      "sec": "about.top",
      "secLabel": "Page"
     },
@@ -1066,7 +1052,7 @@
     {
      "k": "about.22",
      "t": "text",
-     "v": "Exporting to Bangladesh, Myanmar and Sri Lanka alongside a pan-India footprint.",
+     "v": "Exporting to Bangladesh, Myanmar, Sri Lanka and South Africa alongside a pan-India footprint.",
      "sec": "about.top",
      "secLabel": "Page"
     },
@@ -1115,7 +1101,7 @@
     {
      "k": "about.29",
      "t": "text",
-     "v": "India, Bangladesh, Myanmar & Sri Lanka",
+     "v": "India, Bangladesh, Myanmar, Sri Lanka & South Africa",
      "sec": "about.top",
      "secLabel": "Page"
     },
@@ -1369,7 +1355,7 @@
     {
      "k": "process.4",
      "t": "img",
-     "v": "images/machine-05.jpg",
+     "v": "images/paddy-precleaner.jpg",
      "sec": "process.s2",
      "secLabel": "Section 2"
     },
@@ -1425,7 +1411,7 @@
     {
      "k": "process.11",
      "t": "img",
-     "v": "images/machine-07.jpg",
+     "v": "images/parboiling-32-ton-water-tank.jpg",
      "sec": "process.s2",
      "secLabel": "Section 2"
     },
@@ -1439,7 +1425,7 @@
     {
      "k": "process.12",
      "t": "img",
-     "v": "images/machine-06.jpg",
+     "v": "images/dryer-24-ton.jpg",
      "sec": "process.s2",
      "secLabel": "Section 2"
     },
@@ -1495,7 +1481,7 @@
     {
      "k": "process.19",
      "t": "img",
-     "v": "images/machine-08.jpg",
+     "v": "images/works-12.jpg",
      "sec": "process.s2",
      "secLabel": "Section 2"
     },
@@ -1509,7 +1495,7 @@
     {
      "k": "process.20",
      "t": "img",
-     "v": "images/machine-09.jpg",
+     "v": "images/paddy-silo-wall.jpg",
      "sec": "process.s2",
      "secLabel": "Section 2"
     },
@@ -1565,7 +1551,7 @@
     {
      "k": "process.27",
      "t": "img",
-     "v": "images/machine-10.jpg",
+     "v": "images/screw-tube-conveyor.jpg",
      "sec": "process.s2",
      "secLabel": "Section 2"
     },
@@ -1883,7 +1869,7 @@
     {
      "k": "contact.18",
      "t": "text",
-     "v": "Installations across India · Exports to Bangladesh, Myanmar & Sri Lanka",
+     "v": "Installations across India · Exports to Bangladesh, Myanmar, Sri Lanka & South Africa",
      "sec": "contact.top",
      "secLabel": "Page"
     }

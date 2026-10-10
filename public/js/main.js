@@ -11,7 +11,7 @@
   var FAQS = [
     { keywords:["product","machine","elevator","dryer","silo","offer","make"], a:"We manufacture bucket elevators, paddy dryers, parboiling plants, storage silos, dust collectors, conveyors, blowers and more — the full pre-milling section of a rice mill. See the Products page for the full range." },
     { keywords:["capacity","ton","size","how much"], a:"Dryers and parboiling plants are built to any capacity you need, from small standalone units to large plants, with fully custom sizes on request." },
-    { keywords:["where","location","export","country","bardhaman","bengal","address","based"], a:"We're based in Bardhaman, West Bengal, India, with installations pan-India and exports to Bangladesh, Myanmar and Sri Lanka." },
+    { keywords:["where","location","export","country","bardhaman","bengal","address","based"], a:"We're based in Bardhaman, West Bengal, India, with installations pan-India and exports to Bangladesh, Myanmar, Sri Lanka and South Africa." },
     { keywords:["material","steel","grade","quality","304"], a:"Every machine is built in 304-grade stainless steel with in-house fabrication and ISO 9001:2015 quality systems." },
     { keywords:["experience","year","old","since","history"], a:"Shakti Engineering Works has over 20 years of experience designing and building rice mill pre-milling machinery." },
     { keywords:["price","cost","quote","quotation"], a:"Pricing depends on capacity and specification — the fastest way to get an accurate quote is to WhatsApp or call us with your requirement." },
