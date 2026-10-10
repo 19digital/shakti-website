@@ -151,6 +151,7 @@ function route() {
     case 'media': return viewMedia();
     case 'catalog': return viewCatalog();
     case 'gallery': return viewGallery();
+    case 'steps': return viewSteps();
     case 'nav': return viewNav();
     case 'theme': return viewTheme();
     case 'site': return viewSite();
@@ -181,6 +182,7 @@ function sidebarHtml(active) {
     ${CORE_PAGES.map((p) => item(p, PAGE_LABEL[p])).join('')}
     ${item('catalog', 'Products manager')}
     ${item('gallery', 'Gallery (Our Works)')}
+    ${item('steps', 'Process steps')}
     ${item('globals', 'Header, footer & widgets')}
     ${item('pages', 'Custom pages')}
     ${admin ? item('nav', 'Navigation menu') : ''}
@@ -228,7 +230,7 @@ function shell(active, contentHtml, title) {
 }
 function navTitle(key) {
   if (CORE_PAGES.includes(key)) return PAGE_LABEL[key] + ' page';
-  return { dashboard: 'Dashboard', catalog: 'Products', gallery: 'Gallery — Our Works', globals: 'Header, footer & widgets', pages: 'Custom pages', blog: 'Blog articles', media: 'Media library', nav: 'Navigation menu', theme: 'Theme & colours', site: 'Site settings', email: 'Email notifications', ai: 'AI & chatbot', leads: 'Enquiries', users: 'Users', backup: 'Backup', account: 'My account' }[key] || 'Dashboard';
+  return { dashboard: 'Dashboard', catalog: 'Products', gallery: 'Gallery — Our Works', steps: 'Process steps', globals: 'Header, footer & widgets', pages: 'Custom pages', blog: 'Blog articles', media: 'Media library', nav: 'Navigation menu', theme: 'Theme & colours', site: 'Site settings', email: 'Email notifications', ai: 'AI & chatbot', leads: 'Enquiries', users: 'Users', backup: 'Backup', account: 'My account' }[key] || 'Dashboard';
 }
 async function doLogout() {
   try {
@@ -439,7 +441,9 @@ async function viewContent(page) {
     } else if (it.t === 'link') {
       field = `<input class="input" data-k="${it.k}" value="${attr(val)}" placeholder="https:// or page.html">`;
     } else if (it.t === 'img') {
-      field = `<div class="img-preview"><img data-img-preview="${it.k}" src="/${attr(val)}" onerror="this.style.visibility='hidden'"><div style="flex:1;"><input class="input mono" data-k="${it.k}" value="${attr(val)}" style="margin-bottom:6px;"><button class="btn small" data-pick-img="${it.k}" type="button">Choose from media library</button></div></div>`;
+      field = val === 'none'
+        ? `<div class="img-removed"><span class="muted">This image is hidden on the website.</span> <button class="btn small" data-restore-img="${it.k}" type="button">Show it again</button> <button class="btn small" data-pick-img="${it.k}" type="button">Choose a new image</button></div>`
+        : `<div class="img-preview"><img data-img-preview="${it.k}" src="/${attr(val)}" onerror="this.style.visibility='hidden'"><div style="flex:1;"><input class="input mono" data-k="${it.k}" value="${attr(val)}" style="margin-bottom:6px;"><button class="btn small" data-pick-img="${it.k}" type="button">Choose from media library</button> <button class="btn small danger" data-remove-img="${it.k}" type="button">Remove image</button></div></div>`;
     }
     return `<div class="item-row${isChanged ? ' changed' : ''}" data-row="${it.k}">
       <div class="meta"><span class="kind">${it.t}</span>${isChanged ? `<button class="icon-btn" data-reset="${it.k}" title="Reset to original" type="button">&#8635; reset</button>` : ''}</div>
@@ -530,6 +534,13 @@ async function viewContent(page) {
         });
       })
     );
+    c.querySelectorAll('[data-remove-img]').forEach((btn) =>
+      btn.addEventListener('click', () => {
+        pending[btn.getAttribute('data-remove-img')] = 'none';
+        render();
+      })
+    );
+    c.querySelectorAll('[data-restore-img]').forEach((btn) => btn.addEventListener('click', () => resetItem(btn.getAttribute('data-restore-img'))));
     c.querySelectorAll('[data-hide]').forEach((cb) =>
       cb.addEventListener('change', () => {
         const id = cb.getAttribute('data-hide');
@@ -1546,6 +1557,146 @@ async function viewGallery() {
 }
 
 // ================================================================
+//  PROCESS STEPS MANAGER
+// ================================================================
+async function viewSteps() {
+  const c = shell('steps', `<div class="muted">Loading…</div>`);
+  let list;
+  try {
+    list = await api('GET', '/steps');
+  } catch (e) {
+    c.innerHTML = `<div class="banner err">${esc(errText(e))}</div>`;
+    return;
+  }
+
+  async function saveOrder() {
+    try {
+      await api('POST', '/steps/reorder', { ids: list.map((x) => x.id) });
+    } catch (e) {
+      toast(errText(e), 'err');
+    }
+  }
+
+  function render() {
+    c.innerHTML = `
+      <div class="toolbar">
+        <button class="btn primary" id="s-add" type="button">+ Add step</button>
+        <div class="spacer"></div>
+        <span class="muted">${list.length} step${list.length === 1 ? '' : 's'}</span>
+      </div>
+      <div class="muted" style="margin-bottom:14px;">These are the steps in <strong>“From Raw Paddy to Perfectly Milled Rice”</strong> on the home page and on the <strong>Process</strong> page. The step numbers follow the order below. Each step can have a photo, or none.</div>
+      ${list.length ? `<div class="prod-list">${list.map((st, i) => `
+        <div class="prod-row" data-id="${attr(st.id)}">
+          <div class="prod-thumb">${st.image ? `<img src="${attr(imgSrc(st.image))}" alt="" loading="lazy">` : '<span class="muted" style="font-size:11px;">No photo</span>'}</div>
+          <div class="prod-main">
+            <div class="prod-name"><span class="pill published">${String(i + 1).padStart(2, '0')}</span> ${esc(st.title)} ${st.visible === false ? '<span class="pill hidden">Hidden</span>' : ''}</div>
+            <div class="muted prod-sum">${esc(st.summary || '')}</div>
+          </div>
+          <div class="prod-actions">
+            <button class="icon-btn" data-up type="button" title="Move up" ${i === 0 ? 'disabled' : ''}>&#8593;</button>
+            <button class="icon-btn" data-down type="button" title="Move down" ${i === list.length - 1 ? 'disabled' : ''}>&#8595;</button>
+            <button class="btn small" data-edit type="button">Edit</button>
+            <button class="icon-btn" data-del type="button" title="Delete">&#128465;</button>
+          </div>
+        </div>`).join('')}</div>` : `<div class="empty">No steps yet — click “Add step”.</div>`}`;
+    document.getElementById('s-add').addEventListener('click', () => openEditor(null));
+    c.querySelectorAll('.prod-row').forEach((row) => {
+      const id = row.getAttribute('data-id');
+      const i = list.findIndex((x) => x.id === id);
+      const move = async (d) => {
+        const j = i + d;
+        if (j < 0 || j >= list.length) return;
+        [list[i], list[j]] = [list[j], list[i]];
+        render();
+        await saveOrder();
+      };
+      row.querySelector('[data-up]').addEventListener('click', () => move(-1));
+      row.querySelector('[data-down]').addEventListener('click', () => move(1));
+      row.querySelector('[data-edit]').addEventListener('click', () => openEditor(list[i]));
+      row.querySelector('.prod-main').addEventListener('click', () => openEditor(list[i]));
+      row.querySelector('.prod-thumb').addEventListener('click', () => openEditor(list[i]));
+      row.querySelector('[data-del]').addEventListener('click', async () => {
+        if (!confirm('Delete the step "' + list[i].title + '"?')) return;
+        try {
+          await api('DELETE', '/steps/' + id);
+          list.splice(i, 1);
+          toast('Deleted.', 'ok');
+          render();
+        } catch (e) {
+          toast(errText(e), 'err');
+        }
+      });
+    });
+  }
+
+  function openEditor(existing, draftIn) {
+    const d = draftIn || {
+      title: existing ? existing.title : '',
+      summary: existing ? existing.summary : '',
+      details: existing ? existing.details : '',
+      image: existing ? existing.image : '',
+      visible: existing ? existing.visible !== false : true,
+    };
+    openModal(`
+      <div class="mhead"><h2>${existing ? 'Edit step' : 'Add step'}</h2><button class="icon-btn" id="se-x" type="button">&#10005;</button></div>
+      <div class="field"><label>Step title</label><input class="input" id="se-title" maxlength="80" value="${attr(d.title)}" placeholder="e.g. Pre-Cleaning"></div>
+      <div class="field"><label>Short description</label><textarea class="input" id="se-sum" maxlength="220" rows="2" placeholder="One sentence for the small card on the home page.">${esc(d.summary)}</textarea></div>
+      <div class="field"><label>Full description</label><textarea class="input" id="se-det" maxlength="700" rows="4" placeholder="A few sentences for the Process page.">${esc(d.details)}</textarea></div>
+      <div class="field"><label>Photo</label>
+        <div class="pe-main">
+          <div class="pe-thumb">${d.image ? `<img src="${attr(imgSrc(d.image))}" alt="">` : '<span class="muted">No photo</span>'}</div>
+          <div style="flex:1;display:flex;gap:8px;flex-wrap:wrap;align-items:flex-start;">
+            <button class="btn small" id="se-pick" type="button">${d.image ? 'Change photo' : 'Choose or upload photo'}</button>
+            ${d.image ? '<button class="btn small danger" id="se-remove" type="button">Remove photo</button>' : ''}
+          </div>
+        </div>
+      </div>
+      <label class="check" style="margin:12px 0 4px;"><input type="checkbox" id="se-vis" ${d.visible ? 'checked' : ''}> Show this step on the website</label>
+      <div class="divider"></div>
+      <div class="row" style="justify-content:flex-end;"><button class="btn" id="se-cancel" type="button">Cancel</button><button class="btn primary" id="se-save" type="button">${existing ? 'Save changes' : 'Add step'}</button></div>
+    `, true);
+    const val = (id) => document.getElementById(id);
+    const capture = () => {
+      d.title = val('se-title').value;
+      d.summary = val('se-sum').value;
+      d.details = val('se-det').value;
+      d.visible = val('se-vis').checked;
+    };
+    val('se-pick').addEventListener('click', () => {
+      capture();
+      closeModal();
+      openMediaPicker('image', (m) => { d.image = m.url; setTimeout(() => openEditor(existing, d), 0); }, () => setTimeout(() => openEditor(existing, d), 0));
+    });
+    const rm = val('se-remove');
+    if (rm) rm.addEventListener('click', () => { capture(); d.image = ''; closeModal(); openEditor(existing, d); });
+    val('se-x').addEventListener('click', closeModal);
+    val('se-cancel').addEventListener('click', closeModal);
+    val('se-save').addEventListener('click', async () => {
+      capture();
+      if (!d.title.trim()) return toast('Enter a step title.', 'err');
+      const btn = val('se-save');
+      btn.disabled = true;
+      try {
+        if (existing) {
+          const saved = await api('PUT', '/steps/' + existing.id, d);
+          list[list.findIndex((x) => x.id === existing.id)] = saved;
+        } else {
+          list.push(await api('POST', '/steps', d));
+        }
+        closeModal();
+        toast('Saved.', 'ok');
+        render();
+      } catch (e) {
+        toast(errText(e), 'err');
+        btn.disabled = false;
+      }
+    });
+  }
+
+  render();
+}
+
+// ================================================================
 //  THEME & COLOURS
 // ================================================================
 async function viewTheme() {
@@ -1861,6 +2012,35 @@ async function viewAi() {
         <div class="field"><label>Language</label><input class="input" id="a-lang" value="${attr(s.blogLanguage)}"></div>
       </div>
     </div>
+    <div class="card">
+      <h2>Automatic blog writing</h2>
+      <div class="desc">Let the AI write a new article for you on a schedule. Choose how often, and whether each article waits for your review or goes live straight away.</div>
+      ${s.hasKey ? '' : `<div class="banner warn">Add a Gemini API key above first — automatic writing needs it.</div>`}
+      <label class="check"><input type="checkbox" id="ab-on" ${s.autoBlog.enabled ? 'checked' : ''}> Write articles automatically</label>
+      <div class="row" style="margin-top:12px;">
+        <div class="field"><label>How often</label>
+          <select class="input" id="ab-freq">
+            ${[[1, 'Every day'], [2, 'Every 2 days'], [3, 'Every 3 days'], [7, 'Every week'], [14, 'Every 2 weeks'], [30, 'Every month']].map(([n, l]) => `<option value="${n}" ${s.autoBlog.everyDays === n ? 'selected' : ''}>${l}</option>`).join('')}
+            <option value="custom" ${[1, 2, 3, 7, 14, 30].includes(s.autoBlog.everyDays) ? '' : 'selected'}>Custom number of days…</option>
+          </select>
+        </div>
+        <div class="field" id="ab-custom" style="${[1, 2, 3, 7, 14, 30].includes(s.autoBlog.everyDays) ? 'display:none;' : ''}max-width:180px;"><label>Every … days</label><input class="input" type="number" id="ab-days" min="1" max="90" value="${s.autoBlog.everyDays}"></div>
+        <div class="field"><label>Each new article</label>
+          <select class="input" id="ab-mode">
+            <option value="draft" ${s.autoBlog.mode === 'draft' ? 'selected' : ''}>Save as a draft for me to review (recommended)</option>
+            <option value="publish" ${s.autoBlog.mode === 'publish' ? 'selected' : ''}>Publish straight away</option>
+          </select>
+        </div>
+      </div>
+      <div class="field"><label>Topics (optional)</label><textarea class="input" id="ab-topics" rows="4" placeholder="One topic per line. The AI works through them in order, then starts again. Leave empty and it picks fresh topics itself, avoiding what you've already published.">${esc(s.autoBlog.topics)}</textarea></div>
+      <div id="ab-status" class="muted" style="margin-bottom:10px;">
+        ${s.autoBlog.enabled && s.autoBlog.nextRunAt ? `Next article: <strong>${fmtDateTime(s.autoBlog.nextRunAt)}</strong>.` : 'Automatic writing is off.'}
+        ${s.autoBlog.lastRunAt ? `<br>Last article: ${fmtDateTime(s.autoBlog.lastRunAt)} — ${esc(s.autoBlog.lastResult)}` : ''}
+        ${s.autoBlog.lastError ? `<br><span style="color:var(--danger);">Last attempt failed: ${esc(s.autoBlog.lastError)}</span>` : ''}
+      </div>
+      <button class="btn" id="ab-run" type="button" ${s.hasKey ? '' : 'disabled'}>Write one article now</button>
+      <div class="hint" style="margin-top:8px;">Articles are written while the website is awake. On free hosting the site sleeps when idle, so an article can arrive a little late (it is made as soon as the site wakes). Remember to click “Save AI settings” after changing these options.</div>
+    </div>
     <div class="save-bar"><button class="btn primary" id="a-save">Save AI settings</button></div>`;
 
   document.getElementById('a-test').addEventListener('click', async () => {
@@ -1887,6 +2067,23 @@ async function viewAi() {
         toast(errText(e), 'err');
       }
     });
+  document.getElementById('ab-freq').addEventListener('change', (e) => {
+    document.getElementById('ab-custom').style.display = e.target.value === 'custom' ? '' : 'none';
+  });
+  document.getElementById('ab-run').addEventListener('click', async (e) => {
+    const btn = e.target;
+    btn.disabled = true;
+    btn.textContent = 'Writing… this takes up to a minute';
+    try {
+      const r = await api('POST', '/ai/autoblog/run');
+      toast('Done: "' + r.title + '" (' + (r.status === 'published' ? 'published' : 'saved as a draft') + ').', 'ok');
+      viewAi();
+    } catch (err) {
+      toast(errText(err), 'err');
+      btn.disabled = false;
+      btn.textContent = 'Write one article now';
+    }
+  });
   document.getElementById('a-save').addEventListener('click', async () => {
     const key = document.getElementById('a-key').value.trim();
     try {
@@ -1902,6 +2099,12 @@ async function viewAi() {
         dailyLimit: +document.getElementById('a-limit').value,
         blogTone: document.getElementById('a-tone').value.trim(),
         blogLanguage: document.getElementById('a-lang').value.trim(),
+        autoBlog: {
+          enabled: document.getElementById('ab-on').checked,
+          everyDays: document.getElementById('ab-freq').value === 'custom' ? +document.getElementById('ab-days').value : +document.getElementById('ab-freq').value,
+          mode: document.getElementById('ab-mode').value,
+          topics: document.getElementById('ab-topics').value,
+        },
       });
       toast('Saved.', 'ok');
       viewAi();

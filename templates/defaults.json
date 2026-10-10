@@ -579,279 +579,69 @@
     },
     {
      "k": "index.26",
-     "t": "img",
-     "v": "images/paddy-precleaner.jpg",
-     "sec": "index.s3",
-     "secLabel": "The Shakti Process"
-    },
-    {
-     "k": "index.26a",
-     "t": "alt",
-     "v": "Pre-Cleaning",
-     "sec": "index.s3",
-     "secLabel": "The Shakti Process"
-    },
-    {
-     "k": "index.27",
-     "t": "text",
-     "v": "01",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.28",
-     "t": "text",
-     "v": "Pre-Cleaning",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.29",
-     "t": "text",
-     "v": "Removes stalks, dust and stones before paddy enters the mill.",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.30",
-     "t": "img",
-     "v": "images/parboiling-32-ton.jpg",
-     "sec": "index.s3",
-     "secLabel": "The Shakti Process"
-    },
-    {
-     "k": "index.30a",
-     "t": "alt",
-     "v": "Parboiling",
-     "sec": "index.s3",
-     "secLabel": "The Shakti Process"
-    },
-    {
-     "k": "index.31",
-     "t": "text",
-     "v": "02",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.32",
-     "t": "text",
-     "v": "Parboiling",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.33",
-     "t": "text",
-     "v": "Steam-pressure plants that lock in nutrition and grain strength.",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.34",
-     "t": "img",
-     "v": "images/dryer-24-ton.jpg",
-     "sec": "index.s3",
-     "secLabel": "The Shakti Process"
-    },
-    {
-     "k": "index.34a",
-     "t": "alt",
-     "v": "Vertical Drying",
-     "sec": "index.s3",
-     "secLabel": "The Shakti Process"
-    },
-    {
-     "k": "index.35",
-     "t": "text",
-     "v": "03",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.36",
-     "t": "text",
-     "v": "Vertical Drying",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.37",
-     "t": "text",
-     "v": "Reduces moisture evenly for consistent milling quality.",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.38",
-     "t": "img",
-     "v": "images/works-12.jpg",
-     "sec": "index.s3",
-     "secLabel": "The Shakti Process"
-    },
-    {
-     "k": "index.38a",
-     "t": "alt",
-     "v": "Elevator Transfer",
-     "sec": "index.s3",
-     "secLabel": "The Shakti Process"
-    },
-    {
-     "k": "index.39",
-     "t": "text",
-     "v": "04",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.40",
-     "t": "text",
-     "v": "Elevator Transfer",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.41",
-     "t": "text",
-     "v": "Heavy-duty bucket elevators move grain between every stage.",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.42",
-     "t": "img",
-     "v": "images/paddy-silo-wall.jpg",
-     "sec": "index.s3",
-     "secLabel": "The Shakti Process"
-    },
-    {
-     "k": "index.42a",
-     "t": "alt",
-     "v": "Silo & Storage",
-     "sec": "index.s3",
-     "secLabel": "The Shakti Process"
-    },
-    {
-     "k": "index.43",
-     "t": "text",
-     "v": "05",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.44",
-     "t": "text",
-     "v": "Silo & Storage",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.45",
-     "t": "text",
-     "v": "Custom-capacity paddy and rice silos with dust collection.",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.46",
-     "t": "img",
-     "v": "images/factory-01.jpg",
-     "sec": "index.s3",
-     "secLabel": "The Shakti Process"
-    },
-    {
-     "k": "index.46a",
-     "t": "alt",
-     "v": "Milling & Output",
-     "sec": "index.s3",
-     "secLabel": "The Shakti Process"
-    },
-    {
-     "k": "index.47",
-     "t": "text",
-     "v": "06",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.48",
-     "t": "text",
-     "v": "Milling & Output",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.49",
-     "t": "text",
-     "v": "A complete, tension-free pre-milling section ready for your mill.",
-     "sec": "index.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "index.50",
      "t": "text",
      "v": "Our Range",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.51",
+     "k": "index.27",
      "t": "text",
      "v": "Everything Your Milling Line Needs",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.52",
+     "k": "index.28",
      "t": "text",
      "v": "Our Works",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.53",
+     "k": "index.29",
      "t": "text",
      "v": "Installations Across Rice Mills",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.54",
+     "k": "index.30",
      "t": "text",
      "v": "Ready to Upgrade Your Mill?",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.55",
+     "k": "index.31",
      "t": "text",
      "v": "Tell us your capacity and site details — our engineers will size the right machine for you.",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.56",
+     "k": "index.32",
      "t": "link",
      "v": "https://wa.me/919475086888",
      "sec": "index.s6",
      "secLabel": "Ready to Upgrade Your Mill?"
     },
     {
-     "k": "index.57",
+     "k": "index.33",
      "t": "text",
      "v": "Chat on WhatsApp",
      "sec": "index.top",
      "secLabel": "Page"
     },
     {
-     "k": "index.58",
+     "k": "index.34",
      "t": "link",
      "v": "mailto:info@shaktiew.in",
      "sec": "index.s6",
      "secLabel": "Ready to Upgrade Your Mill?"
     },
     {
-     "k": "index.59",
+     "k": "index.35",
      "t": "text",
      "v": "Email Us",
      "sec": "index.top",
@@ -1354,251 +1144,41 @@
     },
     {
      "k": "process.4",
-     "t": "img",
-     "v": "images/paddy-precleaner.jpg",
-     "sec": "process.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "process.4a",
-     "t": "alt",
-     "v": "Pre-Cleaning",
-     "sec": "process.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "process.5",
-     "t": "text",
-     "v": "01",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.6",
-     "t": "text",
-     "v": "Pre-Cleaning",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.7",
-     "t": "text",
-     "v": "Removes stalks, dust and stones before paddy enters the mill, protecting every downstream machine from debris and wear.",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.8",
-     "t": "text",
-     "v": "02",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.9",
-     "t": "text",
-     "v": "Parboiling",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.10",
-     "t": "text",
-     "v": "Steam-pressure parboiling plants lock in nutrition and grain strength, with integrated water tanks sized up to 50 KL for continuous operation.",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.11",
-     "t": "img",
-     "v": "images/parboiling-32-ton-water-tank.jpg",
-     "sec": "process.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "process.11a",
-     "t": "alt",
-     "v": "Pre-Cleaning",
-     "sec": "process.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "process.12",
-     "t": "img",
-     "v": "images/dryer-24-ton.jpg",
-     "sec": "process.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "process.12a",
-     "t": "alt",
-     "v": "Pre-Cleaning",
-     "sec": "process.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "process.13",
-     "t": "text",
-     "v": "03",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.14",
-     "t": "text",
-     "v": "Vertical Drying",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.15",
-     "t": "text",
-     "v": "Multi-pass vertical dryers reduce moisture evenly across the grain, sized to your daily throughput in any capacity you need, for consistent milling quality batch after batch.",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.16",
-     "t": "text",
-     "v": "04",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.17",
-     "t": "text",
-     "v": "Elevator Transfer",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.18",
-     "t": "text",
-     "v": "Heavy-duty bucket elevators move grain cleanly between every stage of the line, engineered for dryers, parboiling sections, silos and standalone use.",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.19",
-     "t": "img",
-     "v": "images/works-12.jpg",
-     "sec": "process.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "process.19a",
-     "t": "alt",
-     "v": "Pre-Cleaning",
-     "sec": "process.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "process.20",
-     "t": "img",
-     "v": "images/paddy-silo-wall.jpg",
-     "sec": "process.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "process.20a",
-     "t": "alt",
-     "v": "Pre-Cleaning",
-     "sec": "process.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "process.21",
-     "t": "text",
-     "v": "05",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.22",
-     "t": "text",
-     "v": "Silo & Storage",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.23",
-     "t": "text",
-     "v": "Custom-capacity paddy and rice silos, plus dust collection and cyclone systems, keep grain protected and your mill floor clean until it's ready to move on.",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.24",
-     "t": "text",
-     "v": "06",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.25",
-     "t": "text",
-     "v": "Milling & Output",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.26",
-     "t": "text",
-     "v": "A complete, tension-free pre-milling section — screw and tube conveyors, blowers, pulleys and pipeline fittings all engineered to work as one line, ready for your mill.",
-     "sec": "process.top",
-     "secLabel": "Page"
-    },
-    {
-     "k": "process.27",
-     "t": "img",
-     "v": "images/factory-01.jpg",
-     "sec": "process.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "process.27a",
-     "t": "alt",
-     "v": "Pre-Cleaning",
-     "sec": "process.s2",
-     "secLabel": "Section 2"
-    },
-    {
-     "k": "process.28",
      "t": "text",
      "v": "Want This Line at Your Mill?",
      "sec": "process.top",
      "secLabel": "Page"
     },
     {
-     "k": "process.29",
+     "k": "process.5",
      "t": "text",
      "v": "Send us your capacity and footprint — we'll design the right pre-milling section for you.",
      "sec": "process.top",
      "secLabel": "Page"
     },
     {
-     "k": "process.30",
+     "k": "process.6",
      "t": "link",
      "v": "https://wa.me/919475086888",
      "sec": "process.s3",
      "secLabel": "Want This Line at Your Mill?"
     },
     {
-     "k": "process.31",
+     "k": "process.7",
      "t": "text",
      "v": "Chat on WhatsApp",
      "sec": "process.top",
      "secLabel": "Page"
     },
     {
-     "k": "process.32",
+     "k": "process.8",
      "t": "link",
      "v": "mailto:info@shaktiew.in",
      "sec": "process.s3",
      "secLabel": "Want This Line at Your Mill?"
     },
     {
-     "k": "process.33",
+     "k": "process.9",
      "t": "text",
      "v": "Email Us",
      "sec": "process.top",

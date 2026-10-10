@@ -65,7 +65,7 @@ r.put(
       if (it.t === 'text') v = clip(cleanText(raw), 3000);
       else if (it.t === 'alt') v = clip(cleanText(raw), 300);
       else if (it.t === 'img') {
-        v = safeImg(raw);
+        v = raw === 'none' ? 'none' : safeImg(raw);
         if (!v) throw new HttpError(400, 'That image address is not allowed.');
       } else if (it.t === 'link') {
         v = safeUrl(raw);

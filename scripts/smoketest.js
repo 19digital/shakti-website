@@ -78,7 +78,7 @@ async function main() {
 
   console.log('\n== Content editing reaches the public page ==');
   r = await req(admin, 'GET', '/api/content/index');
-  ok(r.status === 200 && Array.isArray(r.data.items) && r.data.items.length > 50, 'index content list loads', 'items=' + (r.data.items || []).length);
+  ok(r.status === 200 && Array.isArray(r.data.items) && r.data.items.length > 25, 'index content list loads', 'items=' + (r.data.items || []).length);
   const heroItem = r.data.items.find((i) => i.t === 'text' && /Engineering the/.test(i.v));
   ok(!!heroItem, 'hero heading text found in content list');
   const marker = 'SMOKETEST-' + Date.now();
@@ -363,6 +363,81 @@ async function main() {
   ok(r.data.length === galCount, 'the gallery is back to its original size');
   r = await req(visitor, 'POST', '/api/gallery', { items: [{ src: 'images/machine-11.jpg' }] });
   ok(r.status === 401 || r.status === 403, 'visitors cannot change the gallery');
+
+  console.log('\n== Process steps manager, image removal, automatic blog settings ==');
+  const SH = { headers: { 'x-csrf-token': csrf } };
+  r = await req(visitor, 'GET', '/api/steps');
+  ok(r.status === 401, 'process step list requires sign-in');
+  r = await req(admin, 'GET', '/api/steps');
+  ok(r.status === 200 && r.data.length === 6 && r.data[1].title === 'Parboiling', 'the six default process steps are seeded in order (Parboiling is step 2)');
+  r = await req(admin, 'GET', '/');
+  ok(/Pre-Cleaning/.test(r.text) && /Vertical Drying/.test(r.text), 'the home page shows the steps');
+  r = await req(admin, 'GET', '/process.html');
+  ok(/Elevator Transfer/.test(r.text) && /stack-mobile/.test(r.text), 'the Process page shows the steps');
+  ok((r.text.match(/class="step-num"/g) || []).length === 6 && /<h1[^>]*>From Raw Paddy/.test(r.text), 'the Process page shows each step once and keeps its heading');
+
+  r = await req(admin, 'POST', '/api/steps', { title: 'Quality Check', summary: 'Every batch is inspected.', details: 'Samples are checked before dispatch.', image: 'images/machine-11.jpg' }, SH);
+  ok(r.status === 200 && r.data.id, 'a process step can be added');
+  const sid = r.data && r.data.id;
+  r = await req(admin, 'GET', '/process.html');
+  ok(r.text.includes('Quality Check') && r.text.includes('Samples are checked'), 'the new step appears on the Process page');
+  r = await req(admin, 'GET', '/');
+  ok(r.text.includes('Quality Check'), 'the new step appears on the home page');
+  r = await req(admin, 'POST', '/api/steps', { title: 'Sort & Grade', summary: 'x' }, SH);
+  ok(r.status === 200 && r.data.title === 'Sort & Grade', 'an ampersand in a title is stored as typed');
+  const ampId = r.data && r.data.id;
+  r = await req(admin, 'GET', '/process.html');
+  ok(r.text.includes('Sort &amp; Grade') && !r.text.includes('&amp;amp;'), 'an ampersand is shown correctly, not double-escaped');
+  await req(admin, 'DELETE', '/api/steps/' + ampId, null, SH);
+  r = await req(admin, 'POST', '/api/steps', { title: '' }, SH);
+  ok(r.status === 400, 'a step without a title is rejected');
+  r = await req(admin, 'POST', '/api/steps', { title: 'Bad image', image: 'javascript:alert(1)' }, SH);
+  ok(r.status === 400, 'a step with an unsafe image address is rejected');
+  r = await req(admin, 'PUT', '/api/steps/' + sid, { title: 'Quality <b>Check</b>', summary: 'x', image: '', visible: true }, SH);
+  ok(r.status === 200 && r.data.image === '', 'a step photo can be removed (step kept)');
+  r = await req(admin, 'GET', '/');
+  ok(r.text.includes('Quality &lt;b&gt;Check&lt;/b&gt;') || !r.text.includes('Quality <b>Check</b>'), 'markup typed into a step title is escaped');
+  r = await req(admin, 'GET', '/api/steps');
+  const stepIds = r.data.map((x) => x.id);
+  r = await req(admin, 'POST', '/api/steps/reorder', { ids: stepIds.slice().reverse() }, SH);
+  r = await req(admin, 'GET', '/api/steps');
+  ok(r.data[0].id === stepIds[stepIds.length - 1] && r.data.length === stepIds.length, 'steps can be reordered');
+  r = await req(admin, 'DELETE', '/api/steps/' + sid, undefined, SH);
+  ok(r.status === 200, 'a step can be deleted');
+  r = await req(admin, 'GET', '/process.html');
+  ok(!r.text.includes('Quality &lt;b&gt;') && !r.text.includes('Samples are checked'), 'the deleted step is gone from the Process page');
+  r = await req(admin, 'POST', '/api/steps/reorder', { ids: stepIds.filter((x) => x !== sid) }, SH);
+
+  r = await req(admin, 'GET', '/api/content/index');
+  const imgItem = r.data.items.find((i) => i.t === 'img' && i.v && !/logo/i.test(i.v));
+  ok(!!imgItem, 'an editable image is found on the home page');
+  r = await req(admin, 'GET', '/');
+  const countImg = (html) => html.split('src="' + imgItem.v + '"').length - 1;
+  const imgBefore = countImg(r.text);
+  r = await req(admin, 'PUT', '/api/content', { content: { [imgItem.k]: 'none' } }, SH);
+  ok(r.status === 200, 'an image can be marked as removed');
+  r = await req(admin, 'GET', '/');
+  ok(imgBefore >= 1 && countImg(r.text) === imgBefore - 1, 'a removed image disappears from the live page', imgBefore + ' -> ' + countImg(r.text));
+  r = await req(admin, 'PUT', '/api/content', { content: { [imgItem.k]: 'javascript:alert(1)' } }, SH);
+  ok(r.status === 400, 'an unsafe image address is still rejected');
+  r = await req(admin, 'DELETE', '/api/content/' + encodeURIComponent(imgItem.k), undefined, SH);
+  r = await req(admin, 'GET', '/');
+  ok(countImg(r.text) === imgBefore, 'restoring the image brings it back');
+
+  r = await req(admin, 'GET', '/api/ai/settings');
+  ok(r.status === 200 && r.data.autoBlog && r.data.autoBlog.enabled === false && r.data.autoBlog.everyDays === 7, 'automatic blog writing is off by default (weekly when switched on)');
+  r = await req(admin, 'PUT', '/api/ai/settings', { autoBlog: { everyDays: 0 } }, SH);
+  ok(r.status === 400, 'a frequency below 1 day is rejected');
+  r = await req(admin, 'PUT', '/api/ai/settings', { autoBlog: { mode: 'sometimes' } }, SH);
+  ok(r.status === 400, 'an unknown publishing mode is rejected');
+  r = await req(admin, 'PUT', '/api/ai/settings', { autoBlog: { enabled: true, everyDays: 3, mode: 'draft', topics: 'Choosing a dryer size' } }, SH);
+  ok(r.status === 200 && r.data.autoBlog.enabled && r.data.autoBlog.everyDays === 3 && r.data.autoBlog.nextRunAt, 'the writing frequency can be set from the dashboard and a next date is shown');
+  r = await req(admin, 'POST', '/api/ai/autoblog/run', {}, SH);
+  ok(r.status === 400 && /key/i.test((r.data && r.data.error) || ''), 'writing now without a Gemini key explains what is missing');
+  r = await req(visitor, 'POST', '/api/ai/autoblog/run', {});
+  ok(r.status === 401 || r.status === 403, 'visitors cannot trigger article writing');
+  r = await req(admin, 'PUT', '/api/ai/settings', { autoBlog: { enabled: false } }, SH);
+  ok(r.status === 200 && r.data.autoBlog.enabled === false && r.data.autoBlog.nextRunAt === null, 'automatic writing can be switched off again');
 
   console.log('\n== Password change & re-login ==');
   // sign in a second, independent session as the same admin first, to prove the *other* session

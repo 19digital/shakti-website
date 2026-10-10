@@ -193,3 +193,5 @@ table.list tr:hover td{background:var(--panel-2);}
 .gal-ctl{display:flex;align-items:center;gap:4px;}
 .gal-ctl select{flex:1;min-width:0;}
 @media (max-width:700px){.prod-row{flex-wrap:wrap;}.prod-sum{white-space:normal;}}
+
+.img-removed{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:10px 12px;border:1px dashed var(--border-strong);border-radius:10px;background:var(--panel-2);}

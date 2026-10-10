@@ -94,6 +94,7 @@ app.use((err, req, res, next) => {
     console.error('Check MONGODB_URI — for Atlas, remember to add 0.0.0.0/0 (or your host\'s IP) under Network Access.\n');
     process.exit(1);
   }
+  require('./lib/autoblog').start();
   app.listen(PORT, HOST, () => {
     console.log(`\nSite:       http://localhost:${PORT}/`);
     console.log(`Dashboard:  http://localhost:${PORT}/admin`);

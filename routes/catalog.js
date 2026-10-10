@@ -10,7 +10,9 @@ const { wrap, HttpError, safeImg, clip, stripTags } = require('../lib/util');
 const r = express.Router();
 const editor = A.requireRole('admin', 'editor');
 
-const text = (v, n) => clip(stripTags(String(v == null ? '' : v)).replace(/\s+/g, ' ').trim(), n);
+// stripTags returns entity-escaped text; the renderer escapes again on output, so store plain characters
+const unescape = (s) => s.replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&amp;/g, '&');
+const text = (v, n) => clip(unescape(stripTags(String(v == null ? '' : v))).replace(/\s+/g, ' ').trim(), n);
 const SHAPES = ['leaf', 'round', 'arch', 'pill'];
 const MAX_PRODUCTS = 200;
 const MAX_GALLERY = 120;
@@ -168,6 +170,69 @@ r.delete(
     if (i < 0) throw new HttpError(404, 'Photo not found.');
     db.data.gallery.splice(i, 1);
     db.log(req.user, 'Removed a gallery photo');
+    db.save();
+    res.json({ ok: true });
+  })
+);
+
+
+// ---------------- process steps ----------------
+const MAX_STEPS = 12;
+function readStep(b) {
+  const title = text(b.title, 80);
+  if (!title) throw new HttpError(400, 'A step title is required.');
+  const image = b.image ? safeImg(b.image) : '';
+  if (b.image && !image) throw new HttpError(400, 'That image address is not allowed.');
+  return { title, summary: text(b.summary, 220), details: text(b.details, 700), image, visible: b.visible === undefined ? true : !!b.visible };
+}
+
+r.get('/steps', editor, (req, res) => res.json(db.data.processSteps));
+
+r.post(
+  '/steps',
+  editor,
+  wrap(async (req, res) => {
+    if (db.data.processSteps.length >= MAX_STEPS) throw new HttpError(400, `You can have up to ${MAX_STEPS} steps.`);
+    const st = { id: db.id(), ...readStep(req.body || {}) };
+    db.data.processSteps.push(st);
+    db.log(req.user, `Added process step: ${st.title}`);
+    db.save();
+    res.json(st);
+  })
+);
+
+r.post(
+  '/steps/reorder',
+  editor,
+  wrap(async (req, res) => {
+    reorder(db.data.processSteps, req.body && req.body.ids);
+    db.log(req.user, 'Reordered process steps');
+    db.save();
+    res.json({ ok: true });
+  })
+);
+
+r.put(
+  '/steps/:id',
+  editor,
+  wrap(async (req, res) => {
+    const st = db.data.processSteps.find((x) => x.id === req.params.id);
+    if (!st) throw new HttpError(404, 'Step not found.');
+    Object.assign(st, readStep(req.body || {}));
+    db.log(req.user, `Updated process step: ${st.title}`);
+    db.save();
+    res.json(st);
+  })
+);
+
+r.delete(
+  '/steps/:id',
+  editor,
+  wrap(async (req, res) => {
+    const i = db.data.processSteps.findIndex((x) => x.id === req.params.id);
+    if (i < 0) throw new HttpError(404, 'Step not found.');
+    const [st] = db.data.processSteps.splice(i, 1);
+    db.log(req.user, `Deleted process step: ${st.title}`);
     db.save();
     res.json({ ok: true });
   })

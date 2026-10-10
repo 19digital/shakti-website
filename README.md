@@ -160,6 +160,12 @@ scripts/smoketest.js  end-to-end test suite — see below
 
 The product cards (Products page, plus the home page range when ticked) and the "Our Works" photo collage are stored in the database (`products`, `gallery`) and managed from the dashboard: **Products manager** (add / edit / reorder / hide, main photo, extra captioned photos shown in the viewer) and **Gallery (Our Works)** (upload or pick photos, drag to reorder, choose each tile's shape). `lib/seed.js` holds the defaults used until the database has its own copy. The static templates only contain empty `data-cms-products` / `data-cms-home-products` / `data-cms-gallery` containers that `lib/render.js` fills in.
 
+### Process steps, removable images, automatic blog writing
+
+- **Process steps** (dashboard → *Process steps*): the six production steps on the Process page and the home page row live in `processSteps`; add / edit / reorder / hide, change or remove each step's photo. Defaults are in `lib/seed.js`.
+- **Remove or change any other image**: in the page editors every image row has *Replace* and *Remove image* (stored as the value `none`; *Restore* brings it back). `lib/render.js` drops the `<img>` and any frame that only held it.
+- **Automatic blog writing** (dashboard → *AI & chatbot*): switch on, choose how often (every 1–90 days), draft or publish, and optionally list topics (one per line, used in turn; empty = the AI picks fresh topics and avoids existing titles). `lib/autoblog.js` checks every 30 minutes and writes whenever the interval has passed, so a host that sleeps simply catches up when it wakes. Needs a Gemini key. Test with `node scripts/test-autoblog.js`.
+
 ### Immersive motion layer
 
 `public/css/fx.css` + `public/js/fx.js` are injected into every public page by `lib/render.js` (not into the dashboard's live-edit preview). They add cursor/touch/device-tilt parallax: a 3D hero scene, floating grain particles, tilting cards with glare, magnetic buttons, split-word headings, count-ups, a trust-strip marquee, depth orbs, a scroll progress bar and a page-transition curtain. Everything is progressive enhancement: nothing is applied under `prefers-reduced-motion`, and if the script fails the classic layout is untouched. No templates or dashboard content keys are involved, so `scripts/annotate.js` does not need re-running.

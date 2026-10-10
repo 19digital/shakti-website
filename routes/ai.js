@@ -2,6 +2,7 @@ const express = require('express');
 const db = require('../lib/store');
 const A = require('../lib/auth');
 const gemini = require('../lib/gemini');
+const autoblog = require('../lib/autoblog');
 const { encrypt } = require('../lib/crypto');
 const { DEFAULTS, CORE } = require('../lib/render');
 const { wrap, HttpError, cleanRich, stripTags, clip } = require('../lib/util');
@@ -23,11 +24,16 @@ const CTRL_RE = new RegExp('[\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f]', 'g'
 const ctrl = (s) => String(s == null ? '' : s).replace(CTRL_RE, '');
 
 // ---------------- settings (admin) ----------------
+const autoBlogView = () => {
+  const ab = db.data.settings.ai.autoBlog;
+  const due = autoblog.nextRunAt();
+  return { enabled: !!ab.enabled, everyDays: autoblog.clampDays(ab.everyDays), mode: ab.mode === 'publish' ? 'publish' : 'draft', topics: ab.topics || '', lastRunAt: ab.lastRunAt || null, lastResult: ab.lastResult || '', lastError: ab.lastError || '', lastPostId: ab.lastPostId || '', nextRunAt: due ? new Date(due).toISOString() : null };
+};
 const publicAi = () => {
   const a = db.data.settings.ai;
   const envKey = gemini.keySource() === 'env' ? gemini.getKey() : '';
   const keyHint = a.keyHint || (envKey ? envKey.slice(0, 4) + '…' + envKey.slice(-4) : '');
-  return { hasKey: gemini.hasKey(), keySource: gemini.keySource(), keyHint, model: a.model, chatEnabled: a.chatEnabled, chatName: a.chatName, greeting: a.greeting, chatInstructions: a.chatInstructions, knowledge: a.knowledge, useSiteText: a.useSiteText, dailyLimit: a.dailyLimit, blogTone: a.blogTone, blogLanguage: a.blogLanguage };
+  return { hasKey: gemini.hasKey(), keySource: gemini.keySource(), keyHint, model: a.model, chatEnabled: a.chatEnabled, chatName: a.chatName, greeting: a.greeting, chatInstructions: a.chatInstructions, knowledge: a.knowledge, useSiteText: a.useSiteText, dailyLimit: a.dailyLimit, blogTone: a.blogTone, blogLanguage: a.blogLanguage, autoBlog: autoBlogView() };
 };
 
 r.get('/ai/settings', admin, (req, res) => res.json(publicAi()));
@@ -70,6 +76,28 @@ r.put(
     }
     if (b.blogTone !== undefined) a.blogTone = clip(ctrl(b.blogTone).trim(), 120);
     if (b.blogLanguage !== undefined) a.blogLanguage = clip(ctrl(b.blogLanguage).trim(), 40) || 'English';
+    if (b.autoBlog && typeof b.autoBlog === 'object') {
+      const ab = a.autoBlog, nb = b.autoBlog;
+      if (nb.everyDays !== undefined) {
+        const n = Math.round(+nb.everyDays);
+        if (!(n >= 1 && n <= 90)) throw new HttpError(400, 'Choose between 1 and 90 days.');
+        ab.everyDays = n;
+      }
+      if (nb.mode !== undefined) {
+        if (!['draft', 'publish'].includes(nb.mode)) throw new HttpError(400, 'Unknown mode.');
+        ab.mode = nb.mode;
+      }
+      if (nb.topics !== undefined) ab.topics = clip(ctrl(nb.topics), 4000);
+      if (nb.enabled !== undefined) {
+        const on = !!nb.enabled;
+        if (on && !ab.enabled) {
+          ab.enabledAt = new Date().toISOString();
+          ab.lastError = '';
+        }
+        ab.enabled = on;
+      }
+      db.log(req.user, ab.enabled ? `Automatic AI blog writing: every ${ab.everyDays} day(s), ${ab.mode === 'publish' ? 'publish' : 'save as draft'}` : 'Automatic AI blog writing switched off');
+    }
     db.save();
     res.json(publicAi());
   })
@@ -191,44 +219,11 @@ r.post(
     if (!A.hit('ai-blog:' + req.user.id, 12, 60 * 60 * 1000)) throw new HttpError(429, 'You have generated many drafts this hour. Please wait a while.');
     if (used('blog') >= 100) throw new HttpError(429, "Today's AI blog limit (100) has been reached.");
     const b = req.body || {};
-    const topic = clip(ctrl(b.topic).trim(), 300);
-    if (topic.length < 4) throw new HttpError(400, 'Describe what the article should be about.');
-    const a = db.data.settings.ai;
-    const words = LENGTHS[b.length] || LENGTHS.medium;
-    const tone = clip(ctrl(b.tone || a.blogTone), 120);
-    const language = clip(ctrl(b.language || a.blogLanguage), 40) || 'English';
-    const s = db.data.settings.site;
-    const system = [
-      `You are a senior content writer for ${s.name}, a rice-mill machinery manufacturer (elevators, paddy dryers, parboiling plants, silos, conveyors, dust collectors).`,
-      'Write genuinely useful, accurate articles for mill owners and operators. Do not invent statistics, awards, customer names or prices; when unsure, stay general.',
-      'Output ONLY a JSON object, no commentary, with exactly these keys:',
-      '"title" (max 70 chars, no clickbait), "excerpt" (1-2 sentences, max 200 chars), "metaDescription" (max 155 chars), "tags" (array of 3-5 short lowercase tags), "bodyHtml" (the article).',
-      'bodyHtml must use only these tags: h2, h3, p, ul, ol, li, strong, em, blockquote. Do not include an h1 or the title again. Start with a short intro paragraph, use descriptive h2 subheadings, and end with a brief practical takeaway.',
-    ].join('\n');
-    const prompt = [
-      `Topic: ${topic}`,
-      b.keywords ? `Keywords to work in naturally: ${clip(ctrl(b.keywords), 200)}` : '',
-      b.audience ? `Audience: ${clip(ctrl(b.audience), 120)}` : '',
-      `Tone: ${tone}`,
-      `Language: ${language}`,
-      `Target length: about ${words} words.`,
-      b.notes ? `Extra notes from the editor: ${clip(ctrl(b.notes), 600)}` : '',
-    ]
-      .filter(Boolean)
-      .join('\n');
-    const text = await gemini.generate({ system, messages: [{ role: 'user', text: prompt }], temperature: 0.7, maxTokens: 8192, json: true, noThinking: true, timeoutMs: 90000 });
-    const j = parseJson(text);
-    if (!j || typeof j.bodyHtml !== 'string') throw new HttpError(502, 'Gemini returned an answer in an unexpected format. Please try again.');
-    bump('blog');
-    db.log(req.user, 'Generated an AI blog draft: ' + clip(topic, 60));
+    const art = await autoblog.generateArticle({ topic: b.topic, tone: b.tone, language: b.language, length: b.length, keywords: b.keywords, audience: b.audience, notes: b.notes });
+    autoblog.bumpBlog();
+    db.log(req.user, 'Generated an AI blog draft: ' + clip(ctrl(b.topic).trim(), 60));
     db.save();
-    res.json({
-      title: clip(stripTags(j.title || topic), 160),
-      excerpt: clip(stripTags(j.excerpt || ''), 300),
-      seoDescription: clip(stripTags(j.metaDescription || ''), 300),
-      tags: (Array.isArray(j.tags) ? j.tags : []).map((t) => clip(stripTags(t).toLowerCase(), 30)).filter(Boolean).slice(0, 8),
-      bodyHtml: cleanRich(j.bodyHtml),
-    });
+    res.json(art);
   })
 );
 
@@ -257,6 +252,17 @@ r.post(
     const out = await gemini.generate({ system, messages: [{ role: 'user', text }], temperature: 0.5, maxTokens: 4096, noThinking: true, timeoutMs: 60000 });
     bump('blog');
     res.json({ text: html ? cleanRich(out) : clip(stripTags(out), 8000) });
+  })
+);
+
+
+r.post(
+  '/ai/autoblog/run',
+  admin,
+  wrap(async (req, res) => {
+    if (!A.hit('ai-autoblog:' + req.user.id, 6, 60 * 60 * 1000)) throw new HttpError(429, 'You have asked for many articles this hour. Please wait a while.');
+    const post = await autoblog.runOnce();
+    res.json({ id: post.id, title: post.title, status: post.status, slug: post.slug });
   })
 );
 
